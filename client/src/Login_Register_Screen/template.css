@@ -1,0 +1,531 @@
+/* Login_Eng */
+
+position: relative;
+width: 960px;
+height: 700px;
+
+background: #FFFFFF;
+
+
+/* BG */
+
+position: absolute;
+width: 1083.88px;
+height: 572.25px;
+left: 18.37px;
+top: -200.68px;
+
+transform: rotate(10deg);
+
+
+/* Rectangle 1 */
+
+position: absolute;
+width: 1125px;
+height: 627px;
+left: 33px;
+top: 147.68px;
+
+background: #444242;
+
+
+/* Rectangle 3 */
+
+position: absolute;
+width: 415.8px;
+height: 244.83px;
+left: -102.22px;
+top: 112.21px;
+
+background: #3D3F44;
+
+
+/* Rectangle 7 */
+
+position: absolute;
+width: 589px;
+height: 405px;
+left: 522.78px;
+top: 112.21px;
+
+background: rgba(0, 0, 0, 0.1);
+
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 387px;
+height: 282px;
+left: -40px;
+top: 343.68px;
+
+background: #343843;
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 313px;
+height: 214px;
+left: 314px;
+top: 517.68px;
+
+background: #312F2F;
+
+
+/* Rectangle 6 */
+
+position: absolute;
+width: 394px;
+height: 391px;
+left: 703px;
+top: 383.68px;
+
+background: #3D3C3C;
+
+
+/* Rectangle 5 */
+
+position: absolute;
+width: 374px;
+height: 338px;
+left: 702.78px;
+top: 135.21px;
+
+background: #363535;
+
+
+/* free-infographic-resume 1 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 350px;
+height: 495.29px;
+left: 65px;
+top: 1089.77px;
+
+background: url(free-infographic-resume.jpg);
+border: 1px solid rgba(0, 0, 0, 0.3);
+border-radius: 20px;
+transform: matrix(0.98, 0.17, 0.17, -0.98, 0, 0);
+
+
+/* free-infographic-resume 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 350px;
+height: 495.29px;
+left: 65px;
+top: 119.78px;
+
+background: url(free-infographic-resume.jpg);
+border: 1px solid #000000;
+border-radius: 20px;
+transform: rotate(-10deg);
+
+
+/* Login_part */
+
+position: absolute;
+width: 260px;
+height: 325px;
+left: 606px;
+top: 143px;
+
+
+
+/* Don’t have account? Sign up */
+
+position: absolute;
+width: 188px;
+height: 22px;
+left: 42px;
+top: 269px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 13px;
+line-height: 16px;
+
+color: #EDEBEB;
+
+
+
+/* Login_button */
+
+position: absolute;
+width: 260px;
+height: 41px;
+left: 0px;
+top: 213px;
+
+
+
+/* Rectangle 4161 */
+
+position: absolute;
+width: 260px;
+height: 41px;
+left: 0px;
+top: 213px;
+
+background: #62A4F0;
+border-radius: 10px;
+
+
+/* Login */
+
+position: absolute;
+width: 53px;
+height: 24px;
+left: 104px;
+top: 221px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+
+
+
+/* Forgot password? */
+
+position: absolute;
+width: 116px;
+height: 15px;
+left: 144px;
+top: 183px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 13px;
+line-height: 16px;
+
+color: #EDEBEB;
+
+
+
+/* Username */
+
+position: absolute;
+width: 260px;
+height: 41px;
+left: 0px;
+top: 132px;
+
+
+
+/* Rectangle 9 */
+
+position: absolute;
+width: 260px;
+height: 41px;
+left: 0px;
+top: 132px;
+
+background: #F0F0F0;
+border-radius: 10px;
+
+
+/* Password */
+
+position: absolute;
+width: 79px;
+height: 20px;
+left: 14px;
+top: 142px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 17px;
+line-height: 21px;
+
+color: #6E6B6B;
+
+
+
+/* View_hide_light */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 222px;
+top: 140px;
+
+
+
+/* Subtract_light */
+
+position: absolute;
+width: 8px;
+height: 8px;
+left: 8px;
+top: 8px;
+
+/* fill_icon */
+background: #222222;
+
+
+/* Ellipse 65 */
+
+box-sizing: border-box;
+
+position: absolute;
+left: 33.33%;
+right: 33.33%;
+top: 33.33%;
+bottom: 33.33%;
+
+/* Line_icon */
+border: 1px solid #33363F;
+
+
+/* Vector 115 */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 8.33%;
+bottom: 16.67%;
+
+border: 3px solid #000000;
+
+
+/* Subtract_light */
+
+position: absolute;
+width: 18.54px;
+height: 13px;
+left: 2.73px;
+top: 5.5px;
+
+/* fill_icon */
+background: #222222;
+
+
+/* Ellipse 66 */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 25%;
+bottom: 25%;
+
+/* Line_icon */
+border: 1px solid #33363F;
+
+
+/* Vector 116 */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 8.33%;
+bottom: 16.67%;
+
+border: 3px solid #000000;
+
+
+/* Vector 116_light */
+
+position: absolute;
+left: 20.83%;
+right: 12.5%;
+top: 8.33%;
+bottom: 25%;
+
+/* fill_icon */
+border: 1px solid #222222;
+
+
+/* Username */
+
+position: absolute;
+width: 260px;
+height: 41px;
+left: 0px;
+top: 76px;
+
+
+
+/* Rectangle 9 */
+
+position: absolute;
+width: 260px;
+height: 41px;
+left: 0px;
+top: 76px;
+
+background: #F0F0F0;
+border-radius: 10px;
+
+
+/* Username */
+
+position: absolute;
+width: 84px;
+height: 18px;
+left: 14px;
+top: 87px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 17px;
+line-height: 21px;
+
+color: #6E6B6B;
+
+
+
+/* User_alt_light */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 222px;
+top: 85px;
+
+
+
+/* Ellipse 46 */
+
+box-sizing: border-box;
+
+position: absolute;
+left: 33.33%;
+right: 33.33%;
+top: 16.67%;
+bottom: 50%;
+
+/* fill_icon */
+border: 1px solid #222222;
+
+
+/* Rectangle 4160 */
+
+position: absolute;
+left: 18.75%;
+right: 18.75%;
+top: 56.25%;
+bottom: 18.75%;
+
+/* fill_icon */
+border: 1px solid #222222;
+
+
+/* Login */
+
+position: absolute;
+width: 98px;
+height: 40px;
+left: 81px;
+top: 0px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 35px;
+line-height: 42px;
+
+color: #FFFFFF;
+
+
+
+/* Header */
+
+position: absolute;
+width: 830px;
+height: 40px;
+left: 50px;
+top: 14px;
+
+
+
+/* Rectangle 4167 */
+
+position: absolute;
+width: 20px;
+height: 20px;
+left: 716px;
+top: calc(50% - 20px/2 - 312px);
+
+background: url(image);
+
+
+/* Rectangle 4168 */
+
+position: absolute;
+width: 20px;
+height: 20px;
+left: 748px;
+top: 28px;
+
+background: url(image.png);
+
+
+/* Group 3 */
+
+position: absolute;
+width: 87px;
+height: 33px;
+left: 793px;
+top: 21px;
+
+
+
+/* Rectangle 8 */
+
+position: absolute;
+width: 87px;
+height: 33px;
+left: 793px;
+top: 21px;
+
+background: #252424;
+border-radius: 10px;
+
+
+/* Sign up */
+
+position: absolute;
+width: 73px;
+height: 22px;
+left: 801px;
+top: 26px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+
+
+
+/* CV Builder */
+
+position: absolute;
+width: 182.78px;
+height: 40px;
+left: 50px;
+top: 14px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 35px;
+line-height: 42px;
+
+color: #FFFFFF;
+

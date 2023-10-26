@@ -6,7 +6,8 @@ const cors = require('cors')
 const config = require('./config/config')
 
 //datebase setup
-const {sequelize} = require('./models')
+const db = require('./models/index.js')
+const PORT = 5000
 
 const app = express() // create your express app
 //app.use(morgan('combined')) // log requests source if needed
@@ -20,11 +21,11 @@ app.use(cors()) // enable cors
 //patch
 
 // routes (endpoints)
-require('./routes')(app)
+// require('./routes')(app)
 
 
-sequelize.sync()
-.then(() => {
-    app.listen(config.port)
-    console.log(`Server started on port ${config.port}`)
+db.sequelize.sync({force: true})
+.then((req) => {
+    app.listen(PORT)
+    console.log(`Server started on port ${PORT}`)
 })

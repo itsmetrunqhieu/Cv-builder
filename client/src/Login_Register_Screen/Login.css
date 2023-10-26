@@ -46,6 +46,7 @@
     font-size: 20px;
 
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .Login-main {
@@ -90,49 +91,74 @@
     color: #FFFFFF;
 }
 
-.username-container {
+.username-form-field {
     position: absolute;
-    width: 240px;
-    height: 41px;
+    width: 260px;
+    height: 40px;
     left: 0px;
     top: 76px;
 }
 
-.username {
+.icon {
+    position: absolute;
+    right: 7px;
+    top: 8px;
+}
+
+.password-form-field {
+    position: absolute;
+    width: 260px;
+    height: 40px;
+    left: 0px;
+    top: 150px;
+}
+
+.form-input {
+    border: 1px solid #eee;
     width: 220px;
     height: 40px;
 
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 17px;
+    padding: 0 20px;
+    transition: 0.25s ease;
 
-    margin: 0px;
-    padding: 0px 20px;
     background: #F0F0F0;
     border-radius: 10px;
 }
 
-::placeholder {
+.form-input:not(:placeholder-shown),
+.form-input:focus {
+    width: 200px;
+    padding-right: 40px;
+}
+
+.form-label {
     position: absolute;
-    width: auto;
-    height: 18px;
-    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 21px;
+    user-select: none;
+    color: #999;
+    pointer-events: none;
+    transition: 0.25s ease;
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 17px;
 
-    color: #6E6B6B;
+    border-radius: 5px;
 }
 
-.password-container {
-    position: absolute;
-    width: 240px;
-    height: 41px;
-    left: 0px;
-    top: 136px;
+.form-input:not(:placeholder-shown) + .form-label,
+.form-input:focus + .form-label {
+    top: -5px;
+    left: 11px;
+    font-size: 15px;
+    padding: 3px 10px;
+    display: inline-block;
+    background-color: rgb(46, 45, 45);
+    color: #F0F0F0;
+    border: 1px solid black;
 }
 
 .forgot {
@@ -140,13 +166,13 @@
     width: 100%;
     height: 15px;
     text-align: right;
-    top: 193px;
+    top: 205px;
 
     margin: 0px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 16px;
 
     color: #EDEBEB;
@@ -155,9 +181,9 @@
 .login-button {
     position: absolute;
     width: 260px;
-    height: 41px;
+    height: 40px;
     left: 0px;
-    top: 223px;
+    top: 235px;
 
     background: #62A4F0;
     border-radius: 10px;
@@ -169,20 +195,21 @@
     line-height: 24px;
 
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .dont-account {
     position: absolute;
     width: 100%;
     height: 22px;
-    top: 280px;
+    top: 285px;
     text-align: center;
 
     margin: 0px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 16px;
 
     color: #EDEBEB;

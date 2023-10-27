@@ -1,1 +1,1 @@
-select CURRENT_USER;
+select * from dbo.Users

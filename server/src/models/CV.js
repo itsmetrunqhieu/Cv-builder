@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class CV extends Model {
     /**
@@ -10,28 +8,32 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      CV.belongsTo(models.User)
-      CV.belongsTo(models.CV_tmplt)
-      models.User.hasMany(CV)
-      models.CV_tmplt.hasMany(CV)
+      CV.belongsTo(models.User);
+      CV.belongsTo(models.CV_tmplt);
+      models.User.hasMany(CV);
+      models.CV_tmplt.hasMany(CV);
     }
   }
-  CV.init({
-    id: {
-      type:DataTypes.STRING,
-      unique:true,
-      primaryKey:true,
-      allowNull:false
+  CV.init(
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        unique: true,
+        primaryKey: true,
+        allowNull: false,
+        autoIncrement: true,
+      },
+      xml_dir: {
+        type: DataTypes.STRING,
+      },
+      pdf_dir: {
+        type: DataTypes.STRING,
+      },
     },
-    xml_dir: {
-      type:DataTypes.STRING
-    },
-    pdf_dir: {
-      type:DataTypes.STRING
+    {
+      sequelize,
+      modelName: "CV",
     }
-  }, {
-    sequelize,
-    modelName: 'CV',
-  });
+  );
   return CV;
 };

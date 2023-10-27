@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class CV_tmplt extends Model {
     /**
@@ -13,23 +11,27 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  CV_tmplt.init({
-    id:{
-      type:DataTypes.STRING,
-      unique:true,
-      primaryKey:true,
-      allowNull:false
+  CV_tmplt.init(
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        unique: true,
+        primaryKey: true,
+        allowNull: false,
+        autoIncrement: true,
+      },
+      preview_dir: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      xml_smp: {
+        type: DataTypes.STRING,
+      },
     },
-    preview_dir: {
-      type: DataTypes.STRING,
-      allowNull:false
-    },
-    xml_smp: {
-      type: DataTypes.STRING
+    {
+      sequelize,
+      modelName: "CV_tmplt",
     }
-  }, {
-    sequelize,
-    modelName: 'CV_tmplt',
-  });
+  );
   return CV_tmplt;
 };

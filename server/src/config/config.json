@@ -4,7 +4,8 @@
     "password": "123456",
     "database": "CV_builder",
     "host": "localhost",
-    "dialect": "mssql"
+    "dialect": "mssql",
+    "logging": false
   },
   "test": {
     "username": "root",

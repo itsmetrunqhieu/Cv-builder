@@ -1,30 +1,33 @@
-// console.log('hello')
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
-//const morgan = require('morgan')
-const config = require('./config/config')
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const morgan = require("morgan");
+// const config = require("./config/config");
 
+//export router
+const userRouter = require(`./routes/user.route`);
+const authRouter = require("./routes/auth.route");
 //datebase setup
-const {sequelize} = require('./models')
+const db = require("./models/index.js");
+const PORT = 5000;
 
-const app = express() // create your express app
+const app = express(); // create your express app
 //app.use(morgan('combined')) // log requests source if needed
-app.use(bodyParser.json()) // parse json requests
-app.use(cors()) // enable cors
-
+app.use(bodyParser.json()); // parse json requests
+app.use(cors()); // enable cors
+app.use(express.json());
 //get
 //post
 //put
 //delete
 //patch
+app.use("/api/user", userRouter);
+app.use("/api/auth", authRouter);
 
 // routes (endpoints)
-require('./routes')(app)
+// require('./routes')(app)
 
-
-sequelize.sync()
-.then(() => {
-    app.listen(config.port)
-    console.log(`Server started on port ${config.port}`)
-})
+db.sequelize.sync({ force: true }).then((req) => {
+  app.listen(PORT);
+  console.log(`Server started on port ${PORT}`);
+});

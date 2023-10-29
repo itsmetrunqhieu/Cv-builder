@@ -34,13 +34,13 @@ function Login() {
             className='Background'
             alt='Background'
         />
-        <header className="Login-header">
+        <div className="Login-header">
             <p className="CV-Buider-Name">CV Builder</p>
             <Link to="/register">
               <button className="Sign-up-button">Sign up</button>
             </Link>
-        </header>
-        <main className="Login-main">
+        </div>
+        <div className="Login-main">
             <img 
                 src='/Image/Login_Screen/CV.svg'
                 className='CV'
@@ -90,9 +90,11 @@ function Login() {
                 </div>
                 <Link to="" className="forgot" style={{ color: '#62A4F0' }}>Forgot password?</Link>
                 <button className="login-button" onClick={handleSubmit}>Login</button>
-                <p className="dont-account">Don’t have an account? <Link to="/register" style={{ color: '#62A4F0' }}>Sign up</Link></p>
+                <p className="dont-account">
+                  Don’t have an account? <Link to="/register" style={{ color: '#62A4F0' }}>Sign up</Link>
+                </p>
             </div>
-        </main>
+        </div>
     </div>
   );
 }

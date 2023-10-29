@@ -113,6 +113,7 @@
     position: absolute;
     right: 7px;
     top: 8px;
+    margin: 0;
 }
 
 .password-form-field {

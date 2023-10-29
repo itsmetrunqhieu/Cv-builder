@@ -84,13 +84,13 @@ function Register() {
 
   return (
     <div className="Register">
-        <header className="Login-header">
+        <div className="Login-header">
             <p className="CV-Buider-Name">CV Builder</p>
             <Link to="/login">
               <button className="Sign-up-button">Sign in</button>
             </Link>
-        </header>
-        <main className="Register-main">
+        </div>
+        <div className="Register-main">
             <p className="Registration">Registration</p>
               <div className="fullname-regis-form-field">
                 <input
@@ -205,6 +205,7 @@ function Register() {
                   className='male-box'
                   checked={isMaleChecked}
                   onChange={handleMaleCheckboxChange}
+                  style={imgStyle}
                 />
                 <label className='male-text'>Male</label>
 
@@ -213,6 +214,7 @@ function Register() {
                   className='female-box'
                   checked={isFemaleChecked}
                   onChange={handleFemaleCheckboxChange}
+                  style={imgStyle}
                 />
                 <label className='female-text'>Female</label>
 
@@ -221,14 +223,16 @@ function Register() {
                   className='prefer-box'
                   checked={isPreferNotToSayChecked}
                   onChange={handlePreferNotToSayCheckboxChange}
+                  style={imgStyle}
                 />
                 <label className='prefer-text'>Prefer not to say</label>
-
               </div>
 
               <button className="login-button register-button" onClick={handleSubmit}>Register</button>
-              <p className="dont-account have-account">Already have an account? <Link to="/login" style={{ color: '#62A4F0' }}>Sign in</Link></p>
-        </main>
+              <p className="dont-account have-account">
+                Already have an account? <Link to="/login" style={{ color: '#62A4F0' }}>Sign in</Link>
+              </p>
+        </div>
     </div>
   );
 }

@@ -1,0 +1,227 @@
+.Login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background-color: while;
+}
+
+.Background {
+    width: 100%;
+    height: 600px;
+}
+
+.Login-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+}
+
+.CV-Buider-Name {
+    position: absolute;
+    width: 182.78px;
+    height: 40px;
+    top: 30px;
+    left: 5%;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+
+    margin: 0px;
+
+    color: #ffffff;
+}
+
+.Sign-up-button {
+    position: absolute;
+    width: 87px;
+    height: 33px;
+    top: 30px;
+    right: 10%;
+
+    background: #252424;
+    border-radius: 10px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.Login-main {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 100px;
+    background-color: transparent;
+}
+
+.CV {
+    position: absolute;
+    left: 15%;
+    top: 10px;
+}
+
+.CV-counter {
+    position: absolute;
+    left: 15%;
+    top: 555px;
+}
+
+.Login-part {
+    position: absolute;
+    width: 260px;
+    height: 325px;
+    left: 900px;
+    top: 50px;
+}
+
+.Login-text {
+    position: absolute;
+    width: 260px;
+    height: 40px;
+    top: 0px;
+    text-align: center;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    margin: 0px;
+
+    color: #FFFFFF;
+}
+
+.username-form-field {
+    position: absolute;
+    width: 260px;
+    height: 40px;
+    left: 0px;
+    top: 76px;
+}
+
+.icon {
+    position: absolute;
+    right: 7px;
+    top: 8px;
+    margin: 0;
+}
+
+.password-form-field {
+    position: absolute;
+    width: 260px;
+    height: 40px;
+    left: 0px;
+    top: 150px;
+}
+
+.form-input {
+    border: 1px solid #eee;
+    width: 220px;
+    height: 40px;
+
+    padding: 0 20px;
+    transition: 0.25s ease;
+
+    background: #F0F0F0;
+    border-radius: 10px;
+}
+
+.form-input:not(:placeholder-shown),
+.form-input:focus {
+    width: 200px;
+    padding-right: 40px;
+}
+
+.form-label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 21px;
+    user-select: none;
+    color: #999;
+    pointer-events: none;
+    transition: 0.25s ease;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+
+    border-radius: 5px;
+}
+
+.form-input:not(:placeholder-shown) + .form-label,
+.form-input:focus + .form-label {
+    top: -5px;
+    left: 11px;
+    font-size: 15px;
+    padding: 3px 10px;
+    display: inline-block;
+    background-color: rgb(46, 45, 45);
+    color: #F0F0F0;
+    border: 1px solid black;
+}
+
+.forgot {
+    position: absolute;
+    width: 100%;
+    height: 15px;
+    text-align: right;
+    top: 205px;
+
+    margin: 0px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16px;
+
+    color: #EDEBEB;
+}
+
+.login-button {
+    position: absolute;
+    width: 260px;
+    height: 40px;
+    left: 0px;
+    top: 235px;
+
+    background: #62A4F0;
+    border-radius: 10px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.dont-account {
+    position: absolute;
+    width: 100%;
+    height: 22px;
+    top: 285px;
+    text-align: center;
+
+    margin: 0px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16px;
+
+    color: #EDEBEB;
+}

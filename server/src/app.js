@@ -29,5 +29,5 @@ app.use("/api/auth", authRouter);
 
 db.sequelize.sync().then((req) => {
   app.listen(PORT);
-  console.log(`Server started on port ${PORT}`);
+  console.log(`Server started in port ${PORT}`);
 });

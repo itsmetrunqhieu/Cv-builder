@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
+require("dotenv").config();
 // const config = require("./config/config");
 
 //export router
@@ -23,11 +24,20 @@ app.use(express.json());
 //patch
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
+  return res.status(statusCode).json({
+    success: false,
+    statusCode,
+    message,
+  });
+});
 
 // routes (endpoints)
 // require('./routes')(app)
 
-db.sequelize.sync({ force: true }).then((req) => {
+db.sequelize.sync().then((req) => {
   app.listen(PORT);
-  console.log(`Server started on port ${PORT}`);
+  console.log(`Server started in port ${PORT}`);
 });

@@ -38,7 +38,7 @@ function Home() {
                 <div className='part1-main'>
                     <p className='online-text'>Online CV for everyone</p>
                     <p className='easy-text'>Easy, fast and effective way to build CV for your dream job</p>
-                    <Link to="/">
+                    <Link to="/register">
                         <button className='create-button' style={imgStyle}>
                             <p className='create-text'>CREATE MY CV</p>
                         </button>

@@ -2,6 +2,7 @@ import './Register.css';
 import '../Login_Screen/Login.css';
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import { register} from '../Services/AuthService';
 
 function Register() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -73,13 +74,25 @@ function Register() {
   };
   
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (password !== confirmPassword) {
       alert("Password and Confirm Password do not match.");
       return; // Ngăn việc tiếp tục xử lý nếu không khớp
     }
     // Sử dụng các biến username, password, fullName, email, phone ở đây,
     // có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
+    console.log("handleSubmit");
+    try{
+      const res = await register({
+        email: email,
+        name: fullName,
+        password: password,
+        role: "user",
+      })
+      console.log(res);
+    }catch(err){
+      console.log(err);
+    }
   };
 
   return (

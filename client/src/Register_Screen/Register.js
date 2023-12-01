@@ -2,7 +2,7 @@ import './Register.css';
 import '../Login_Screen/Login.css';
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import { AuthService} from '../Services/AuthService';
+import { register} from '../Services/AuthService';
 
 function Register() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -82,7 +82,7 @@ function Register() {
     // Sử dụng các biến username, password, fullName, email, phone ở đây,
     // có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
     try{
-      const res = await AuthService.register({
+      const res = await register({
         email: this.email,
         role: "user",
         password: this.password,

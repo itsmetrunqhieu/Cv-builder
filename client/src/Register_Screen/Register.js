@@ -81,15 +81,17 @@ function Register() {
     }
     // Sử dụng các biến username, password, fullName, email, phone ở đây,
     // có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
+    console.log("handleSubmit");
     try{
       const res = await register({
-        email: this.email,
+        email: email,
+        name: fullName,
+        password: password,
         role: "user",
-        password: this.password,
-        name: this.fullName,
       })
+      console.log(res);
     }catch(err){
-
+      console.log(err);
     }
   };
 

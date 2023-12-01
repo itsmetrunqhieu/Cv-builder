@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export default () => {
+export default function Api () {
     return axios.create({
-        baseURL: 'localhost:5000'
+        baseURL: 'http://localhost:5000/api'
     })
 }

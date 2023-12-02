@@ -22,32 +22,24 @@ li a:hover {
 }
   
 .home {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    height: 100%;
-    
-    background-color: while;
 }
 
 .part1 {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
     height: 787.5px;
-}
 
-.bg-part1 {
-    width: 100%;
-    height: 787.5px;
+    background-image: url("../../public/Image/Home_Screen/bg-part1.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-attachment: scroll;
+    background-size: cover;
 }
 
 .part1-header {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
     height: 70px;
     
@@ -75,7 +67,7 @@ li a:hover {
 
 .nav {
     position: absolute;
-    right: 100px;
+    right: 70px;
 }
 
 .nav-text {
@@ -88,12 +80,12 @@ li a:hover {
     color: #000000;
 }
 
-.icon {
+.icon-home {
     position: absolute;
-    width: 24px;
-    height: 24px;
-    margin-right: 50px;
-    margin-top: 15px;
+    right: 0px;
+    top: 0px;
+    margin: 23px;
+    padding: 0px;
 }
 
 .part1-line {
@@ -108,17 +100,16 @@ li a:hover {
 }
 
 .part1-main {
-    position: absolute;
+    position: relative;
     width: 376px;
     height: 338px;
     left: 800px;
-    top: 170px;
+    top: 100px;
 }
 
 .online-text {
-    position: absolute;
+    position: relative;
     width: 225px;
-    height: 156px;
 
     font-family: 'Inter';
     font-style: normal;
@@ -131,10 +122,8 @@ li a:hover {
 }
 
 .easy-text {
-    position: absolute;
-    width: 376px;
-    height: 47px;
-    top: 190px;
+    position: relative;
+    top: 30px;
 
     font-family: 'Inter';
     font-style: normal;
@@ -149,10 +138,10 @@ li a:hover {
 .create-button {
     box-sizing: border-box;
 
-    position: absolute;
+    position: relative;
     width: 226px;
     height: 68px;
-    top: 270px;
+    top: 70px;
 
     background: transparent;
     border: 1px solid #000000;
@@ -160,10 +149,9 @@ li a:hover {
 }
 
 .create-text {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: auto;
-    top: 20px;
     text-align: center;
 
     font-family: 'Inter';
@@ -180,82 +168,73 @@ li a:hover {
 }
 
 .part2 {
-    position: absolute;
-    top: 787.5px;
-    left: 0;
+    position: relative;
     width: 100%;
-}
+    height: 852.5px;
 
-.bg-part2 {
-    width: 100%;
+    background-image: url("../../public/Image/Home_Screen/bg-part2.svg");
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-attachment: scroll;
+    background-size: cover;
 }
 
 .part2-main {
-    position: absolute;
-    width: 703px;
-    height: 244px;
-    left: 400px;
-    top: 200px;
+    position: relative;
+    width: 100%;
+    top: 25%;
 }
 
 .beautiful-text {
-    position: absolute;
-    width: 100%;
-    height: 125px;
+    position: relative;
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 55px;
+    font-size: 70px;
     line-height: 67px;
     text-align: center;
-    margin: 0;
+    margin: 0 300px;
 
     color: #FFFFFF;
 }
 
 .win-text {
-    position: absolute;
-    width: auto;
-    height: 44px;
-    top: 200px;
+    position: relative;
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 25px;
     line-height: 22px;
     text-align: center;
-    margin: 0 100px;
+    margin: 75px 400px;
 
     color: #FFFFFF;
 }
 
 .part3 {
-    position: absolute;
-    top: 1640px;
-    left: 0;
+    position: relative;
     width: 100%;
-}
+    height: 860px;
 
-.bg-part3 {
-    width: 100%;
+    background-image: url("../../public/Image/Home_Screen/bg-part3.svg");
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-attachment: scroll;
+    background-size: cover;
 }
 
 .part3-main {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 540px;
-    left: 0px;
     top: 150px;
 }
 
 .your-cv-text {
-    position: absolute;
+    position: relative;
     width: 100%;
-    height: auto;
-    left: 0px;
-    top: 0px;
 
     font-family: 'Inter';
     font-style: normal;
@@ -351,18 +330,19 @@ li a:hover {
 }
 
 .part4 {
-    position: absolute;
-    top: 2500px;
-    left: 0;
+    position: relative;
     width: 100%;
-}
+    height: 860px;
 
-.bg-part4 {
-    width: 100%;
+    background-image: url("../../public/Image/Home_Screen/bg-part4.svg");
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-attachment: scroll;
+    background-size: cover;
 }
 
 .part4-main {
-    position: absolute;
+    position: relative;
     width: 1280px;
     height: 646px;
     top: 70px;

@@ -5,6 +5,7 @@ import './index.css';
 import Home from './Home_Screen/Home';
 import Login from './Login_Screen/Login';
 import Register from './Register_Screen/Register';
+import UserProfile from './User_Profile/UserProfile';
 import reportWebVitals from './reportWebVitals';
 
 export default function App() {
@@ -14,7 +15,8 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} /> 
+        <Route path="/register" element={<Register />} />
+        <Route path="/user/:username" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
   );

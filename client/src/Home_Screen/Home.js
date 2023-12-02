@@ -9,12 +9,6 @@ function Home() {
     return (
         <div className='home'>
             <div className='part1'>
-                <img
-                    src='/Image/Home_Screen/bg-part1.png'
-                    className='bg-part1'
-                    alt='Background-part1'
-                />
-
                 <div className='part1-header'>
                     <Link to="/">
                         <p className='cv-buider-name'>CV Builder</p>
@@ -28,7 +22,7 @@ function Home() {
                     </ul>
                     <img 
                         src='/Image/Home_Screen/Search_alt_light.svg'
-                        className='icon'
+                        className='icon-home'
                         alt='icon'
                         style={imgStyle}
                     />
@@ -47,12 +41,6 @@ function Home() {
             </div>
 
             <div className='part2'>
-                <img
-                    src='/Image/Home_Screen/bg-part2.svg'
-                    className='bg-part2'
-                    alt='Background-part2'
-                />
-
                 <div className='part2-main'>
                     <p className='beautiful-text'>Beautiful ready-to-use CV templates</p>
                     <p className='win-text'>Win over employers and recruiters by using one of our elegant, professionally-designed CV templates.</p>
@@ -60,12 +48,6 @@ function Home() {
             </div>
 
             <div className='part3'>
-                <img
-                    src='/Image/Home_Screen/bg-part3.svg'
-                    className='bg-part3'
-                    alt='Background-part3'
-                />
-
                 <div className='part3-main'>
                     <p className='your-cv-text'>Your CV in 3 steps</p>
 
@@ -111,12 +93,6 @@ function Home() {
             </div>
 
             <div className='part4'>
-                <img
-                    src='/Image/Home_Screen/bg-part4.svg'
-                    className='bg-part4'
-                    alt='Background-part4'
-                />
-
                 <div className='part4-main'>
                     <p className='why-text'>Why use OnlineCVbuilder to make your CV?</p>
                     <p className='using-text'>Using our online editor gives you a 75% better chance of getting each job (and it just takes a few minutes!)</p>

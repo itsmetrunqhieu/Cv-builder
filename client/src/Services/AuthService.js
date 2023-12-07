@@ -1,14 +1,13 @@
-import Api from '@/services/Api'
+import Api from './Api'
 
-export default {
-  // register endpoint
-  register (credentials) {
+// register endpoint
+export async function register (credentials) {
     /* do post request to /signup endpoint on our backend */
     return Api().post('auth/signup', credentials)
-  },
+  }
+
   // login endpoint
-  login (credentials) {
+export async function login (credentials) {
     /* do post request to /signin endpoint on our backend */
     return Api().post('auth/signin', credentials)
   }
-}

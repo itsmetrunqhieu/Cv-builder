@@ -1,0 +1,229 @@
+.create-cv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.create-cv-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 1;
+}
+
+.create-cv-left-nav {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 450px;
+    height: 100%;
+    float: left;
+    background-color: #3b3838;
+}
+
+.create-cv-step { 
+    cursor: pointer;
+    position: relative;
+    top: 150px;
+    left: 50px;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    padding: 25px 70px 10px 0px;
+}
+
+.create-cv-step:hover .create-cv-order{
+    border: 3.5px solid #ffffff;
+    transition: 0.1s ease;
+}
+
+.create-cv-step:hover .create-cv-step-name{
+    font-size: 27.5px;
+    line-height: 45px;
+    transition: 0.1s ease;
+}
+
+.create-cv-order {
+    position: relative;
+    width: 40px;
+    height: 40px;
+
+    float: left;
+    background: #FFFFFF;
+    border-radius: 90px 0px 90px 90px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    margin: 0 20px;
+    text-align: center;
+    
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-cv-step.active .create-cv-order {
+    border: 7px solid #2E75B6;
+}
+
+.create-cv-step.active .create-cv-step-name {
+    font-size: 30px;
+    line-height: 50px;
+    color: #2E75B6;
+}
+
+.create-cv-step-name {
+    float: left;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    margin: 0;
+    text-align: center;
+    color: #FFFFFF;
+
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-cv-content {
+    position: absolute;
+    left: 450px;
+    width: 1000px;
+}
+
+.create-cv-content-title {
+    position: relative;
+    left: 100px;
+    top: 80px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+
+    margin: 0px;
+
+    color: #000000;
+}
+
+.create-cv-form-text {
+    position: relative;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+
+    margin: 5px 10px;
+
+    color: #000000;
+}
+
+.create-cv-form-input {
+    width: 100%;
+    height: 40px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 15px;
+    padding: 0 10px;
+
+    border-radius: 5px;
+    border: 1px solid #000000;
+}
+
+.create-cv-firstname-form-field {
+    position: absolute;
+    width: 200px;
+    left: 100px;
+    top: 180px;
+}
+
+.create-cv-surname-form-field {
+    position: absolute;
+    width: 200px;
+    left: 550px;
+    top: 180px;
+}
+
+.create-cv-profession-form-field {
+    position: absolute;
+    width: 650px;
+    left: 100px;
+    top: 280px;
+}
+
+.create-cv-city-form-field {
+    position: absolute;
+    width: 250px;
+    left: 100px;
+    top: 380px;
+}
+
+.create-cv-country-form-field {
+    position: absolute;
+    width: 170px;
+    left: 400px;
+    top: 380px;
+}
+
+.create-cv-postal-code-form-field {
+    position: absolute;
+    width: 130px;
+    left: 620px;
+    top: 380px;
+}
+
+.create-cv-phone-form-field {
+    position: absolute;
+    width: 250px;
+    left: 100px;
+    top: 480px;
+}
+
+.create-cv-email-form-field {
+    position: absolute;
+    width: 350px;
+    left: 400px;
+    top: 480px;
+}
+
+.create-cv-back-button {
+    position: absolute;
+    left: 100px;
+    top: 650px;
+}
+
+.create-cv-next-button {
+    position: absolute;
+    left: 670px;
+    top: 650px;
+    background-color: #ffc85e;
+    cursor: pointer;
+}
+
+.create-cv-next-button:hover {
+    background-color: #fbaf3b;
+}
+
+.create-cv-icon {
+    margin: 10px;
+    float: right;
+}
+
+.create-cv-next-button-text {
+    font-weight: 600;
+    color: #000000;
+    margin: 10px 0px 10px 19px;
+}
+
+

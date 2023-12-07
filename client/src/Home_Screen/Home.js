@@ -32,7 +32,7 @@ function Home() {
                 <div className='part1-main'>
                     <p className='online-text'>Online CV for everyone</p>
                     <p className='easy-text'>Easy, fast and effective way to build CV for your dream job</p>
-                    <Link to="/register">
+                    <Link to="/create-cv-options">
                         <button className='create-button' style={imgStyle}>
                             <p className='create-text'>CREATE MY CV</p>
                         </button>
@@ -84,7 +84,7 @@ function Home() {
                         <p className='step-descrip'>Send your outstanding CV to employers.</p>
                     </div>
 
-                    <Link to="/">
+                    <Link to="/create-cv-options">
                         <button className='create-button button-part3' style={imgStyle}>
                             <p className='create-text'>CREATE MY CV</p>
                         </button>
@@ -121,7 +121,7 @@ function Home() {
                         <p className='part4-title'>Work on the go!</p>
                         <p className='part4-descrip'>Create, edit, and send CVs from your laptop, tablet or phone</p>
                     </div>
-                    <Link to="/">
+                    <Link to="/create-cv-options">
                         <button className='create-button button-part4' style={imgStyle}>
                             <p className='create-text'>CREATE MY CV</p>
                         </button>

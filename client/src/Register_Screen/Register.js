@@ -98,7 +98,9 @@ function Register() {
   return (
     <div className="Register">
         <div className="Login-header">
-            <p className="CV-Buider-Name">CV Builder</p>
+            <Link to="/">
+              <p className="CV-Buider-Name">CV Builder</p>
+            </Link>
             <Link to="/login">
               <button className="Sign-up-button">Sign in</button>
             </Link>

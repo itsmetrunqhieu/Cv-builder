@@ -5,6 +5,9 @@ import './index.css';
 import Home from './Home_Screen/Home';
 import Login from './Login_Screen/Login';
 import Register from './Register_Screen/Register';
+import UserProfile from './User_Profile/UserProfile';
+import CreateCVOptiopns from './Create_CV/create-cv-options';
+import CreateCV from './Create_CV/create-cv';
 import reportWebVitals from './reportWebVitals';
 
 export default function App() {
@@ -14,7 +17,10 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} /> 
+        <Route path="/register" element={<Register />} />
+        <Route path="/user/:username" element={<UserProfile />} />
+        <Route path="/create-cv-options" element={<CreateCVOptiopns />} />
+        <Route path="/create-cv" element={<CreateCV/>} />
       </Routes>
     </BrowserRouter>
   );

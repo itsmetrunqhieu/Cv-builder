@@ -35,7 +35,9 @@ function Login() {
             alt='Background'
         />
         <div className="Login-header">
-            <p className="CV-Buider-Name">CV Builder</p>
+            <Link to="/">
+              <p className="CV-Buider-Name">CV Builder</p>
+            </Link>
             <Link to="/register">
               <button className="Sign-up-button">Sign up</button>
             </Link>

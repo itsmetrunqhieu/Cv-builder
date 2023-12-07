@@ -9,12 +9,6 @@ function Home() {
     return (
         <div className='home'>
             <div className='part1'>
-                <img
-                    src='/Image/Home_Screen/bg-part1.png'
-                    className='bg-part1'
-                    alt='Background-part1'
-                />
-
                 <div className='part1-header'>
                     <Link to="/">
                         <p className='cv-buider-name'>CV Builder</p>
@@ -28,7 +22,7 @@ function Home() {
                     </ul>
                     <img 
                         src='/Image/Home_Screen/Search_alt_light.svg'
-                        className='icon'
+                        className='icon-home'
                         alt='icon'
                         style={imgStyle}
                     />
@@ -38,7 +32,7 @@ function Home() {
                 <div className='part1-main'>
                     <p className='online-text'>Online CV for everyone</p>
                     <p className='easy-text'>Easy, fast and effective way to build CV for your dream job</p>
-                    <Link to="/register">
+                    <Link to="/create-cv-options">
                         <button className='create-button' style={imgStyle}>
                             <p className='create-text'>CREATE MY CV</p>
                         </button>
@@ -47,12 +41,6 @@ function Home() {
             </div>
 
             <div className='part2'>
-                <img
-                    src='/Image/Home_Screen/bg-part2.svg'
-                    className='bg-part2'
-                    alt='Background-part2'
-                />
-
                 <div className='part2-main'>
                     <p className='beautiful-text'>Beautiful ready-to-use CV templates</p>
                     <p className='win-text'>Win over employers and recruiters by using one of our elegant, professionally-designed CV templates.</p>
@@ -60,12 +48,6 @@ function Home() {
             </div>
 
             <div className='part3'>
-                <img
-                    src='/Image/Home_Screen/bg-part3.svg'
-                    className='bg-part3'
-                    alt='Background-part3'
-                />
-
                 <div className='part3-main'>
                     <p className='your-cv-text'>Your CV in 3 steps</p>
 
@@ -102,7 +84,7 @@ function Home() {
                         <p className='step-descrip'>Send your outstanding CV to employers.</p>
                     </div>
 
-                    <Link to="/">
+                    <Link to="/create-cv-options">
                         <button className='create-button button-part3' style={imgStyle}>
                             <p className='create-text'>CREATE MY CV</p>
                         </button>
@@ -111,12 +93,6 @@ function Home() {
             </div>
 
             <div className='part4'>
-                <img
-                    src='/Image/Home_Screen/bg-part4.svg'
-                    className='bg-part4'
-                    alt='Background-part4'
-                />
-
                 <div className='part4-main'>
                     <p className='why-text'>Why use OnlineCVbuilder to make your CV?</p>
                     <p className='using-text'>Using our online editor gives you a 75% better chance of getting each job (and it just takes a few minutes!)</p>
@@ -145,7 +121,7 @@ function Home() {
                         <p className='part4-title'>Work on the go!</p>
                         <p className='part4-descrip'>Create, edit, and send CVs from your laptop, tablet or phone</p>
                     </div>
-                    <Link to="/">
+                    <Link to="/create-cv-options">
                         <button className='create-button button-part4' style={imgStyle}>
                             <p className='create-text'>CREATE MY CV</p>
                         </button>

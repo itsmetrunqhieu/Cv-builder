@@ -1,0 +1,120 @@
+.create-cv-options {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url("../../public/Image/Create_CV_Options/BGCreateCVOptions.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.create-cv-options-header {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+}
+
+.create-cv-options-CV-Buider-Name {
+    color: #000000;
+}
+
+.create-cv-options-CV {
+    position: absolute;
+    right: 10%;
+    top: 110px;
+}
+
+.create-cv-options-CV-counter {
+    position: absolute;
+    right: 10%;
+    top: 655px;
+}
+
+.create-cv-options-main {
+    position: relative;
+    top: 120px;
+    left: 13%;
+    width: 380px;
+}
+
+.create-cv-options-text {
+    position: relative;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+
+    margin: 0px;
+    text-align: center;
+    color: #000000;
+}
+
+.create-cv-options-button {
+    position: relative;
+    width: 250px;
+    height: 45px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+.create-cv-options-button:hover {
+    background: #eaeaea;
+}
+
+.create-cv-options-icon {
+    margin: 10px;
+    float: left;
+}
+
+.create-cv-options-button-text {
+    margin: 10px auto 10px 0px;
+    float: left;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+
+    color: #000000;
+}
+
+.create-cv-options-back-button-text {
+    font-weight: 600;
+    color: #0c1986;
+    margin: 10px auto 10px -5px;
+}
+
+
+.create-cv-options-or {
+    font-size: 25px;
+}
+
+.create-a-new-resume-button {
+    margin: 50px auto 20px;
+}
+
+.I-already-have-a-resume-button {
+    margin: 20px auto 50px;
+}
+
+.back-button {
+    position: absolute;
+    left: 5%;
+    bottom: 10%;
+    width: 105px;
+    height: 45px;
+    border-radius: 30px;
+    border: 1px solid #0c1986;
+}
+
+.back-button:hover {
+    background: #e5eaff;
+}

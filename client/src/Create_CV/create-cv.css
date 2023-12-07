@@ -143,15 +143,15 @@
 
 .create-cv-firstname-form-field {
     position: absolute;
-    width: 200px;
+    width: 280px;
     left: 100px;
     top: 180px;
 }
 
 .create-cv-surname-form-field {
     position: absolute;
-    width: 200px;
-    left: 550px;
+    width: 280px;
+    left: 470px;
     top: 180px;
 }
 
@@ -162,14 +162,14 @@
     top: 280px;
 }
 
-.create-cv-city-form-field {
+.create-cv-city-step1-form-field {
     position: absolute;
     width: 250px;
     left: 100px;
     top: 380px;
 }
 
-.create-cv-country-form-field {
+.create-cv-country-step1-form-field {
     position: absolute;
     width: 170px;
     left: 400px;
@@ -209,6 +209,7 @@
     top: 650px;
     background-color: #ffc85e;
     cursor: pointer;
+    border: 2px solid #ffc85e;
 }
 
 .create-cv-next-button:hover {
@@ -216,14 +217,121 @@
 }
 
 .create-cv-icon {
-    margin: 10px;
+    margin: 10px 10px 10px 0px;
     float: right;
 }
 
 .create-cv-next-button-text {
     font-weight: 600;
     color: #000000;
-    margin: 10px 0px 10px 19px;
+    margin: 10px 0px 10px 20px;
 }
 
+.create-cv-jobtitle-form-field {
+    position: absolute;
+    width: 280px;
+    left: 100px;
+    top: 180px;
+}
 
+.create-cv-employer-form-field {
+    position: absolute;
+    width: 280px;
+    left: 470px;
+    top: 180px;
+}
+
+.create-cv-job-city-form-field {
+    position: absolute;
+    width: 280px;
+    left: 100px;
+    top: 280px;
+}
+
+.create-cv-job-country-form-field {
+    position: absolute;
+    width: 280px;
+    left: 470px;
+    top: 280px;
+}
+
+.create-cv-start-date-form-field {
+    position: absolute;
+    width: 280px;
+    left: 100px;
+    top: 380px;
+}
+
+.create-cv-end-date-form-field {
+    position: absolute;
+    width: 280px;
+    left: 470px;
+    top: 380px;
+}
+
+.create-cv-currently-work-form-field {
+    position: absolute;
+    width: 250px;
+    left: 100px;
+    top: 480px; 
+}
+
+.currently-work-box {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.currently-work-text {
+    font-size: 18px;
+    left: 25px;
+}
+
+.create-cv-school-name-form-field {
+    position: absolute;
+    width: 280px;
+    left: 100px;
+    top: 180px;
+}
+
+.create-cv-school-location-form-field {
+    position: absolute;
+    width: 280px;
+    left: 470px;
+    top: 180px;
+}
+
+.create-cv-degree-form-field {
+    position: absolute;
+    width: 300px;
+    left: 100px;
+    top: 280px;
+}
+
+.create-cv-field-of-study-form-field {
+    position: absolute;
+    width: 650px;
+    left: 100px;
+    top: 380px;
+}
+
+.create-cv-graduation-start-date-form-field {
+    position: absolute;
+    width: 280px;
+    left: 100px;
+    top: 480px;
+}
+
+.create-cv-graduation-end-date-form-field {
+    position: absolute;
+    width: 280px;
+    left: 470px;
+    top: 480px;
+}
+
+.create-cv-currently-attend-form-field {
+    position: absolute;
+    width: 250px;
+    left: 100px;
+    top: 580px;
+}

@@ -5,8 +5,127 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function CreateCV() {
-    const [currentStep, setCurrentStep] = useState(1);
+    // Step 1: Personal Information
     const [firstname, setFirstname] = useState('');
+    const [surname, setSurname] = useState('');
+    const [profession, setProfession] = useState('');
+    const [city, setCity] = useState('');
+    const [country, setCountry] = useState('');
+    const [postalCode, setPostalCode] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+
+    const handleFirstnameChange = (event) => {
+        setFirstname(event.target.value);
+    };
+    
+    const handleSurnameChange = (event) => {
+        setSurname(event.target.value);
+    };
+
+    const handleProfessionChange = (event) => {
+        setProfession(event.target.value);
+    };
+
+    const handleCityChange = (event) => {
+        setCity(event.target.value);
+    };
+
+    const handleCountryChange = (event) => {
+        setCountry(event.target.value);
+    };
+
+    const handlePostalCodeChange = (event) => {
+        setPostalCode(event.target.value);
+    };
+
+    const handlePhoneChange = (event) => {
+        setPhone(event.target.value);
+    };
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
+    
+    // Step 2: Job Information
+    const [jobTitle, setJobTitle] = useState('');
+    const [employer, setEmployer] = useState('');
+    const [jobCity, setJobCity] = useState('');
+    const [jobCountry, setJobCountry] = useState('');
+    const [startDate, setStartDate] = useState('');
+    const [endDate, setEndDate] = useState('');
+    const [currentlyWorkHere, setCurrentlyWorkHere] = useState(false);
+
+    const handleJobTitleChange = (event) => {
+        setJobTitle(event.target.value);
+    };
+
+    const handleEmployerChange = (event) => {
+        setEmployer(event.target.value);
+    };
+
+    const handleJobCityChange = (event) => {
+        setJobCity(event.target.value);
+    };
+
+    const handleJobCountryChange = (event) => {
+        setJobCountry(event.target.value);
+    };
+
+    const handleStartDateChange = (event) => {
+        setStartDate(event.target.value);
+    };
+
+    const handleEndDateChange = (event) => {
+        setEndDate(event.target.value);
+    };
+
+    const handleCurrentlyWorkHereChange = (event) => {
+        setCurrentlyWorkHere(event.target.checked);
+    };
+
+    // Step 3: Education Information
+    const [schoolName, setSchoolName] = useState('');
+    const [schoolLocation, setSchoolLocation] = useState('');
+    const [degree, setDegree] = useState('');
+    const [fieldOfStudy, setFieldOfStudy] = useState('');
+    const [graduationStartDate, setGraduationStartDate] = useState('');
+    const [graduationEndDate, setGraduationEndDate] = useState('');
+    const [currentlyAttendHere, setCurrentlyAttendHere] = useState(false);
+    
+    const handleSchoolNameChange = (event) => {
+        setSchoolName(event.target.value);
+    };
+
+    const handleSchoolLocationChange = (event) => {
+        setSchoolLocation(event.target.value);
+    };
+
+    const handleDegreeChange = (event) => {
+        setDegree(event.target.value);
+    };
+
+    const handleFieldOfStudyChange = (event) => {
+        setFieldOfStudy(event.target.value);
+    };
+
+    const handleGraduationStartDateChange = (event) => {
+        setGraduationStartDate(event.target.value);
+    };
+
+    const handleGraduationEndDateChange = (event) => {
+        setGraduationEndDate(event.target.value);
+    };
+
+    const handleCurrentlyAttendHereChange = (event) => {
+        setCurrentlyAttendHere(event.target.checked);
+    };
+
+    const handleSubmit = () => {
+        // Sử dụng username và password ở đây, có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
+    };
+
+    const [currentStep, setCurrentStep] = useState(1);
 
     const stepNames = [
         "Heading",
@@ -17,20 +136,17 @@ function CreateCV() {
         "Finalize and Review"
     ];
 
-    const handleFirstnameChange = (event) => {
-        setFirstname(event.target.value);
-    };
-
-    const handleSubmit = () => {
-    // Sử dụng username và password ở đây, có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
-    };
-
     const handleStepClick = (step) => {
         setCurrentStep(step);
     };
 
     const handleNextClick = () => {
-        setCurrentStep(currentStep < 6 ? currentStep + 1 : currentStep);
+        setCurrentStep(currentStep + 1);  
+        handleSubmit();
+    };
+
+    const handleBackClick = () => {
+        setCurrentStep(currentStep - 1);
     };
 
     return (
@@ -76,6 +192,8 @@ function CreateCV() {
                             type="text"
                             className="create-cv-form-input"
                             placeholder="e.g. Truong Tri"
+                            value={surname}
+                            onChange={handleSurnameChange}
                         />
                     </div>
                     <div className="create-cv-profession-form-field">
@@ -84,22 +202,28 @@ function CreateCV() {
                             type="text"
                             className="create-cv-form-input"
                             placeholder="e.g. Jr. Software Developer"
+                            value={profession}
+                            onChange={handleProfessionChange}
                         />
                     </div>
-                    <div className="create-cv-city-form-field">
+                    <div className="create-cv-city-step1-form-field">
                         <p className='create-cv-form-text'>City/Municipality</p>
                         <input
                             type="text"
                             className="create-cv-form-input"
                             placeholder="e.g. Ho Chi Minh"
+                            value={city}
+                            onChange={handleCityChange}
                         />
                     </div>
-                    <div className="create-cv-country-form-field">
+                    <div className="create-cv-country-step1-form-field">
                         <p className='create-cv-form-text'>Country</p>
                         <input
                             type="text"
                             className="create-cv-form-input"
                             placeholder="e.g. Viet Nam"
+                            value={country}
+                            onChange={handleCountryChange}
                         />
                     </div>
                     <div className="create-cv-postal-code-form-field">
@@ -108,6 +232,8 @@ function CreateCV() {
                             type="text"
                             className="create-cv-form-input"
                             placeholder="e.g. 700000"
+                            value={postalCode}
+                            onChange={handlePostalCodeChange}
                         />
                     </div>
                     <div className="create-cv-phone-form-field">
@@ -116,6 +242,8 @@ function CreateCV() {
                             type="text"
                             className="create-cv-form-input"
                             placeholder="e.g. +84769807115"
+                            value={phone}
+                            onChange={handlePhoneChange}
                         />
                     </div>
                     <div className="create-cv-email-form-field">
@@ -124,6 +252,8 @@ function CreateCV() {
                             type="email"
                             className="create-cv-form-input"
                             placeholder="e.g. dungtruong151@gmail.com"
+                            value={email}
+                            onChange={handleEmailChange}
                         />
                     </div>
                     <Link to="/create-cv-options">
@@ -146,15 +276,294 @@ function CreateCV() {
                     </div>
                 </div> 
             }
-            {currentStep === 2 && <p>Content for Work History</p>}
-            {currentStep === 3 && <p>Content for Education</p>}
-            {currentStep === 4 && <p>Content for Skills</p>}
-            {currentStep === 5 && <p>Content for Summary</p>}
-            {currentStep === 6 && <p>Content for Finalize and Review</p>}
+            {currentStep === 2 && 
+                <div>
+                    <h className='create-cv-content-title'>Tell us about your most recent job</h>
+                    <div className="create-cv-jobtitle-form-field">
+                        <p className='create-cv-form-text'>Job Title</p>
+                        <input
+                            type="text"
+                            className="create-cv-form-input"
+                            placeholder="e.g. Front-end developer"
+                            value={jobTitle}
+                            onChange={handleJobTitleChange}
+                        />
+                    </div>
+                    <div className="create-cv-employer-form-field">
+                        <p className='create-cv-form-text'>Employer</p>
+                        <input
+                            type="text"
+                            className="create-cv-form-input"
+                            placeholder="e.g. CV Builder"
+                            value={employer}
+                            onChange={handleEmployerChange}
+                        />
+                    </div>
+                    <div className="create-cv-job-city-form-field">
+                        <p className='create-cv-form-text'>City/Municipality</p>
+                        <input
+                            type="text"
+                            className="create-cv-form-input"
+                            placeholder="e.g. Ho Chi Minh"
+                            value={jobCity}
+                            onChange={handleJobCityChange}
+                        />
+                    </div>
+                    <div className="create-cv-job-country-form-field">
+                        <p className='create-cv-form-text'>Country</p>
+                        <input
+                            type="text"
+                            className="create-cv-form-input"
+                            placeholder="e.g. Viet Nam"
+                            value={jobCountry}
+                            onChange={handleJobCountryChange}
+                        />
+                    </div>
+                    <div className="create-cv-start-date-form-field">
+                        <p className='create-cv-form-text'>Start Date</p>
+                        <input
+                            type="date"
+                            className="create-cv-form-input"
+                            value={startDate}
+                            onChange={handleStartDateChange}
+                        />
+                    </div>
+                    <div className="create-cv-end-date-form-field">
+                        <p className='create-cv-form-text'>End Date</p>
+                        <input
+                            type="date"
+                            className="create-cv-form-input"
+                            value={endDate}
+                            onChange={handleEndDateChange}
+                        />
+                    </div>
+                    <div className="create-cv-currently-work-form-field">
+                        <input
+                            type="checkbox"
+                            className='currently-work-box'
+                            value={currentlyWorkHere}
+                            onChange={handleCurrentlyWorkHereChange}
+                        />
+                        <p className='create-cv-form-text currently-work-text'>I currently work here</p>
+                    </div>
+                    <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
+                        <img 
+                            src='/Image/Create_CV_Options/Arrow_alt_left_alt.svg'
+                            className='create-cv-options-icon'
+                            alt='icon'
+                        />
+                        <p className='create-cv-options-button-text create-cv-options-back-button-text'>Back</p>
+                    </div>
+                    <div className="create-cv-options-button back-button create-cv-next-button" onClick={handleNextClick}>
+                        <img 
+                            src='/Image/Create_CV_Options/Arrow_alt_lright_alt.svg'
+                            className='create-cv-icon'
+                            alt='icon'
+                        />
+                        <p className='create-cv-options-button-text create-cv-next-button-text'>Next</p>
+                    </div>
+                </div>
+            }
+            {currentStep === 3 && 
+                <div>
+                    <h className='create-cv-content-title'>Tell us about your education</h>
+                    <div className="create-cv-school-name-form-field">
+                        <p className='create-cv-form-text'>School Name</p>
+                        <input
+                            type="text"
+                            className="create-cv-form-input"
+                            placeholder="e.g. International University-VNU-HCM"
+                            value={schoolName}
+                            onChange={handleSchoolNameChange}
+                        />
+                    </div>
+                    <div className="create-cv-school-location-form-field">
+                        <p className='create-cv-form-text'>School Location</p>
+                        <input
+                            type="text"
+                            className="create-cv-form-input"
+                            placeholder="e.g. Ho Chi Minh City, Vietnam"
+                            value={schoolLocation}
+                            onChange={handleSchoolLocationChange}
+                        />
+                    </div>
+                    <div className="create-cv-degree-form-field">
+                        <p className='create-cv-form-text'>Degree</p>
+                        <select
+                            id="mySelect"
+                            className="create-cv-form-input"
+                            value={degree}
+                            onChange={handleDegreeChange}
+                        >
+                            <option value="">Select...</option>
+                            <option value="option1">High School Diploma</option>
+                            <option value="option2">GED</option>
+                            <option value="option3">Associate of Arts</option>
+                            <option value="option4">Associate of Science</option>
+                            <option value="option5">Associate of Applied Science</option>
+                            <option value="option6">Bachelor of Arts</option>
+                            <option value="option7">Bachelor of Science</option>
+                            <option value="option8">BBA</option>
+                            <option value="option10">Master of Arts</option>
+                            <option value="option11">Master of Science</option>
+                            <option value="option12">MBA</option>
+                            <option value="option13">J.D.</option>
+                            <option value="option14">M.D.</option>
+                            <option value="option15">Ph.D.</option>
+                            <option value="option16">Enter a different degree</option>
+                            <option value="option17">No Degree</option>
+                        </select>
+                    </div>
+                    <div className="create-cv-field-of-study-form-field">
+                        <p className='create-cv-form-text'>Field of Study</p>
+                        <input
+                            type="text"
+                            className="create-cv-form-input"
+                            placeholder="e.g. Computer Science"
+                            value={fieldOfStudy}
+                            onChange={handleFieldOfStudyChange}
+                        />
+                    </div>
+                    <div className="create-cv-graduation-start-date-form-field">
+                        <p className='create-cv-form-text'>Graduation Start Date</p>
+                        <input
+                            type="date"
+                            className="create-cv-form-input"
+                            value={graduationStartDate}
+                            onChange={handleGraduationStartDateChange}
+                        />
+                    </div>
+                    <div className="create-cv-graduation-end-date-form-field">
+                        <p className='create-cv-form-text'>Graduation End Date</p>
+                        <input
+                            type="date"
+                            className="create-cv-form-input"
+                            value={graduationEndDate}
+                            onChange={handleGraduationEndDateChange}
+                        />
+                    </div>
+                    <div className="create-cv-currently-attend-form-field">
+                        <input
+                            type="checkbox"
+                            className='currently-work-box'
+                            value={currentlyAttendHere}
+                            onChange={handleCurrentlyAttendHereChange}
+                        />
+                        <p className='create-cv-form-text currently-work-text'>I currently attend here</p>
+                    </div>
+                    <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
+                        <img 
+                            src='/Image/Create_CV_Options/Arrow_alt_left_alt.svg'
+                            className='create-cv-options-icon'
+                            alt='icon'
+                        />
+                        <p className='create-cv-options-button-text create-cv-options-back-button-text'>Back</p>
+                    </div>
+                    <div className="create-cv-options-button back-button create-cv-next-button" onClick={handleNextClick}>
+                        <img 
+                            src='/Image/Create_CV_Options/Arrow_alt_lright_alt.svg'
+                            className='create-cv-icon'
+                            alt='icon'
+                        />
+                        <p className='create-cv-options-button-text create-cv-next-button-text'>Next</p>
+                    </div>
+                </div>
+            }
+            {currentStep === 4 && 
+                <div>
+                    <h className='create-cv-content-title'>What skills would you like to highlight?</h>
+                    <div className="create-cv-school-name-form-field">
+                        <p className='create-cv-form-text'>School Name</p>
+                        <input
+                            type="text"
+                            className="create-cv-form-input"
+                            placeholder="e.g. International University-VNU-HCM"
+                            value={schoolName}
+                            onChange={handleSchoolNameChange}
+                        />
+                    </div>
+                    <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
+                        <img 
+                            src='/Image/Create_CV_Options/Arrow_alt_left_alt.svg'
+                            className='create-cv-options-icon'
+                            alt='icon'
+                        />
+                        <p className='create-cv-options-button-text create-cv-options-back-button-text'>Back</p>
+                    </div>
+                    <div className="create-cv-options-button back-button create-cv-next-button" onClick={handleNextClick}>
+                        <img 
+                            src='/Image/Create_CV_Options/Arrow_alt_lright_alt.svg'
+                            className='create-cv-icon'
+                            alt='icon'
+                        />
+                        <p className='create-cv-options-button-text create-cv-next-button-text'>Next</p>
+                    </div>
+                </div>
+            }
+            {currentStep === 5 && 
+                <div>
+                    <h className='create-cv-content-title'>Briefly tell us about your background</h>
+                    <div className="create-cv-school-name-form-field">
+                        <p className='create-cv-form-text'>School Name</p>
+                        <input
+                            type="text"
+                            className="create-cv-form-input"
+                            placeholder="e.g. International University-VNU-HCM"
+                            value={schoolName}
+                            onChange={handleSchoolNameChange}
+                        />
+                    </div>
+                    <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
+                        <img 
+                            src='/Image/Create_CV_Options/Arrow_alt_left_alt.svg'
+                            className='create-cv-options-icon'
+                            alt='icon'
+                        />
+                        <p className='create-cv-options-button-text create-cv-options-back-button-text'>Back</p>
+                    </div>
+                    <div className="create-cv-options-button back-button create-cv-next-button" onClick={handleNextClick}>
+                        <img 
+                            src='/Image/Create_CV_Options/Arrow_alt_lright_alt.svg'
+                            className='create-cv-icon'
+                            alt='icon'
+                        />
+                        <p className='create-cv-options-button-text create-cv-next-button-text'>Next</p>
+                    </div>
+                </div>
+            }
+            {currentStep === 6 && 
+                <div>
+                    <div className="create-cv-school-name-form-field">
+                        <p className='create-cv-form-text'>School Name</p>
+                        <input
+                            type="text"
+                            className="create-cv-form-input"
+                            placeholder="e.g. International University-VNU-HCM"
+                            value={schoolName}
+                            onChange={handleSchoolNameChange}
+                        />
+                    </div>
+                    <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
+                        <img 
+                            src='/Image/Create_CV_Options/Arrow_alt_left_alt.svg'
+                            className='create-cv-options-icon'
+                            alt='icon'
+                        />
+                        <p className='create-cv-options-button-text create-cv-options-back-button-text'>Back</p>
+                    </div>
+                    <div className="create-cv-options-button back-button create-cv-next-button" onClick={handleNextClick}>
+                        <img 
+                            src='/Image/Create_CV_Options/Arrow_alt_lright_alt.svg'
+                            className='create-cv-icon'
+                            alt='icon'
+                        />
+                        <p className='create-cv-options-button-text create-cv-next-button-text'>Next</p>
+                    </div>
+                </div>
+            }
         </div>
         </div>
     );
 }
 
 export default CreateCV;
-

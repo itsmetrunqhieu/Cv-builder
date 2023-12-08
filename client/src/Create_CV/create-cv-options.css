@@ -63,6 +63,8 @@
     background: #FFFFFF;
     border: 1px solid #000000;
     border-radius: 10px;
+
+    transition: all 0.3s;
 }
 
 .create-cv-options-button:hover {
@@ -89,7 +91,7 @@
 .create-cv-options-back-button-text {
     font-weight: 600;
     color: #0c1986;
-    margin: 10px auto 10px -5px;
+    margin: 10px 20px 10px -5px;
 }
 
 
@@ -109,7 +111,7 @@
     position: absolute;
     left: 5%;
     bottom: 10%;
-    width: 105px;
+    width: auto;
     height: 45px;
     border-radius: 30px;
     border: 2px solid #0c1986;

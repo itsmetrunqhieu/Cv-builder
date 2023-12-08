@@ -38,13 +38,11 @@
 
 .create-cv-step:hover .create-cv-order{
     border: 3.5px solid #ffffff;
-    transition: 0.1s ease;
 }
 
 .create-cv-step:hover .create-cv-step-name{
     font-size: 27.5px;
     line-height: 45px;
-    transition: 0.1s ease;
 }
 
 .create-cv-order {
@@ -67,6 +65,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: all 0.3s;
 }
 
 .create-cv-step.active .create-cv-order {
@@ -93,6 +93,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: all 0.3s;
 }
 
 .create-cv-content {
@@ -201,6 +203,7 @@
     position: absolute;
     left: 100px;
     top: 650px;
+    cursor: pointer;
 }
 
 .create-cv-next-button {
@@ -334,4 +337,71 @@
     width: 250px;
     left: 100px;
     top: 580px;
+}
+
+.create-cv-skill-description-form-field {
+    position: absolute;
+    left: 100px;
+    top: 180px;
+}
+
+.create-cv-cv-name-form-field {
+    position: absolute;
+    left: 100px;
+    top: 20px; 
+    z-index: 2;
+}
+
+.create-cv-cv-name-form-input {
+    position: absolute;
+    width: auto;
+    top: 3px;
+    left: 30px;
+    border: none;
+    outline: none;
+}
+
+.create-cv-finish-button-text {
+    margin: 10px 20px;
+}
+
+.finish-cv-area {
+    position: absolute;
+    left: 100px;
+    top: 70px;
+    width: 400px;
+    height: 565.68px;
+    background-color: #2E75B6;
+    border-radius: 10px;
+}
+
+.create-cv-button {
+    border: none;
+    z-index: 3;
+}
+
+.create-cv-button:hover {
+    background-color: white;
+}
+
+.create-cv-download-cv-button {
+    position: absolute;
+    top: 70px;
+    left: 600px;
+}
+
+.create-cv-save-cv-button {
+    position: absolute;
+    top: 120px;
+    left: 600px;
+}
+
+.create-cv-edit-cv-area {
+    position: absolute;
+    left: 600px;
+    top: 180px;
+    width: 300px;
+    height: 455px;
+    background-color: #2E75B6;
+    border-radius: 10px;
 }

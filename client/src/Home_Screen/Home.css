@@ -1,11 +1,11 @@
-ul {
+ul.nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
   
-li {
+li.nav-li {
     float: left;
 }
   
@@ -15,20 +15,64 @@ li a {
     text-align: center;
     padding: 23px 16px;
     text-decoration: none;
+
+    transition: all 0.3s;
 }
   
 li a:hover {
     background-color: #a09f9f;
 }
   
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+    z-index: 1000;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+    z-index: 1000;
+}
+
 .home {
     position: relative;
     width: 100%;
+    height: auto;
+}
+
+.home-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 35px 0;
+    text-align: center;
+    background: #eee;
+    z-index: 9999;
+    transition: all 300ms ease-in-out;
+}
+
+.home-header.scroll-down{
+    transform: translate3d(0, -100%, 0);
+}
+
+.home-header.scroll-up {
+    filter: drop-shadow(0 -10px 20px rgb(170, 170, 170));
+    transition: all 200ms ease-in-out;
+}
+
+.header.menu-is-open header {
+    filter: none;
 }
 
 .part1 {
     position: relative;
     width: 100%;
+    top: 0px;
     height: 787.5px;
 
     background-image: url("../../public/Image/Home_Screen/bg-part1.png");
@@ -38,12 +82,8 @@ li a:hover {
     background-size: cover;
 }
 
-.part1-header {
-    position: relative;
-    width: 100%;
-    height: 70px;
-    
-    background-color: while;
+.part1-header.sticky .cv-buider-name {
+    color: #000000;
 }
 
 .cv-buider-name {
@@ -60,13 +100,14 @@ li a:hover {
     line-height: 42px;
     margin: 0;
 
-    color: #FFFFFF;
+    color: #000000;
 
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .nav {
     position: absolute;
+    top: 0;
     right: 70px;
 }
 
@@ -104,7 +145,7 @@ li a:hover {
     width: 376px;
     height: 338px;
     left: 800px;
-    top: 100px;
+    top: 170px;
 }
 
 .online-text {
@@ -148,6 +189,12 @@ li a:hover {
     padding: 0;
 }
 
+.create-button:hover {
+    transform: translateY(-5px);
+    background: #d6d6d6; 
+    transition: all 0.3s;
+}
+
 .create-text {
     position: relative;
     width: 100%;
@@ -161,10 +208,6 @@ li a:hover {
     margin: 0;
 
     color: #000000;
-}
-
-.create-button:hover {
-    background: #a6a6a6; 
 }
 
 .part2 {
@@ -211,6 +254,8 @@ li a:hover {
     margin: 75px 400px;
 
     color: #FFFFFF;
+
+    transition-delay: 200ms;
 }
 
 .part3 {
@@ -260,6 +305,8 @@ li a:hover {
     height: 195px;
     left: 620px;
     top: 150px;
+
+    transition-delay: 200ms;
 }
     
 .step3 {
@@ -268,6 +315,8 @@ li a:hover {
     height: 195px;
     left: 1000px;
     top: 150px;
+
+    transition-delay: 400ms;
 }
 
 .num{
@@ -396,6 +445,8 @@ li a:hover {
     height: 45px;
     left: 600px;
     top: 220px;
+
+    transition-delay: 200ms;
 }
 
 .quote2 {
@@ -404,6 +455,8 @@ li a:hover {
     height: 45px;
     left: 600px;
     top: 290px;
+
+    transition-delay: 300ms;
 }
 
 .quote3 {
@@ -412,6 +465,8 @@ li a:hover {
     height: 45px;
     left: 600px;
     top: 360px;
+
+    transition-delay: 400ms;
 }
 
 .quote4 {
@@ -420,6 +475,8 @@ li a:hover {
     height: 45px;
     left: 600px;
     top: 430px;
+
+    transition-delay: 500ms;
 }
 
 .part4-line {
@@ -468,6 +525,13 @@ li a:hover {
     position: absolute;
     left: 700px;
     top: 530px;
+
+    transition-delay: 700ms;
+}
+
+.button-part4:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s;
 }
 
 .footer {

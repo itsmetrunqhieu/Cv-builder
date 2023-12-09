@@ -1,10 +1,41 @@
 import './create-cv.css';
 import './create-cv-options.css';
 import '../Login_Screen/Login.css'
-import React, { useState } from 'react';
+import '../Home_Screen/Home.css'
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Editor4 from './editor-step4';
+import Editor5 from './editor-step5';
 
 function CreateCV() {
+    useEffect(() => {
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                console.log(entry);
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        };
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0,
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        return () => {
+            hiddenElements.forEach((el) => observer.unobserve(el));
+        };
+    }, []);
+
     // Step 1: Personal Information
     const [firstname, setFirstname] = useState('');
     const [surname, setSurname] = useState('');
@@ -119,6 +150,35 @@ function CreateCV() {
 
     const handleCurrentlyAttendHereChange = (event) => {
         setCurrentlyAttendHere(event.target.checked);
+    };
+
+    // Step 4: Skill Information
+    // eslint-disable-next-line no-unused-vars
+    const [skillDescription, setSkillDescription] = useState('');
+
+    const handleSkillDescriptionChange = (value) => {
+        if (value !== undefined && value !== null) {
+            setSkillDescription(value);
+        }
+    };
+
+    // Step 5: Summary Information
+    // eslint-disable-next-line no-unused-vars
+    const [summaryDescription, setSummaryDescription] = useState('');
+
+    const handleSummaryDescriptionChange = (value) => {
+        if (value !== undefined && value !== null) {
+            setSummaryDescription(value);
+        }
+    };
+
+    
+    // Step 6: Finalize
+    // eslint-disable-next-line no-unused-vars
+    const [CVName, setCVName] = useState('');
+
+    const handleCVNameChange = (event) => {
+        setCVName(event.target.value);
     };
 
     const handleSubmit = () => {
@@ -472,15 +532,8 @@ function CreateCV() {
             {currentStep === 4 && 
                 <div>
                     <h className='create-cv-content-title'>What skills would you like to highlight?</h>
-                    <div className="create-cv-school-name-form-field">
-                        <p className='create-cv-form-text'>School Name</p>
-                        <input
-                            type="text"
-                            className="create-cv-form-input"
-                            placeholder="e.g. International University-VNU-HCM"
-                            value={schoolName}
-                            onChange={handleSchoolNameChange}
-                        />
+                    <div className="create-cv-skill-description-form-field">
+                        <Editor4 onValueChange={handleSkillDescriptionChange} />
                     </div>
                     <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
                         <img 
@@ -503,15 +556,8 @@ function CreateCV() {
             {currentStep === 5 && 
                 <div>
                     <h className='create-cv-content-title'>Briefly tell us about your background</h>
-                    <div className="create-cv-school-name-form-field">
-                        <p className='create-cv-form-text'>School Name</p>
-                        <input
-                            type="text"
-                            className="create-cv-form-input"
-                            placeholder="e.g. International University-VNU-HCM"
-                            value={schoolName}
-                            onChange={handleSchoolNameChange}
-                        />
+                    <div className="create-cv-skill-description-form-field">
+                        <Editor5 onValueChange={handleSummaryDescriptionChange} />
                     </div>
                     <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
                         <img 
@@ -533,15 +579,45 @@ function CreateCV() {
             }
             {currentStep === 6 && 
                 <div>
-                    <div className="create-cv-school-name-form-field">
-                        <p className='create-cv-form-text'>School Name</p>
+                    <div className="create-cv-cv-name-form-field">
+                        <img 
+                            src='/Image/Create_CV_Options/Edit_light.svg'
+                            className='create-cv-options-icon'
+                            alt='icon'
+                        />
                         <input
                             type="text"
-                            className="create-cv-form-input"
-                            placeholder="e.g. International University-VNU-HCM"
-                            value={schoolName}
-                            onChange={handleSchoolNameChange}
+                            className="create-cv-form-input create-cv-cv-name-form-input"
+                            placeholder="[Change CV file name]"       
+                            value={CVName}
+                            onChange={handleCVNameChange}
                         />
+                    </div>
+                    <div className='finish-cv-area'>
+                        {/* Chèn cv sau khi xử lí vào đây */}
+                    </div>
+                    <Link to="">
+                        <div className="create-cv-options-button create-cv-button create-cv-download-cv-button">
+                            <img 
+                                src='/Image/Create_CV_Options/Arhive_load_light.svg'
+                                className='create-cv-options-icon'
+                                alt='icon'
+                            />
+                            <p className='create-cv-options-button-text'>Download as pdf</p>
+                        </div>
+                    </Link>
+                    <Link to="">
+                        <div className="create-cv-options-button create-cv-button create-cv-save-cv-button">
+                            <img 
+                                src='/Image/Create_CV_Options/Save_light.svg'
+                                className='create-cv-options-icon'
+                                alt='icon'
+                            />
+                            <p className='create-cv-options-button-text'>Save your CV in storage</p>
+                        </div>
+                    </Link>
+                    <div className='create-cv-edit-cv-area'>
+
                     </div>
                     <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
                         <img 
@@ -551,14 +627,11 @@ function CreateCV() {
                         />
                         <p className='create-cv-options-button-text create-cv-options-back-button-text'>Back</p>
                     </div>
-                    <div className="create-cv-options-button back-button create-cv-next-button" onClick={handleNextClick}>
-                        <img 
-                            src='/Image/Create_CV_Options/Arrow_alt_lright_alt.svg'
-                            className='create-cv-icon'
-                            alt='icon'
-                        />
-                        <p className='create-cv-options-button-text create-cv-next-button-text'>Next</p>
-                    </div>
+                    <Link to="/create-cv-options">
+                        <div className="create-cv-options-button back-button create-cv-next-button" onClick={handleNextClick}>
+                            <p className='create-cv-options-button-text create-cv-next-button-text create-cv-finish-button-text'>Finish Resumne</p>
+                        </div>
+                    </Link>
                 </div>
             }
         </div>

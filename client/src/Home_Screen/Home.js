@@ -7,8 +7,6 @@ function Home() {
         cursor: 'pointer',
     };
 
-    const [scrollDirection, setScrollDirection] = useState('');
-
     useEffect(() => {
         const observerCallback = (entries) => {
             entries.forEach((entry) => {
@@ -36,6 +34,8 @@ function Home() {
             hiddenElements.forEach((el) => observer.unobserve(el));
         };
     }, []);
+    
+    const [scrollDirection, setScrollDirection] = useState('');
 
     useEffect(() => {
         let lastScroll = 0;

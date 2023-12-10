@@ -1,6 +1,6 @@
 import './Register.css';
 import '../Login_Screen/Login.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { register} from '../Services/AuthService';
 
@@ -95,6 +95,34 @@ function Register() {
     }
   };
 
+  useEffect(() => {
+    const observerCallback = (entries) => {
+        entries.forEach((entry) => {
+            console.log(entry);
+            if (entry.isIntersecting) {
+                entry.target.classList.add('showY');
+            } else {
+                entry.target.classList.remove('showY');
+            }
+        });
+    };
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0,
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    const hiddenElements = document.querySelectorAll('.hidden-bottom');
+    hiddenElements.forEach((el) => observer.observe(el));
+
+    return () => {
+        hiddenElements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
   return (
     <div className="Register">
         <div className="Login-header">
@@ -106,147 +134,147 @@ function Register() {
             </Link>
         </div>
         <div className="Register-main">
-            <p className="Registration">Registration</p>
-              <div className="fullname-regis-form-field">
-                <input
-                  type="text"
-                  className="form-input"
-                  placeholder=" "
-                  value={fullName}
-                  onChange={handleFullNameChange}
-                />
-                <label htmlFor="fullname" className="form-label">Full name</label>
-                <img 
-                    src='/Image/Login_Screen/User_alt_light.svg'
-                    className='icon'
-                    alt='icon'
-                />
-              </div>
+            <p className="Registration-text hidden-bottom">Registration</p>
+            <div className="fullname-regis-form-field hidden-bottom">
+              <input
+                type="text"
+                className="form-input"
+                placeholder=" "
+                value={fullName}
+                onChange={handleFullNameChange}
+              />
+              <label htmlFor="fullname" className="form-label">Full name</label>
+              <img 
+                  src='/Image/Login_Screen/User_alt_light.svg'
+                  className='icon'
+                  alt='icon'
+              />
+            </div>
 
-              <div className="username-regis-form-field">
-                <input
-                  type="text"
-                  className="form-input"
-                  placeholder=" "
-                  value={username}
-                  onChange={handleUsernameChange}
-                />
-                <label htmlFor="username" className="form-label">Username</label>
-                <img 
-                    src='/Image/Login_Screen/User_alt_light.svg'
-                    className='icon'
-                    alt='icon'
-                />
-              </div>
+            <div className="username-regis-form-field hidden-bottom">
+              <input
+                type="text"
+                className="form-input"
+                placeholder=" "
+                value={username}
+                onChange={handleUsernameChange}
+              />
+              <label htmlFor="username" className="form-label">Username</label>
+              <img 
+                  src='/Image/Login_Screen/User_alt_light.svg'
+                  className='icon'
+                  alt='icon'
+              />
+            </div>
 
-              <div className="email-regis-form-field">
-                <input
-                  type="email"
-                  className="form-input"
-                  placeholder=" "
-                  value={email}
-                  onChange={handleEmailChange}
-                />
-                <label htmlFor="email" className="form-label">Email address</label>
-                <img 
-                    src='/Image/Register_Screen/Message_light.svg'
-                    className='icon'
-                    alt='icon'
-                />
-              </div>
+            <div className="email-regis-form-field hidden-bottom">
+              <input
+                type="email"
+                className="form-input"
+                placeholder=" "
+                value={email}
+                onChange={handleEmailChange}
+              />
+              <label htmlFor="email" className="form-label">Email address</label>
+              <img 
+                  src='/Image/Register_Screen/Message_light.svg'
+                  className='icon'
+                  alt='icon'
+              />
+            </div>
 
-              <div className="phone-regis-form-field">
-                <input
-                  type="text"
-                  className="form-input"
-                  placeholder=" "
-                  value={phone}
-                  onChange={handlePhoneChange}
-                />
-                <label htmlFor="phone" className="form-label">Phone number</label>
-                <img 
-                    src='/Image/Register_Screen/Phone_light.svg'
-                    className='icon'
-                    alt='icon'
-                />
-              </div>
+            <div className="phone-regis-form-field hidden-bottom">
+              <input
+                type="text"
+                className="form-input"
+                placeholder=" "
+                value={phone}
+                onChange={handlePhoneChange}
+              />
+              <label htmlFor="phone" className="form-label">Phone number</label>
+              <img 
+                  src='/Image/Register_Screen/Phone_light.svg'
+                  className='icon'
+                  alt='icon'
+              />
+            </div>
 
-              <div className="password-regis-form-field">
-                <input
-                  type={isPasswordVisible ? 'text' : 'password'}
-                  className="form-input"
-                  placeholder=" "
-                  value={password}
-                  onChange={handlePasswordChange}
-                />
-                <label htmlFor="password" className="form-label">
-                  Password
-                </label>
-                <img
-                  src={isPasswordVisible ? "/Image/Login_Screen/View_light.svg" 
-                                        : "/Image/Login_Screen/View_hide_light.svg"}
-                  className="icon"
-                  alt="icon"
-                  onClick={togglePasswordVisibility}
-                  style={imgStyle}
-                />
-              </div>
+            <div className="password-regis-form-field hidden-bottom">
+              <input
+                type={isPasswordVisible ? 'text' : 'password'}
+                className="form-input"
+                placeholder=" "
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <img
+                src={isPasswordVisible ? "/Image/Login_Screen/View_light.svg" 
+                                      : "/Image/Login_Screen/View_hide_light.svg"}
+                className="icon"
+                alt="icon"
+                onClick={togglePasswordVisibility}
+                style={imgStyle}
+              />
+            </div>
 
-              <div className="cfpassword-regis-form-field">
-                <input
-                  type={iscfPasswordVisible ? 'text' : 'password'}
-                  className="form-input"
-                  placeholder=" "
-                  value={confirmPassword}
-                  onChange={handleConfirmPasswordChange}
-                />
-                <label htmlFor="cfpassword" className="form-label">
-                  Confirm password
-                </label>
-                <img
-                  src={iscfPasswordVisible ? "/Image/Login_Screen/View_light.svg" 
-                                        : "/Image/Login_Screen/View_hide_light.svg"}
-                  className="icon"
-                  alt="icon"
-                  onClick={togglecfPasswordVisibility}
-                  style={imgStyle}
-                />
-              </div>
+            <div className="cfpassword-regis-form-field hidden-bottom">
+              <input
+                type={iscfPasswordVisible ? 'text' : 'password'}
+                className="form-input"
+                placeholder=" "
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+              />
+              <label htmlFor="cfpassword" className="form-label">
+                Confirm password
+              </label>
+              <img
+                src={iscfPasswordVisible ? "/Image/Login_Screen/View_light.svg" 
+                                      : "/Image/Login_Screen/View_hide_light.svg"}
+                className="icon"
+                alt="icon"
+                onClick={togglecfPasswordVisibility}
+                style={imgStyle}
+              />
+            </div>
 
-              <div className='gender'>
-                <p className='gender-text'>Gender</p>
-                <input
-                  type="checkbox"
-                  className='male-box'
-                  checked={isMaleChecked}
-                  onChange={handleMaleCheckboxChange}
-                  style={imgStyle}
-                />
-                <label className='male-text'>Male</label>
+            <div className='gender hidden-bottom'>
+              <p className='gender-text'>Gender</p>
+              <input
+                type="checkbox"
+                className='male-box'
+                checked={isMaleChecked}
+                onChange={handleMaleCheckboxChange}
+                style={imgStyle}
+              />
+              <label className='male-text'>Male</label>
 
-                <input
-                  type="checkbox"
-                  className='female-box'
-                  checked={isFemaleChecked}
-                  onChange={handleFemaleCheckboxChange}
-                  style={imgStyle}
-                />
-                <label className='female-text'>Female</label>
+              <input
+                type="checkbox"
+                className='female-box'
+                checked={isFemaleChecked}
+                onChange={handleFemaleCheckboxChange}
+                style={imgStyle}
+              />
+              <label className='female-text'>Female</label>
 
-                <input
-                  type="checkbox"
-                  className='prefer-box'
-                  checked={isPreferNotToSayChecked}
-                  onChange={handlePreferNotToSayCheckboxChange}
-                  style={imgStyle}
-                />
-                <label className='prefer-text'>Prefer not to say</label>
-              </div>
+              <input
+                type="checkbox"
+                className='prefer-box'
+                checked={isPreferNotToSayChecked}
+                onChange={handlePreferNotToSayCheckboxChange}
+                style={imgStyle}
+              />
+              <label className='prefer-text'>Prefer not to say</label>
+            </div>
 
-              <button className="login-button register-button" onClick={handleSubmit}>Register</button>
-              <p className="dont-account have-account">
-                Already have an account? <Link to="/login" style={{ color: '#62A4F0' }}>Sign in</Link>
-              </p>
+            <button className="login-button register-button hidden-bottom" onClick={handleSubmit}>Register</button>
+            <p className="dont-account-text have-account-text hidden-bottom">
+              Already have an account? <Link to="/login" className='dont-account-sign-up-text'>Sign in</Link>
+            </p>
         </div>
     </div>
   );

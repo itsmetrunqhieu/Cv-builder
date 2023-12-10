@@ -1,3 +1,18 @@
+.hidden-right {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateX(100%);
+    transition: all 1s;
+    z-index: 1000;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+    z-index: 1000;
+}
+
 .Login {
     position: absolute;
     top: 0;
@@ -30,6 +45,7 @@
     font-style: normal;
     font-weight: 700;
     font-size: 35px;
+    z-index: 9999;
 
     margin: 0px;
 
@@ -53,6 +69,12 @@
 
     color: #FFFFFF;
     cursor: pointer;
+    transition: all 0.3s;
+}
+
+.Sign-up-button:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s;
 }
 
 .Login-main {
@@ -64,9 +86,15 @@
 }
 
 .CV {
-    position: absolute;
+    position: relative;
     left: 15%;
     top: 10px;
+    transition: all 0.5s;
+}
+
+.CV:hover {
+    transform: translateY(-10px);
+    transition: all 0.5s;
 }
 
 .CV-counter {
@@ -77,67 +105,64 @@
 
 .Login-part {
     position: absolute;
-    width: 260px;
-    height: 325px;
+    width: 300px;
     left: 900px;
-    top: 50px;
+    top: 40px;
 }
 
 .Login-text {
-    position: absolute;
-    width: 260px;
-    height: 40px;
-    top: 0px;
+    position: relative;
     text-align: center;
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 35px;
+    font-size: 40px;
     margin: 0px;
 
     color: #FFFFFF;
 }
 
 .username-form-field {
-    position: absolute;
-    width: 260px;
-    height: 40px;
-    left: 0px;
-    top: 76px;
+    position: relative;
+    margin: 40px 0px 30px 0px;
+}
+
+.password-form-field {
+    position: relative;
+    margin: 10px 0px;
 }
 
 .icon {
     position: absolute;
     right: 0px;
     top: 0px;
+    height: 30px;
+    width: 30px;
     margin: 8px;
     padding: 0px;
 }
 
-.password-form-field {
-    position: absolute;
-    width: 260px;
-    height: 40px;
-    left: 0px;
-    top: 150px;
-}
-
 .form-input {
     border: 1px solid #eee;
-    width: 220px;
-    height: 40px;
+    width: 258px;
+    height: 42px;
 
     padding: 0 20px;
     transition: 0.25s ease;
 
     background: #F0F0F0;
     border-radius: 10px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
 }
 
 .form-input:not(:placeholder-shown),
 .form-input:focus {
-    width: 200px;
+    width: 238px;
     padding-right: 40px;
 }
 
@@ -163,64 +188,78 @@
 .form-input:focus + .form-label {
     top: -5px;
     left: 11px;
-    font-size: 15px;
-    padding: 3px 10px;
+    font-size: 18px;
+    padding: 3px 15px;
     display: inline-block;
     background-color: rgb(46, 45, 45);
     color: #F0F0F0;
     border: 1px solid black;
+    border-radius: 10px;
 }
 
-.forgot {
-    position: absolute;
-    width: 100%;
-    height: 15px;
-    text-align: right;
-    top: 205px;
+.forgot-password-text {
+    position: relative;
+    float: right;
+    width: fit-content;
 
-    margin: 0px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 15px;
-    line-height: 16px;
+    font-size: 18px;
+    text-decoration: underline;
+    color: #62A4F0;
+    margin: 5px 0px;
+}
 
-    color: #EDEBEB;
+.forgot-password-text:hover {
+    color: #2788f7;
+    transition: color 0.3s ease;
 }
 
 .login-button {
-    position: absolute;
-    width: 260px;
-    height: 40px;
-    left: 0px;
-    top: 235px;
+    position: relative;
+    width: 300px;
+    height: 45px;
 
     background: #62A4F0;
     border-radius: 10px;
+    margin: 8px 0px;
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 25px;
 
     color: #FFFFFF;
     cursor: pointer;
 }
 
-.dont-account {
-    position: absolute;
+.login-button:hover {
+    transform: translateY(-2px);
+    transition: all 0.3s;
+    background: #2788f7;
+}
+
+.dont-account-text {
+    position: relative;
     width: 100%;
     height: 22px;
-    top: 285px;
     text-align: center;
 
-    margin: 0px;
+    margin: 5px 0px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 15px;
-    line-height: 16px;
+    font-size: 18px;
 
     color: #EDEBEB;
+}
+
+.dont-account-sign-up-text {
+    color: #62A4F0;
+}
+
+.dont-account-sign-up-text:hover {
+    color: #2788f7;
+    transition: color 0.3s ease;
 }

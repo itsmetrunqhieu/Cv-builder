@@ -5,7 +5,7 @@
     width: 100%;
     height: 100%;
 
-    background-image: url("../../public/Image/Create_CV_Options/BGCreateCVOptions.png");
+    background-image: url("../../public/Image/Create_CV/BGCreateCVOptions.png");
     background-repeat: no-repeat;
     background-position: left top;
     background-attachment: scroll;
@@ -28,6 +28,12 @@
     position: absolute;
     right: 10%;
     top: 110px;
+    transition: all 0.5s;
+}
+
+.create-cv-options-CV:hover {
+    transform: translateY(-10px);
+    transition: all 0.5s;
 }
 
 .create-cv-options-CV-counter {
@@ -69,10 +75,14 @@
 
 .create-cv-options-button:hover {
     background: #eaeaea;
+    transform: translateY(-3px);
+    transition: all 0.3s;
 }
 
 .create-cv-options-icon {
     margin: 10px;
+    width: 24px;
+    height: 24px;
     float: left;
 }
 

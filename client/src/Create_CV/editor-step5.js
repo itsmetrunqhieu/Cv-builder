@@ -11,7 +11,7 @@ const Editor5 = ({ onValueChange }) => {
         if (quill && quillRef.current && quillRef.current.firstChild) {
             quill.on('text-change', () => {
                 const editorContent = quillRef.current.firstChild.innerHTML;
-                console.log(editorContent);
+                // console.log(editorContent);
                 onValueChange(editorContent);
 
                 // Check if content is empty to toggle placeholder visibility

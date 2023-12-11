@@ -55,7 +55,7 @@ function CreateCVOptiopns() {
                 <Link to="/create-cv">
                     <div className="create-cv-options-button create-a-new-resume-button">
                         <img 
-                            src='/Image/Create_CV_Options/File_dock_light.svg'
+                            src='/Image/Create_CV/File_dock_light.svg'
                             className='create-cv-options-icon'
                             alt='icon'
                         />
@@ -66,7 +66,7 @@ function CreateCVOptiopns() {
                 <Link to="/login">
                     <div className="create-cv-options-button I-already-have-a-resume-button">
                         <img 
-                            src='/Image/Create_CV_Options/Arhive_export_light.svg'
+                            src='/Image/Create_CV/Arhive_export_light.svg'
                             className='create-cv-options-icon'
                             alt='icon'
                         />
@@ -77,7 +77,7 @@ function CreateCVOptiopns() {
             <Link to="/">
                 <div className="create-cv-options-button back-button">
                     <img 
-                        src='/Image/Create_CV_Options/Arrow_alt_left_alt.svg'
+                        src='/Image/Create_CV/Arrow_alt_left_alt.svg'
                         className='create-cv-options-icon'
                         alt='icon'
                     />

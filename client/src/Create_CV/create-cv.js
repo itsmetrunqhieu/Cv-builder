@@ -158,6 +158,35 @@ function CreateCV() {
     };
 
     const [currentStep, setCurrentStep] = useState(1);
+    const [previousStep, setPreviousStep] = useState(1);
+
+    useEffect(() => {
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                console.log(entry);
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        };
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0,
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        const hiddenElements = document.querySelectorAll('.hidden-right');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        return () => {
+            hiddenElements.forEach((el) => observer.unobserve(el));
+        };
+    }, [currentStep]);
 
     useEffect(() => {
         const observerCallback = (entries) => {
@@ -197,17 +226,45 @@ function CreateCV() {
     ];
 
     const handleStepClick = (step) => {
-        setCurrentStep(step);
-    };    
+        if (currentStep !== step) {
+            setPreviousStep(currentStep);
+            setCurrentStep(step);
+        }
+    };
+       
 
     const handleNextClick = () => {
+        setPreviousStep(currentStep);
         setCurrentStep(currentStep + 1);  
         handleSubmit();
     };
 
     const handleBackClick = () => {
+        setPreviousStep(currentStep);
         setCurrentStep(currentStep - 1);
     };
+
+    // console.log('previous ',previousStep);
+    // console.log('current ',currentStep);
+
+    const [currentEditCVOption, setCurrentEditCVOption] = useState(0);
+
+    const editCVOptionNames = [
+        "Spell check",
+        "Templates & color",
+        "Formatting tools",
+        "Add sections"
+    ];
+
+    const handleEditCVOptionClick = (step) => {
+        if (currentEditCVOption !== step) {
+            setCurrentEditCVOption(step);
+        } else {
+            setCurrentEditCVOption(0);
+        }
+    };   
+
+    // console.log('current ',currentEditCVOption);
 
     return (
         <div className="create-cv">
@@ -235,7 +292,7 @@ function CreateCV() {
             <div className='create-cv-content'>
                 {currentStep === 1 && 
                     <div>
-                        <div className='hidden'>
+                        <div className={`${previousStep <= currentStep ? 'hidden-right' : 'hidden'}`}>
                             <h className='create-cv-content-title'>What’s the best way for employers to contact you?</h>
                             <div className="create-cv-firstname-form-field">
                                 <p className='create-cv-form-text'>First Name</p>
@@ -321,7 +378,7 @@ function CreateCV() {
                         <Link to="/create-cv-options">
                             <div className="create-cv-options-button back-button create-cv-back-button">
                                 <img 
-                                    src='/Image/Create_CV_Options/Arrow_alt_left_alt.svg'
+                                    src='/Image/Create_CV/Arrow_alt_left_alt.svg'
                                     className='create-cv-options-icon'
                                     alt='icon'
                                 />
@@ -330,7 +387,7 @@ function CreateCV() {
                         </Link>
                         <div className="create-cv-options-button back-button create-cv-next-button" onClick={handleNextClick}>
                             <img 
-                                src='/Image/Create_CV_Options/Arrow_alt_lright_alt.svg'
+                                src='/Image/Create_CV/Arrow_alt_lright_alt.svg'
                                 className='create-cv-icon'
                                 alt='icon'
                             />
@@ -340,7 +397,7 @@ function CreateCV() {
                 }
                 {currentStep === 2 && 
                     <div>
-                        <div className='hidden'>
+                        <div className={`${previousStep <= currentStep ? 'hidden-right' : 'hidden'}`}>
                             <h className='create-cv-content-title'>Tell us about your most recent job</h>
                             <div className="create-cv-jobtitle-form-field">
                                 <p className='create-cv-form-text'>Job Title</p>
@@ -412,7 +469,7 @@ function CreateCV() {
                         </div>
                         <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
                             <img 
-                                src='/Image/Create_CV_Options/Arrow_alt_left_alt.svg'
+                                src='/Image/Create_CV/Arrow_alt_left_alt.svg'
                                 className='create-cv-options-icon'
                                 alt='icon'
                             />
@@ -420,7 +477,7 @@ function CreateCV() {
                         </div>
                         <div className="create-cv-options-button back-button create-cv-next-button" onClick={handleNextClick}>
                             <img 
-                                src='/Image/Create_CV_Options/Arrow_alt_lright_alt.svg'
+                                src='/Image/Create_CV/Arrow_alt_lright_alt.svg'
                                 className='create-cv-icon'
                                 alt='icon'
                             />
@@ -430,7 +487,7 @@ function CreateCV() {
                 }
                 {currentStep === 3 && 
                     <div>
-                        <div className='hidden'>
+                        <div className={`${previousStep <= currentStep ? 'hidden-right' : 'hidden'}`}>
                             <h className='create-cv-content-title'>Tell us about your education</h>
                             <div className="create-cv-school-name-form-field">
                                 <p className='create-cv-form-text'>School Name</p>
@@ -519,7 +576,7 @@ function CreateCV() {
                         </div>
                         <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
                             <img 
-                                src='/Image/Create_CV_Options/Arrow_alt_left_alt.svg'
+                                src='/Image/Create_CV/Arrow_alt_left_alt.svg'
                                 className='create-cv-options-icon'
                                 alt='icon'
                             />
@@ -527,7 +584,7 @@ function CreateCV() {
                         </div>
                         <div className="create-cv-options-button back-button create-cv-next-button" onClick={handleNextClick}>
                             <img 
-                                src='/Image/Create_CV_Options/Arrow_alt_lright_alt.svg'
+                                src='/Image/Create_CV/Arrow_alt_lright_alt.svg'
                                 className='create-cv-icon'
                                 alt='icon'
                             />
@@ -537,7 +594,7 @@ function CreateCV() {
                 }
                 {currentStep === 4 && 
                     <div>
-                        <div className='hidden'>
+                        <div className={`${previousStep <= currentStep ? 'hidden-right' : 'hidden'}`}>
                             <h className='create-cv-content-title'>What skills would you like to highlight?</h>
                             <div className="create-cv-skill-description-form-field">
                                 <Editor4 onValueChange={handleSkillDescriptionChange} />
@@ -545,7 +602,7 @@ function CreateCV() {
                         </div>
                         <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
                             <img 
-                                src='/Image/Create_CV_Options/Arrow_alt_left_alt.svg'
+                                src='/Image/Create_CV/Arrow_alt_left_alt.svg'
                                 className='create-cv-options-icon'
                                 alt='icon'
                             />
@@ -553,7 +610,7 @@ function CreateCV() {
                         </div>
                         <div className="create-cv-options-button back-button create-cv-next-button" onClick={handleNextClick}>
                             <img 
-                                src='/Image/Create_CV_Options/Arrow_alt_lright_alt.svg'
+                                src='/Image/Create_CV/Arrow_alt_lright_alt.svg'
                                 className='create-cv-icon'
                                 alt='icon'
                             />
@@ -563,7 +620,7 @@ function CreateCV() {
                 }
                 {currentStep === 5 && 
                     <div>
-                        <div className='hidden'>
+                        <div className={`${previousStep <= currentStep ? 'hidden-right' : 'hidden'}`}>
                             <h className='create-cv-content-title'>Briefly tell us about your background</h>
                             <div className="create-cv-skill-description-form-field">
                                 <Editor5 onValueChange={handleSummaryDescriptionChange} />
@@ -571,7 +628,7 @@ function CreateCV() {
                         </div>
                         <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
                             <img 
-                                src='/Image/Create_CV_Options/Arrow_alt_left_alt.svg'
+                                src='/Image/Create_CV/Arrow_alt_left_alt.svg'
                                 className='create-cv-options-icon'
                                 alt='icon'
                             />
@@ -579,7 +636,7 @@ function CreateCV() {
                         </div>
                         <div className="create-cv-options-button back-button create-cv-next-button" onClick={handleNextClick}>
                             <img 
-                                src='/Image/Create_CV_Options/Arrow_alt_lright_alt.svg'
+                                src='/Image/Create_CV/Arrow_alt_lright_alt.svg'
                                 className='create-cv-icon'
                                 alt='icon'
                             />
@@ -589,10 +646,10 @@ function CreateCV() {
                 }
                 {currentStep === 6 && 
                     <div>
-                        <div className='hidden'>
+                        <div className={`${previousStep <= currentStep ? 'hidden-right' : 'hidden'}`}>
                             <div className="create-cv-cv-name-form-field">
                                 <img 
-                                    src='/Image/Create_CV_Options/Edit_light.svg'
+                                    src='/Image/Create_CV/Edit_light.svg'
                                     className='create-cv-options-icon'
                                     alt='icon'
                                 />
@@ -610,7 +667,7 @@ function CreateCV() {
                             <Link to="">
                                 <div className="create-cv-options-button create-cv-button create-cv-download-cv-button">
                                     <img 
-                                        src='/Image/Create_CV_Options/Arhive_load_light.svg'
+                                        src='/Image/Create_CV/Arhive_load_light.svg'
                                         className='create-cv-options-icon'
                                         alt='icon'
                                     />
@@ -620,7 +677,7 @@ function CreateCV() {
                             <Link to="">
                                 <div className="create-cv-options-button create-cv-button create-cv-save-cv-button">
                                     <img 
-                                        src='/Image/Create_CV_Options/Save_light.svg'
+                                        src='/Image/Create_CV/Save_light.svg'
                                         className='create-cv-options-icon'
                                         alt='icon'
                                     />
@@ -628,12 +685,63 @@ function CreateCV() {
                                 </div>
                             </Link>
                             <div className='create-cv-edit-cv-area'>
+                                {[1, 2, 3, 4].map(step => (
+                                <div
+                                    key={step}
+                                    className={`create-cv-edit-cv-area-option 
+                                                ${step === 1 ? 'create-cv-edit-cv-area-option-first' : ''}
+                                                ${step === 4 ? 'create-cv-edit-cv-area-option-last' : ''}
+                                                ${currentEditCVOption === step ? 'active' : ''}`}  
+                                >
+                                    <div 
+                                        className='create-cv-edit-cv-area-option-header'
+                                        onClick={() => handleEditCVOptionClick(step)}
+                                    >
+                                        <img 
+                                            src={`  ${step === 1 ? '/Image/Create_CV/spell-check-solid-svgrepo-com.svg' : ''}
+                                                    ${step === 2 ? '/Image/Create_CV/format-svgrepo-com.svg' : ''}
+                                                    ${step === 3 ? '/Image/Create_CV/format-text-size-svgrepo-com.svg' : ''}
+                                                    ${step === 4 ? '/Image/Create_CV/Add_ring_fill.svg' : ''}`}
+                                            className='create-cv-options-icon create-cv-edit-cv-area-option-icon'
+                                            alt='icon'
+                                        />
+                                        <p className='create-cv-options-button-text create-cv-edit-cv-area-option-header-text'>
+                                            {editCVOptionNames[step - 1]}
+                                        </p>
+                                        <img 
+                                            src={`${currentEditCVOption === step ? '/Image/Create_CV/Expand_up.svg' 
+                                                                                : '/Image/Create_CV/Expand_down.svg'}`}
+                                            className='create-cv-icon'
+                                            alt='icon'
+                                        />
+                                    </div>
+                                    {currentEditCVOption === 1 && 
+                                        <div className={`${currentEditCVOption === step ? 'create-cv-edit-cv-area-extended' : ''}`}>
 
+                                        </div>
+                                    }
+                                    {currentEditCVOption === 2 && 
+                                        <div className={`${currentEditCVOption === step ? 'create-cv-edit-cv-area-extended' : ''}`}>
+
+                                        </div>
+                                    }
+                                    {currentEditCVOption === 3 && 
+                                        <div className={`${currentEditCVOption === step ? 'create-cv-edit-cv-area-extended' : ''}`}>
+
+                                        </div>
+                                    }
+                                    {currentEditCVOption === 4 && 
+                                        <div className={`${currentEditCVOption === step ? 'create-cv-edit-cv-area-extended' : ''}`}>
+
+                                        </div>
+                                    }
+                                </div>
+                                ))}
                             </div>
                         </div>
                         <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
                             <img 
-                                src='/Image/Create_CV_Options/Arrow_alt_left_alt.svg'
+                                src='/Image/Create_CV/Arrow_alt_left_alt.svg'
                                 className='create-cv-options-icon'
                                 alt='icon'
                             />

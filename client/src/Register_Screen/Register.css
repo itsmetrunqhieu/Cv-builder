@@ -1,3 +1,18 @@
+.hidden-bottom {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateY(100%);
+    transition: all 0.5s;
+    z-index: 1000;
+}
+
+.showY {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+    z-index: 1000;
+}
+
 .Register{
     position: absolute;
     top: 0;
@@ -9,24 +24,22 @@
 }
 
 .Register-main {
-    position: absolute;
-    width: 639px;
-    height: 454px;
-    left: 440px;
+    position: relative;
+    width: 700px;
+    height: 520px;
+    left: 420px;
     top: 130px;
 }
 
-.Registration {
-    position: absolute;
+.Registration-text {
+    position: relative;
     width: 100%;
-    height: 40px;
     text-align: center;
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 35px;
-    line-height: 42px;
+    font-size: 40px;
     margin: 0px;
 
     color: #FFFFFF;
@@ -35,70 +48,63 @@
 
 .fullname-regis-form-field {
     position: absolute;
-    width: 260px;
-    height: 41px;
     left: 30px;
     top: 90px;
+    transition-delay: 200ms;
 }
 
 .username-regis-form-field {
     position: absolute;
-    width: 260px;
-    height: 41px;
     right: 30px;
     top: 90px;
+    transition-delay: 200ms;
 }
 
 .email-regis-form-field {
     position: absolute;
-    width: 260px;
-    height: 41px;
     left: 30px;
     top: 170px;
+    transition-delay: 300ms;
 }
 
 .phone-regis-form-field {
     position: absolute;
-    width: 260px;
-    height: 41px;
     right: 30px;
     top: 170px;
+    transition-delay: 300ms;
 }
 
 .password-regis-form-field {
     position: absolute;
-    width: 260px;
-    height: 41px;
     left: 30px;
     top: 250px;
+    transition-delay: 400ms;
 }
 
 .cfpassword-regis-form-field {
     position: absolute;
-    width: 260px;
-    height: 41px;
     right: 30px;
     top: 250px;
+    transition-delay: 400ms;
 }
 
 .gender {
     position: absolute;
     width: 100%;
     height: 60px;
-    top: 330px;
+    top: 320px;
+    transition-delay: 500ms;
 }
 
 .gender-text {
     position: absolute;
     width: 100%;
-    height: 23px;
     left: 30px;
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 25px;
     margin: 0;
 
     color: #FFFFFF;
@@ -106,9 +112,9 @@
 
 .male-box {
     position: absolute;
-    width: 11px;
-    height: 13px;
-    left: 80px;
+    width: 15px;
+    height: 15px;
+    left: 75px;
     top: 40px;
 
     background: #D9D9D9;
@@ -117,16 +123,13 @@
 
 .male-text {
     position: absolute;
-    width: 44px;
-    height: 21px;
     left: 100px;
     top: 40px;
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 17px;
-    line-height: 21px;
+    font-size: 20px;
     margin: 0;
 
     color: #FFFFFF;
@@ -134,9 +137,9 @@
 
 .female-box {
     position: absolute;
-    width: 11px;
-    height: 13px;
-    left: 250px;
+    width: 15px;
+    height: 15px;
+    left: 245px;
     top: 40px;
 
     background: #D9D9D9;
@@ -153,8 +156,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 17px;
-    line-height: 21px;
+    font-size: 20px;
     margin: 0;
 
     color: #FFFFFF;
@@ -162,9 +164,9 @@
 
 .prefer-box {
     position: absolute;
-    width: 11px;
-    height: 13px;
-    left: 430px;
+    width: 15px;
+    height: 15px;
+    left: 425px;
     top: 40px;
 
     background: #D9D9D9;
@@ -181,8 +183,7 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 17px;
-    line-height: 21px;
+    font-size: 20px;
     margin: 0;
 
     color: #FFFFFF;
@@ -190,13 +191,15 @@
 
 .register-button {
     position: absolute;
-    width: 260px;
-    height: 41px;
+    width: 300px;
+    height: 45px;
     left: 190px;
-    top: 420px;
+    top: 410px;
+    transition-delay: 600ms;
 }
 
-.have-account {
+.have-account-text {
     position: absolute;
     top: 470px;
+    transition-delay: 700ms;
 }

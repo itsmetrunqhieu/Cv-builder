@@ -1,5 +1,5 @@
 import './Login.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -27,6 +27,34 @@ function Login() {
     // Sử dụng username và password ở đây, có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
   };
 
+  useEffect(() => {
+    const observerCallback = (entries) => {
+        entries.forEach((entry) => {
+            console.log(entry);
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            } else {
+                entry.target.classList.remove('show');
+            }
+        });
+    };
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0,
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    const hiddenElements = document.querySelectorAll('.hidden-right');
+    hiddenElements.forEach((el) => observer.observe(el));
+
+    return () => {
+        hiddenElements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
   return (
     <div className="Login">
         <img
@@ -53,7 +81,7 @@ function Login() {
                 className='CV-counter'
                 alt='CV-counter' 
             />
-            <div className="Login-part">
+            <div className="Login-part hidden-right">
                 <p className="Login-text">Login</p>
                 <div className="username-form-field">
                   <input
@@ -90,10 +118,12 @@ function Login() {
                     style={imgStyle}
                   />
                 </div>
-                <Link to="" className="forgot" style={{ color: '#62A4F0' }}>Forgot password?</Link>
+                <Link to="">
+                  <p className='forgot-password-text'>Forgot password?</p>
+                </Link>
                 <button className="login-button" onClick={handleSubmit}>Login</button>
-                <p className="dont-account">
-                  Don’t have an account? <Link to="/register" style={{ color: '#62A4F0' }}>Sign up</Link>
+                <p className="dont-account-text">
+                  Don’t have an account? <Link to="/register" className='dont-account-sign-up-text'>Sign up</Link>
                 </p>
             </div>
         </div>

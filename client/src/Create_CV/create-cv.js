@@ -4,8 +4,7 @@ import '../Login_Screen/Login.css'
 import '../Home_Screen/Home.css'
 import React, { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import Editor4 from './editor-step4';
-import Editor5 from './editor-step5';
+import Editor from './editor-step';
 
 function CreateCV() {
     // Step 1: Personal Information
@@ -58,6 +57,9 @@ function CreateCV() {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [currentlyWorkHere, setCurrentlyWorkHere] = useState(false);
+    // eslint-disable-next-line no-unused-vars
+    const [jobDescription, setJobDescription] = useState('');
+
 
     const handleJobTitleChange = (event) => {
         setJobTitle(event.target.value);
@@ -85,6 +87,12 @@ function CreateCV() {
 
     const handleCurrentlyWorkHereChange = (event) => {
         setCurrentlyWorkHere(event.target.checked);
+    };
+
+    const handleJobDescriptionChange = (value) => {
+        if (value !== undefined && value !== null) {
+            setJobDescription(value);
+        }
     };
 
     // Step 3: Education Information
@@ -144,7 +152,6 @@ function CreateCV() {
         }
     };
 
-    
     // Step 6: Finalize
     // eslint-disable-next-line no-unused-vars
     const [CVName, setCVName] = useState('');
@@ -466,6 +473,10 @@ function CreateCV() {
                                 />
                                 <p className='create-cv-form-text currently-work-text'>I currently work here</p>
                             </div>
+                            <div className="create-cv-job-description-form-field">
+                                <p className='create-cv-form-text'>Job Description</p>
+                                <Editor onValueChange={handleJobDescriptionChange} currentStep={currentStep} />
+                            </div>
                         </div>
                         <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
                             <img 
@@ -597,7 +608,7 @@ function CreateCV() {
                         <div className={`${previousStep <= currentStep ? 'hidden-right' : 'hidden'}`}>
                             <h className='create-cv-content-title'>What skills would you like to highlight?</h>
                             <div className="create-cv-skill-description-form-field">
-                                <Editor4 onValueChange={handleSkillDescriptionChange} />
+                                <Editor onValueChange={handleSkillDescriptionChange} currentStep={currentStep} />
                             </div>
                         </div>
                         <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>
@@ -623,7 +634,7 @@ function CreateCV() {
                         <div className={`${previousStep <= currentStep ? 'hidden-right' : 'hidden'}`}>
                             <h className='create-cv-content-title'>Briefly tell us about your background</h>
                             <div className="create-cv-skill-description-form-field">
-                                <Editor5 onValueChange={handleSummaryDescriptionChange} />
+                                <Editor onValueChange={handleSummaryDescriptionChange} currentStep={currentStep} />
                             </div>
                         </div>
                         <div className="create-cv-options-button back-button create-cv-back-button" onClick={handleBackClick}>

@@ -6,6 +6,10 @@
     padding: 10px;
 }
 
+.editor-container-step2 {
+    width: 460px;
+}
+
 .editor-content {
     height: 82.5%;
 
@@ -27,4 +31,8 @@
     font-size: 18px;
     margin: 0;
     color: #858585;
+}
+
+.placeholder-step2 {
+    top: 105px;
 }

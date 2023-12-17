@@ -1,0 +1,38 @@
+.editor-container {
+    width: 650px;
+    height: 380px;
+    border: 1px solid #2b2b2b;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.editor-container-step2 {
+    width: 460px;
+}
+
+.editor-content {
+    height: 82.5%;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 18px;
+    margin: 0;
+    color: #000000;
+    border: 1px solid #2b2b2b;
+}
+
+.placeholder {
+    position: absolute;
+    top: 73px;
+    left: 27px;
+
+    font-family: 'Inter';
+    font-style: italic;
+    font-size: 18px;
+    margin: 0;
+    color: #858585;
+}
+
+.placeholder-step2 {
+    top: 105px;
+}

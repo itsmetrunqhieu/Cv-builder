@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import './index.css';
 import Home from './Home_Screen/Home';
 import Login from './Login_Screen/Login';
@@ -15,12 +15,14 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
+        <Route path="*" element={<Navigate to="/" />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/user/:username" element={<UserProfile />} />
+        <Route path="/user-profile" element={<UserProfile />} />
         <Route path="/create-cv-options" element={<CreateCVOptiopns />} />
         <Route path="/create-cv" element={<CreateCV/>} />
+        
       </Routes>
     </BrowserRouter>
   );

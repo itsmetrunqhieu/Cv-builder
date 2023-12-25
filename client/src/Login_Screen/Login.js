@@ -1,8 +1,12 @@
 import './Login.css';
 import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from '../Services/AuthService';
+
+
 
 function Login() {
+  const navigate = useNavigate();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -23,8 +27,20 @@ function Login() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = () => {
-    // Sử dụng username và password ở đây, có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
+  const handleSubmit = async () => {
+    try{
+      const user = await login({
+        email: username,
+        password: password
+      })
+      console.log(user);
+      const userData = user.data;
+      localStorage.setItem('user', JSON.stringify(userData));
+      navigate("/user-profile");
+    }catch(err){
+      console.log(err);
+    }
+    //navigate("/user-profile")
   };
 
   useEffect(() => {

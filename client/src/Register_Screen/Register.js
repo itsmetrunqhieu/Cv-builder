@@ -1,10 +1,13 @@
 import './Register.css';
 import '../Login_Screen/Login.css';
 import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { register} from '../Services/AuthService';
 
 function Register() {
+
+  const navigate = useNavigate();
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [iscfPasswordVisible, setIscfPasswordVisible] = useState(false);
   const [username, setUsername] = useState('');
@@ -90,6 +93,7 @@ function Register() {
         role: "user",
       })
       console.log(res);
+      navigate("/user-profile");
     }catch(err){
       console.log(err);
     }

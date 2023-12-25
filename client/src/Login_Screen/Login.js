@@ -1,7 +1,10 @@
 import './Login.css';
+import { connect } from 'react-redux';
 import React, { useEffect, useState } from 'react';
+//import { push } from "connected-react-router";
+import * as actions from "../Store/actions";
 import { Link, useNavigate } from "react-router-dom";
-
+import { login} from '../Services/AuthService';
 
 
 function Login() {
@@ -26,8 +29,20 @@ function Login() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = () => {
-    navigate("/user-profile")
+  const handleSubmit = async () => {
+    try{
+      const res = await login({
+        email: username,
+        password: password,
+      })
+      console.log(res);
+      //this.props.userLoginSuccess(res.data);
+      navigate("/user-profile");
+    }catch(err){
+      alert(err.response.data.message);
+      console.log("errorvlra");
+    }
+    
   };
 
   useEffect(() => {
@@ -94,7 +109,7 @@ function Login() {
                     value={username}
                     onChange={handleUsernameChange}
                   />
-                  <label htmlFor="username" className="form-label">Username</label>
+                  <label htmlFor="username" className="form-label">Email</label>
                   <img 
                       src='/Image/Login_Screen/User_alt_light.svg'
                       className='icon'
@@ -134,4 +149,20 @@ function Login() {
   );
 }
 
-export default Login;
+// const mapStateToProps = state => {
+//   return {
+//       language: state.app.language
+//   };
+// };
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//       //navigate: (path) => dispatch(push(path)),
+//       // userLoginFail: () => dispatch(actions.adminLoginFail()),
+//       userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo))
+//   };
+
+
+// };
+
+export default(Login);

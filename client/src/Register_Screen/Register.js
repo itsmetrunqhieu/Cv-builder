@@ -1,5 +1,6 @@
 import './Register.css';
-import '../Login_Screen/Login.css';
+import '../Store/actions/index.js'
+//import '../Login_Screen/Login.css';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { register} from '../Services/AuthService';

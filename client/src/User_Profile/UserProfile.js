@@ -16,6 +16,10 @@ const UserProfile = () => {
     isPreferNotToSayChecked: false,
   });
 
+  // const fetchData = async () => {
+  //   const data = await fetch()
+  // }
+
   React.useEffect(() => {
     // Trong thực tế, bạn sẽ gọi API để lấy dữ liệu người dùng dựa trên `username`
     // Tạm thời, sử dụng setUserData để cập nhật dữ liệu người dùng

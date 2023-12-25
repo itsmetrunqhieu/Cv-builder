@@ -10,6 +10,9 @@ import CreateCVOptiopns from './Create_CV/create-cv-options';
 import CreateCV from './Create_CV/create-cv';
 import reportWebVitals from './reportWebVitals';
 
+import { Provider } from 'react-redux';
+//import reduxStore, { persistor } from './redux';
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -31,7 +34,7 @@ export default function App() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+            <App/>
   </React.StrictMode>
 );
 

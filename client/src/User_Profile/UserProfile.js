@@ -14,15 +14,15 @@ const UserProfile = () => {
     isPreferNotToSayChecked: false,
   });
 
-  // const getUserData = async () => {
-  //   //console.log(localStorage.getItem('user'));
-  //   const user = await JSON.parse(localStorage.getItem('user'));
-  //   setUserData({
-  //     fullName: user.name,
-  //     email: user.email,
-  //     role: user.role,
-  //   })
-  // };
+  const getUserData = async () => {
+    //console.log(localStorage.getItem('user'));
+    const user = await JSON.parse(localStorage.getItem('user'));
+    setUserData({
+      fullName: user.name,
+      email: user.email,
+      role: user.role,
+    })
+  };
 
   React.useEffect(() => {
 

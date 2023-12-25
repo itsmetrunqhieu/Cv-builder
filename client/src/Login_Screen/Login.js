@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import * as actions from "../Store/actions";
 import { Link, useNavigate } from "react-router-dom";
 
-
+import { login} from '../Services/AuthService';
 
 function Login() {
   const navigate = useNavigate();
@@ -36,6 +36,8 @@ function Login() {
         password: password,
       })
       console.log(res);
+      const userData = res.data;
+      localStorage.setItem('user', JSON.stringify(userData));
       //this.props.userLoginSuccess(res.data);
       navigate("/user-profile");
     }catch(err){

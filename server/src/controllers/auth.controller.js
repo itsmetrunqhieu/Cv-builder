@@ -18,6 +18,7 @@ const signup = async (req, res, next) => {
     } else return res.status(400).json({ msg: "User already existed" });
     //res.status(201).json(newUser);
   } catch (err) {
+    // console.log(err);
     next(err);
   }
 };
@@ -35,6 +36,7 @@ const signin = async (req, res, next) => {
       .status(200)
       .json(validUser);
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };

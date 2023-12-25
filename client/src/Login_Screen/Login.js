@@ -1,6 +1,7 @@
 import './Login.css';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import { login } from '../Services/AuthService';
 
 
 
@@ -26,8 +27,20 @@ function Login() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = () => {
-    navigate("/user-profile")
+  const handleSubmit = async () => {
+    try{
+      const user = await login({
+        email: username,
+        password: password
+      })
+      console.log(user);
+      const userData = user.data;
+      localStorage.setItem('user', JSON.stringify(userData));
+      navigate("/user-profile");
+    }catch(err){
+      console.log(err);
+    }
+    //navigate("/user-profile")
   };
 
   useEffect(() => {

@@ -22,9 +22,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       // preview_dir: {
       //   type: DataTypes.STRING,
-      //   // allowNull: false,
+      //   allowNull: false,
       // },
-      filePath: {
+      html_dir: {
         type: DataTypes.STRING,
       },
     },

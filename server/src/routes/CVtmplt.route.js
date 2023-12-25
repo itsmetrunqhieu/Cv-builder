@@ -1,5 +1,5 @@
-const express = require(`express`);
-const CV_tmplt = require("../middlewares/multerConfig");
+const express = require("express");
+const CV_tmpltDTB = require("../middlewares/multerConfig");
 const {
   insertTmplt,
   deleteTmplt,
@@ -7,7 +7,8 @@ const {
 
 const router = express.Router();
 
-router.post("/save", CV_tmplt.single("file"), insertTmplt);
+router.get("/get/:");
+router.post("/save", CV_tmpltDTB.single("file"), insertTmplt);
 router.delete("/delete", deleteTmplt);
 
 module.exports = router;

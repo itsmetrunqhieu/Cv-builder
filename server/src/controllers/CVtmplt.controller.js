@@ -1,32 +1,11 @@
-const fs = require("fs");
-const path = require("path");
 const { CV_tmplt } = require("../models");
 
 const insertTmplt = async (req, res, next) => {
-  //read html file as a string
-  // fs.readFile(tmpltpath, "utf-8", async (err, htmlstr) => {
-  //   if (err) {
-  //     console.error(err);
-  //     return;
-  //   }
-  //   //Find the exact template if exist(avoid duplicate). If not, insert html string to database
-  //   [new_tmplt, created] = await cv_tmplt.findOrCreate({
-  //     where: { htmlstr },
-  //     default: { previewdir, htmlstr },
-  //   });
-  // });
-  // if (created) {
-  //   console.log("Template already exist");
-  //   return;
-  // } else {
-  //   console.log("Insert Template successfully");
-  //   return;
-  // }
   try {
     if (req.file) {
       const filePath = req.file.path;
       const [newCVtmplt, created] = await CV_tmplt.findOrCreate({
-        where: { filePath },
+        where: { html_dir: filePath },
       });
       if (created) {
         return res.status(201).json(newCVtmplt);
@@ -40,13 +19,20 @@ const insertTmplt = async (req, res, next) => {
   }
 };
 
-const deleteTmplt = async (req,res,next) ={
+const deleteTmplt = async (req, res, next) => {
+  try {
+    CV_tmplt.findOr;
+  } catch (error) {}
+};
 
-}
-
+const getTmplt = async (req, res, next) => {
+  try {
+  } catch (error) {}
+};
 module.exports = {
-  inserTmplt,
-  deleteTmplt
+  insertTmplt,
+  getTmplt,
+  deleteTmplt,
 };
 // (Opinion) Use directory instead of string?
 // A html template consist more than 5k character

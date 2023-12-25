@@ -20,11 +20,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         autoIncrement: true,
       },
-      preview_dir: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      xml_smp: {
+      // preview_dir: {
+      //   type: DataTypes.STRING,
+      //   // allowNull: false,
+      // },
+      filePath: {
         type: DataTypes.STRING,
       },
     },

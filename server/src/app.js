@@ -8,6 +8,8 @@ require("dotenv").config();
 //export router
 const userRouter = require(`./routes/user.route`);
 const authRouter = require("./routes/auth.route");
+const CVtmpltRouter = require("./routes/CVtmplt.route");
+
 //datebase setup
 const db = require("./models/index.js");
 const PORT = 5000;
@@ -24,6 +26,7 @@ app.use(express.json());
 //patch
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/CVtmplt", CVtmpltRouter);
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";

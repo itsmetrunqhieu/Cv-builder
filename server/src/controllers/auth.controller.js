@@ -19,6 +19,7 @@ const signup = async (req, res, next) => {
     } else return res.status(400).json({ msg: "User already existed" });
     //res.status(201).json(newUser);
   } catch (err) {
+    // console.log(err);
     next(err);
   }
 };

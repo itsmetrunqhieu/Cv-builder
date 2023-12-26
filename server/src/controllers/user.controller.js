@@ -4,6 +4,7 @@ const test = (req, res) => {
   });
 };
 
-module.exports = test;
+
+module.exports = {test};
 //fsmegasale15
 //sieutuyet20

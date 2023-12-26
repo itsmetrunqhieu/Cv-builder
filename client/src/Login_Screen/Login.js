@@ -1,8 +1,14 @@
 import './Login.css';
+import { connect } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+//import { push } from "connected-react-router";
+import * as actions from "../Store/actions";
+import { Link, useNavigate } from "react-router-dom";
+
+import { login} from '../Services/AuthService';
 
 function Login() {
+  const navigate = useNavigate();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -23,8 +29,22 @@ function Login() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = () => {
-    // Sử dụng username và password ở đây, có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
+  const handleSubmit = async () => {
+    try{
+      const res = await login({
+        email: username,
+        password: password,
+      })
+      console.log(res);
+      const userData = res.data;
+      localStorage.setItem('user', JSON.stringify(userData));
+      //this.props.userLoginSuccess(res.data);
+      navigate("/user-profile");
+    }catch(err){
+      alert(err.response.data.message);
+      console.log("errorvlra");
+    }
+    
   };
 
   useEffect(() => {
@@ -91,7 +111,7 @@ function Login() {
                     value={username}
                     onChange={handleUsernameChange}
                   />
-                  <label htmlFor="username" className="form-label">Username</label>
+                  <label htmlFor="username" className="form-label">Email</label>
                   <img 
                       src='/Image/Login_Screen/User_alt_light.svg'
                       className='icon'
@@ -131,4 +151,20 @@ function Login() {
   );
 }
 
-export default Login;
+// const mapStateToProps = state => {
+//   return {
+//       language: state.app.language
+//   };
+// };
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//       //navigate: (path) => dispatch(push(path)),
+//       // userLoginFail: () => dispatch(actions.adminLoginFail()),
+//       userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo))
+//   };
+
+
+// };
+
+export default(Login);

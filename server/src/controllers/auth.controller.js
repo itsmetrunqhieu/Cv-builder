@@ -7,6 +7,7 @@ const nodemailer = require("nodemailer");
 const signup = async (req, res, next) => {
   try {
     const { email, name, password, role } = req.body;
+    console.log(req.body);
     const hashPassword = bcryptjs.hashSync(password, 10);
     console.log(email, name, password, role);
     const [newUser, created] = await User.findOrCreate({
@@ -18,23 +19,26 @@ const signup = async (req, res, next) => {
     } else return res.status(400).json({ msg: "User already existed" });
     //res.status(201).json(newUser);
   } catch (err) {
+    // console.log(err);
     next(err);
   }
 };
 
 const signin = async (req, res, next) => {
   const { email, password } = req.body;
+  console.log(req.body);
   try {
     const validUser = await User.findOne({ where: { email } });
     if (!validUser) return next(errorHandler(404, "User not found!"));
     const validPassword = bcryptjs.compareSync(password, validUser.password);
-    if (!validPassword) return next(errorHandler(401, "Wrong credential!"));
+    if (!validPassword) return next(errorHandler(401, "Wrong password!"));
     const token = jwt.sign({ id: validUser.id }, process.env.JWT_SECRET);
     res
       .cookie("access_token", token, { httpOnly: true })
       .status(200)
       .json(validUser);
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };

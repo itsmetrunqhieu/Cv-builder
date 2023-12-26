@@ -24,8 +24,18 @@ const insertTmplt = async (req, res, next) => {
 
 const deleteTmplt = async (req, res, next) => {
   try {
-    CV_tmplt.findOr;
-  } catch (error) {}
+    const tmpltId = req.params.id;
+
+    const deltmplt = await CV_tmplt.findByPk(tmpltId);
+    if (!deltmplt) return res.status(404).json({msg: "Template not found"});
+    console.log("Deleting From Database Template ID: "+tmpltId);
+    await deltmplt.destroy();
+    console.log("Template Deleted From Database");
+    return res.status(200).json({msg: "Template Deleted From Database"});
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 };
 
 const getTmplt = async (req, res, next) => {
@@ -88,5 +98,3 @@ module.exports = {
   deleteTmplt,
   submitInfor,
 };
-// (Opinion) Use directory instead of string?
-// A html template consist more than 5k character

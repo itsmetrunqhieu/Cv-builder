@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get("/get/:id", getTmplt);
 router.post("/save", CV_tmpltDTB.single("file"), insertTmplt);
-router.delete("/delete", deleteTmplt);
+router.delete("/delete/:id", deleteTmplt);
 router.post("/submitInfor", submitInfor);
 
 module.exports = router;

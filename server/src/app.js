@@ -22,7 +22,8 @@ app.use(cors()); // enable cors
 app.use(express.json());
 
 // Set up Handlebars
-app.engine(".hbs", engine({ extname: ".hbs" }));
+app.engine(".hbs", engine({ extname: ".hbs",
+ }));
 app.set("view engine", ".hbs");
 app.set("views", "./views");
 //get

@@ -27,11 +27,11 @@ const deleteTmplt = async (req, res, next) => {
     const tmpltId = req.params.id;
 
     const deltmplt = await CV_tmplt.findByPk(tmpltId);
-    if (!deltmplt) return res.status(404).json({msg: "Template not found"});
-    console.log("Deleting From Database Template ID: "+tmpltId);
+    if (!deltmplt) return res.status(404).json({ msg: "Template not found" });
+    console.log("Deleting From Database Template ID: " + tmpltId);
     await deltmplt.destroy();
     console.log("Template Deleted From Database");
-    return res.status(200).json({msg: "Template Deleted From Database"});
+    return res.status(200).json({ msg: "Template Deleted From Database" });
   } catch (error) {
     console.log(error);
     next(error);
@@ -86,7 +86,7 @@ const submitInfor = (req, res, next) => {
   try {
     const data = req.body;
     console.log(data);
-    res.render(`${data.fileName}`, { title: data.name, data });
+    res.render(`${data.fileName}`, data);
   } catch (error) {
     next(error);
   }

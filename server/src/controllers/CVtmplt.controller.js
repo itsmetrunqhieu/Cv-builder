@@ -1,4 +1,7 @@
 const { CV_tmplt } = require("../models");
+const fs = require("fs");
+const path = require("path");
+const errorHandler = require("../utils/error");
 
 const insertTmplt = async (req, res, next) => {
   try {
@@ -27,7 +30,42 @@ const deleteTmplt = async (req, res, next) => {
 
 const getTmplt = async (req, res, next) => {
   try {
-  } catch (error) {}
+    const fileId = req.params.id;
+
+    const fileRecord = await CV_tmplt.findByPk(fileId);
+    console.log(fileRecord.html_dir, typeof fileRecord.html_dir);
+
+    if (!fileRecord) {
+      return res.status(404).send("File not found");
+    }
+    // Read the file from the file system, make a copy, and send it
+    const originalFilePath = path.join(
+      __dirname,
+      "../../",
+      `${fileRecord.html_dir}`
+    ); // Adjust based on how you store the path
+    const tempFilePath = path.join(
+      __dirname,
+      "../../",
+      `copy-${path.basename(fileRecord.html_dir)}`
+    ); // Create a temporary path to store the copy
+    console.log(originalFilePath, typeof originalFilePath);
+    console.log(tempFilePath, typeof tempFilePath);
+    fs.copyFile(originalFilePath, tempFilePath, (error) => {
+      if (error) {
+        errorHandler(500, "Could not process the file");
+      }
+      res.sendFile(tempFilePath, (downloadErr) => {
+        if (downloadErr) {
+          console.error(downloadErr);
+        }
+
+        // fs.unlink(tempFilePath);
+      });
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 module.exports = {
   insertTmplt,

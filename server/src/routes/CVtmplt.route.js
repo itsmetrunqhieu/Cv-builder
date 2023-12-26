@@ -4,6 +4,7 @@ const {
   getTmplt,
   insertTmplt,
   deleteTmplt,
+  submitInfor,
 } = require("../controllers/CVtmplt.controller");
 
 const router = express.Router();
@@ -11,5 +12,6 @@ const router = express.Router();
 router.get("/get/:id", getTmplt);
 router.post("/save", CV_tmpltDTB.single("file"), insertTmplt);
 router.delete("/delete", deleteTmplt);
+router.post("/submitInfor", submitInfor);
 
 module.exports = router;

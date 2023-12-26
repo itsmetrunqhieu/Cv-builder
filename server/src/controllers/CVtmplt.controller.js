@@ -60,17 +60,33 @@ const getTmplt = async (req, res, next) => {
           console.error(downloadErr);
         }
 
-        // fs.unlink(tempFilePath);
+        fs.unlink(tempFilePath, (error) => {
+          if (error) {
+            console.error(error);
+          }
+        });
       });
     });
   } catch (error) {
     next(error);
   }
 };
+
+const submitInfor = (req, res, next) => {
+  try {
+    const data = req.body;
+    console.log(data);
+    res.render(`${data.fileName}`, { title: data.name, data });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   insertTmplt,
   getTmplt,
   deleteTmplt,
+  submitInfor,
 };
 // (Opinion) Use directory instead of string?
 // A html template consist more than 5k character

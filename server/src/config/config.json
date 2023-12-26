@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "sa",
-    "password": "1",
+    "password": "123456",
     "database": "CV_builder",
-    "host": "HUYDAO-PC",
+    "host": "DUYTRAN-LAPTOP",
     "dialect": "mssql",
     "logging": false
   },

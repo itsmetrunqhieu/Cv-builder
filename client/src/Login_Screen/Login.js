@@ -1,9 +1,11 @@
 import './Login.css';
+import { connect } from 'react-redux';
 import React, { useEffect, useState } from 'react';
+//import { push } from "connected-react-router";
+import * as actions from "../Store/actions";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from '../Services/AuthService';
 
-
+import { login} from '../Services/AuthService';
 
 function Login() {
   const navigate = useNavigate();
@@ -29,18 +31,20 @@ function Login() {
 
   const handleSubmit = async () => {
     try{
-      const user = await login({
+      const res = await login({
         email: username,
-        password: password
+        password: password,
       })
-      console.log(user);
-      const userData = user.data;
+      console.log(res);
+      const userData = res.data;
       localStorage.setItem('user', JSON.stringify(userData));
+      //this.props.userLoginSuccess(res.data);
       navigate("/user-profile");
     }catch(err){
-      console.log(err);
+      alert(err.response.data.message);
+      console.log("errorvlra");
     }
-    //navigate("/user-profile")
+    
   };
 
   useEffect(() => {
@@ -107,7 +111,7 @@ function Login() {
                     value={username}
                     onChange={handleUsernameChange}
                   />
-                  <label htmlFor="username" className="form-label">Username</label>
+                  <label htmlFor="username" className="form-label">Email</label>
                   <img 
                       src='/Image/Login_Screen/User_alt_light.svg'
                       className='icon'
@@ -147,4 +151,20 @@ function Login() {
   );
 }
 
-export default Login;
+// const mapStateToProps = state => {
+//   return {
+//       language: state.app.language
+//   };
+// };
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//       //navigate: (path) => dispatch(push(path)),
+//       // userLoginFail: () => dispatch(actions.adminLoginFail()),
+//       userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo))
+//   };
+
+
+// };
+
+export default(Login);

@@ -29,7 +29,15 @@ const deleteTmplt = async (req, res, next) => {
     const deltmplt = await CV_tmplt.findByPk(tmpltId);
     if (!deltmplt) return res.status(404).json({ msg: "Template not found" });
     console.log("Deleting From Database Template ID: " + tmpltId);
-    await deltmplt.destroy();
+    const originalFilePath = path.join(
+      __dirname,
+      "../../",
+      `${deltmplt.html_dir}`
+    );
+    fs.unlink(originalFilePath,async (err)=>{
+      if (err) console.error(err);
+      await deltmplt.destroy();
+    })
     console.log("Template Deleted From Database");
     return res.status(200).json({ msg: "Template Deleted From Database" });
   } catch (error) {

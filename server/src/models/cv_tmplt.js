@@ -15,15 +15,11 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: {
         type: DataTypes.INTEGER,
-        // unique: true,
+        unique: true,
         primaryKey: true,
         allowNull: false,
         autoIncrement: true,
       },
-      // preview_dir: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false,
-      // },
       html_dir: {
         type: DataTypes.STRING,
       },

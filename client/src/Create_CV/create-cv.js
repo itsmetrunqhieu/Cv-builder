@@ -6,9 +6,7 @@ import React, { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import Editor from './editor-step';
 
-function CreateCV() {
-    const username = 'dungtruong151';
-
+function CreateCV() {   
     // Step 1: Personal Information
     const [firstname, setFirstname] = useState('');
     const [surname, setSurname] = useState('');
@@ -240,7 +238,6 @@ function CreateCV() {
             setCurrentStep(step);
         }
     };
-       
 
     const handleNextClick = () => {
         setPreviousStep(currentStep);
@@ -728,26 +725,26 @@ function CreateCV() {
                                             alt='icon'
                                         />
                                     </div>
-                                    {currentEditCVOption === 1 && 
-                                        <div className={`${currentEditCVOption === step ? 'create-cv-edit-cv-area-extended' : ''}`}>
-
+                                    {(currentEditCVOption === step && currentEditCVOption === 1) && (
+                                        <div className='create-cv-edit-cv-area-extended'>
+                                            
                                         </div>
-                                    }
-                                    {currentEditCVOption === 2 && 
-                                        <div className={`${currentEditCVOption === step ? 'create-cv-edit-cv-area-extended' : ''}`}>
-
+                                    )}
+                                    {(currentEditCVOption === step && currentEditCVOption === 2) && (
+                                        <div className='create-cv-edit-cv-area-extended'>
+                                            
                                         </div>
-                                    }
-                                    {currentEditCVOption === 3 && 
-                                        <div className={`${currentEditCVOption === step ? 'create-cv-edit-cv-area-extended' : ''}`}>
-
+                                    )}
+                                    {(currentEditCVOption === step && currentEditCVOption === 3) && (
+                                        <div className='create-cv-edit-cv-area-extended'>
+                                            
                                         </div>
-                                    }
-                                    {currentEditCVOption === 4 && 
-                                        <div className={`${currentEditCVOption === step ? 'create-cv-edit-cv-area-extended' : ''}`}>
-
+                                    )}
+                                    {(currentEditCVOption === step && currentEditCVOption === 4) && (
+                                        <div className='create-cv-edit-cv-area-extended'>
+                                            
                                         </div>
-                                    }
+                                    )}
                                 </div>
                                 ))}
                             </div>

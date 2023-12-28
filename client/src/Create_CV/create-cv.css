@@ -387,11 +387,12 @@
 
 .create-cv-button {
     border: none;
+    background-color: transparent;
     z-index: 9999;
 }
 
 .create-cv-button:hover {
-    background-color: white;
+    background-color: transparent;
 }
 
 .create-cv-download-cv-button {

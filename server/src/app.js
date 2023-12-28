@@ -5,6 +5,7 @@ const morgan = require("morgan");
 require("dotenv").config();
 const { engine } = require("express-handlebars");
 const cookieParser = require("cookie-parser");
+const { errorHandler } = require("./utils/error.js");
 // const config = require("./config/config");
 
 //export router
@@ -41,10 +42,10 @@ app.use("/api/CV", CVRouter);
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
+  const error = errorHandler(statusCode, message);
   return res.status(statusCode).json({
     success: false,
-    statusCode,
-    message,
+    error,
   });
 });
 

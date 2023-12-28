@@ -1,0 +1,140 @@
+.user-profile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.user-profile-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+}
+
+.user-profile-cover-field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+}
+
+.user-profile-cover {
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.user-profile-change-cover-button {
+    position: absolute;
+    top: 20px;
+    float: right;
+}
+
+.user-profile-change-cover-button-text {
+    margin: 10px auto 10px 0px;
+    float: left;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+
+    color: #ffffff;
+}
+
+.user-profile-left-field {
+    position: relative;
+    float: left;
+    top: 110px;
+    left: 100px;
+    width: 350px;
+    height: 580px;
+    border: 1px solid #5a5a5a;
+    background-color: #ffffff;
+    
+    z-index: 1;
+}
+
+.user-profile-avata-field {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 30px auto 0px;
+    border: 1px solid #b9b9b9;
+    border-radius: 50%;
+}
+
+.user-profile-avata {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.user-profile-avata-field-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+}
+
+.user-profile-left-field-text {
+    margin: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 23px;
+
+    color: #000000;
+}
+
+.user-profile-left-field-profile-name-field {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.user-profile-left-field-account-info-field {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 30px auto 20px;  
+}
+
+.user-profile-left-field-account-info-field-text {
+    font-weight: 600;
+}
+
+.user-profile-left-field-username-field {
+    margin: 0px 15px;
+}
+
+.user-profile-left-field-username-field-text {
+    text-align: center;
+    margin: 10px auto;
+    font-weight: 400;
+    font-size: 20px;
+
+    color: #676767;
+}
+
+.user-profile-right-field {
+    position: relative;
+    float: right;
+    top: 110px;
+    right: 100px;
+    width: 900px;
+    height: 580px;
+    border: 1px solid #5a5a5a;
+    background-color: #ffffff;
+
+    z-index: 0;
+}

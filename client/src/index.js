@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import './index.css';
 import Home from './Home_Screen/Home';
 import Login from './Login_Screen/Login';
@@ -10,17 +10,22 @@ import CreateCVOptiopns from './Create_CV/create-cv-options';
 import CreateCV from './Create_CV/create-cv';
 import reportWebVitals from './reportWebVitals';
 
+import { Provider } from 'react-redux';
+//import reduxStore, { persistor } from './redux';
+
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
+        <Route path="*" element={<Navigate to="/" />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/user/:username" element={<UserProfile />} />
+        <Route path="/user-profile" element={<UserProfile />} />
         <Route path="/create-cv-options" element={<CreateCVOptiopns />} />
         <Route path="/create-cv" element={<CreateCV/>} />
+        
       </Routes>
     </BrowserRouter>
   );
@@ -29,7 +34,7 @@ export default function App() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+            <App/>
   </React.StrictMode>
 );
 

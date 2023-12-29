@@ -1,7 +1,8 @@
-select * from CV_tmplts
- SET IDENTITY_INSERT CV_tmplts ON;
- drop table SequelizeMeta
- CREATE TABLE Users (
+-- create CV_builder database
+CREATE DATABASE CV_builder;
+
+-- User table
+CREATE TABLE Users (
     uid varchar(50) NOT NULL PRIMARY KEY,
     name varchar(50) NOT NULL,
     email varchar(50) NOT NULL,
@@ -10,16 +11,16 @@ select * from CV_tmplts
     location varchar(50),
     gender varchar(100),
 );
+-- CV table
 CREATE TABLE CVs (
     uid varchar(50) NOT NULL PRIMARY KEY,
     html_dir nvarchar(255) NOT NULL,
     pdf_dir nvarchar(255) NOT NULL,
  
 );
+-- CV_tmplts table
 CREATE TABLE CV_tmplts (
     uid varchar(50) NOT NULL PRIMARY KEY,
 	html_dir nvarchar(255) NOT NULL,
 	preview_dir nvarchar(255),
 );
-ALTER TABLE CV_tmplts
-rename column uid to id

@@ -1,0 +1,408 @@
+.user-profile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.user-profile-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+}
+
+.user-profile-cover-field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+}
+
+.user-profile-cover {
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.user-profile-change-cover-button {
+    position: absolute;
+    top: 20px;
+    float: right;
+}
+
+.user-profile-change-cover-button-text {
+    margin: 10px auto 10px 0px;
+    float: left;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+
+    color: #ffffff;
+}
+
+.user-profile-left-field {
+    position: relative;
+    float: left;
+    top: 110px;
+    left: 100px;
+    width: 350px;
+    height: 580px;
+    border: 1px solid #b9b9b9;
+    background-color: #ffffff;
+    
+    z-index: 1;
+}
+
+.user-profile-avata-field {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 30px auto 0px;
+    border: 1px solid #b9b9b9;
+    border-radius: 50%;
+}
+
+.user-profile-avata {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.user-profile-avata-field-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s;
+}
+
+.user-profile-avata-field-icon:hover {
+    transform: translateY(-3px);
+    transition: all 0.3s;
+}
+
+.user-profile-left-field-text {
+    margin: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 23px;
+
+    color: #000000;
+}
+
+.user-profile-left-field-profile-name-field {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.user-profile-left-field-account-info-field {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 30px auto 40px;  
+}
+
+.user-profile-left-field-account-info-field-text {
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.user-profile-left-field-username-field {
+    margin: 0px 15px;
+}
+
+.user-profile-left-field-username-field-text {
+    text-align: center;
+    margin: 10px 30px;
+    font-weight: 400;
+    font-size: 20px;
+
+    color: #676767;
+}
+
+.user-profile-left-field-username-field-icon {
+    position: absolute;
+    top: 418px;
+    right: 15px;
+    height: 30px;
+    width: 30px;
+}
+
+.user-profile-left-field-button {
+    position: absolute;
+    height: 40px;
+    width: 100px;
+    bottom: 0;
+    margin: 20px 125px;
+    background-color: #676767;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.user-profile-left-field-button:hover {
+    background-color: #5a5a5a;
+    transform: translateY(-3px);
+    transition: all 0.3s;
+}
+
+.user-profile-left-field-button-text {
+    height: 40px;
+    width: 100px;
+    font-size: 20px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-profile-right-field {
+    position: relative;
+    float: right;
+    top: 110px;
+    right: 100px;
+    width: 900px;
+    height: 580px;
+    border: 1px solid #b9b9b9;
+    background-color: #ffffff;
+
+    z-index: 2;
+}
+
+.user-profile-right-field-option-header {
+    position: relative;
+    width: 900px;
+    height: 100px;
+    border-bottom: 1px solid #b9b9b9;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.user-profile-right-field-option {
+    position: relative;
+    height: 70px;
+    top: 47px;
+}
+
+.user-profile-right-field-option-header-text {
+    margin: 10px;
+    font-weight: 550;
+    cursor: pointer;
+}
+
+.user-profile-right-field-option-active-signal {
+    position: relative;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background-color: #676767;
+    z-index: 9999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), -5px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-profile-right-field-content {
+    position: relative;
+    width: 900px;
+    height: 480px;
+}
+
+.user-profile-right-field-firstname-form-field {
+    position: absolute;
+    width: 300px;
+    left: 70px;
+    top: 30px;
+}
+
+.user-profile-right-field-surname-form-field {
+    position: absolute;
+    width: 300px;
+    left: 470px;
+    top: 30px;
+}
+
+.user-profile-right-field-phone-form-field {
+    position: absolute;
+    width: 300px;
+    left: 70px;
+    top: 120px;
+}
+
+.user-profile-right-field-email-form-field {
+    position: absolute;
+    width: 300px;
+    left: 470px;
+    top: 120px;
+}
+
+.user-profile-right-field-jobtitle-form-field {
+    position: absolute;
+    width: 300px;
+    left: 70px;
+    top: 210px;
+}
+
+.user-profile-right-field-employer-form-field {
+    position: absolute;
+    width: 300px;
+    left: 470px;
+    top: 210px;
+}
+
+.user-profile-right-field-city-step1-form-field {
+    position: absolute;
+    width: 300px;
+    left: 70px;
+    top: 300px;
+}
+
+.user-profile-right-field-country-step1-form-field {
+    position: absolute;
+    width: 300px;
+    left: 470px;
+    top: 300px;
+}
+
+.user-profile-right-field-button {
+    position: absolute;
+    height: 40px;
+    width: 100px;
+    left: 70px;
+    bottom: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    transition: all 0.3s;
+    border: 1px solid #000000;
+    cursor: pointer;
+}
+
+.user-profile-right-field-button:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-3px);
+    transition: all 0.3s;
+}
+
+.user-profile-right-field-save-button {
+    position: absolute;
+    width: 90px;
+    left: 730px;
+    bottom: 25px;
+}
+
+.user-profile-right-field-button-text {
+    color: #000000;
+    height: 40px;
+    width: 100px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cv-storage-field {
+    width: 900px;
+    height: 480px;
+    overflow: auto;
+}
+
+.user-profile-cv-storange-pic {
+    position: relative;
+    height: 230px;
+    float: left;
+    object-fit: cover;
+    margin: 20px 0 10px 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.user-profile-right-field-reset-password-form-field {
+    position: relative;
+    margin: 0px 70px 30px;
+    top: 30px;
+    height: 80px;
+}
+
+.user-profile-right-field-reset-password-form-input:not(:placeholder-shown),
+.user-profile-right-field-reset-password-form-input:focus {
+    width: 260px;
+    padding-right: 40px;
+}
+
+.user-profile-right-field-reset-password-icon1 {
+    position: absolute;
+    top: 46px;
+    left: 290px;
+}
+
+.user-profile-right-field-reset-password-icon2 {
+    position: absolute;
+    top: 46px;
+    left: 670px;
+}
+
+.user-profile-right-field-current-password-form-field {
+    width: 290px;
+    float: left;
+    margin: 10px 80px 10px 10px;
+}
+
+.user-profile-right-field-privacy-field {
+    position: relative;
+    margin: 35px 70px;
+    top: 20px;
+}
+
+.user-profile-right-field-notifications-switch {
+    position: absolute;
+    top: -7px;
+    left: 150px;
+}
+
+.user-profile-right-field-notifications-text {
+    margin: 20px 0 0 0;
+}
+
+.user-profile-right-field-english-field {
+    position: relative;
+    margin: 15px 0 0 10px;
+}
+
+.user-profile-right-field-language-checkbox {
+    float: left;
+    position: relative;
+    width: 20px;
+    height: 20px;
+
+    background: #D9D9D9;
+    border-radius: 2px;
+    margin: 0 20px 0px 0px;
+    cursor: pointer;
+}
+
+.user-profile-flag-icon {
+    position: relative;
+    height: 20px;
+    width: 30px;
+    float: left;
+    object-fit: cover;
+    border-radius: 5px;
+    margin: 0 10px 0px 0px;
+}
+
+.user-profile-right-field-language-text {
+    font-weight: 400;
+    font-size: 20px;
+
+    color: #676767;
+}

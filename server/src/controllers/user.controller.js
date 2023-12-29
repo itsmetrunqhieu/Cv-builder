@@ -9,11 +9,12 @@ const test = (req, res) => {
 const updateUser = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const { fullname, firstname, surname, phone, jobTitle, employer, citymunicipality, country } = req.body;
+    const { role, fullname, firstname, surname, phone, jobTitle, employer, citymunicipality, country } = req.body;
     console.log (req.body);
     const finduser = await User.findByPk(id);
     if (!finduser) return res.status(404).json({msg: "User not found"});
     finduser.set({
+      role: role,
       fullname: fullname,
       firstname: firstname,
       surname: surname,

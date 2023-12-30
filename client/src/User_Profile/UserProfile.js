@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './UserProfile.css';
 import Switch from './Switch';
+import { useEffect } from 'react';
 
 const UserProfile = () => {
     // Đây là nơi bạn có thể lấy dữ liệu từ API hoặc nơi khác để hiển thị thông tin người dùng
@@ -24,21 +25,9 @@ const UserProfile = () => {
         // Sử dụng username và password ở đây, có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
     };
 
-    // const getUserData = async () => {
-    //     //console.log(localStorage.getItem('user'));
-    //     const user = await JSON.parse(localStorage.getItem('user'));
-    //     setUserData({
-    //         fullName: user.name,
-    //         email: user.email,
-    //         role: user.role,
-    //     })
-    // };
-
-    // React.useEffect(() => {
-
-    //     getUserData();
-
-    // }, [userData.username]);
+    useEffect(() => {
+        console.log(JSON.stringify(localStorage.getItem('user')));
+    }, []);
 
     const [firstname, setFirstname] = useState('');
     const [surname, setSurname] = useState('');

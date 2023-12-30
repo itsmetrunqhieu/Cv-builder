@@ -42,10 +42,10 @@ app.use("/api/CV", CVRouter);
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
-  const error = errorHandler(statusCode, message);
   return res.status(statusCode).json({
     success: false,
     error,
+    message,
   });
 });
 

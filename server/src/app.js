@@ -23,7 +23,7 @@ const app = express(); // create your express app
 app.use(bodyParser.json()); // parse json requests
 app.use(cors()); // enable cors
 app.use(express.json());
-app.use(cookieParser);
+app.use(cookieParser());
 
 // Set up Handlebars
 app.engine(".hbs", engine({ extname: ".hbs" }));

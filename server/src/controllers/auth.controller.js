@@ -4,15 +4,33 @@ const errorHandler = require("../utils/error");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 
+function getSurname(fullname) {
+  // first word is surname for vietnamese name
+  return fullname.split(" ")[0];
+}
+
+function getFirstname(fullname) {
+  // last word is firstname for vietnamese name
+  return fullname.split(" ").slice(-1)[0];
+}
+
 const signup = async (req, res, next) => {
   try {
-    const { email, name, password, role } = req.body;
-    console.log(req.body);
+    const { email, username, fullname, phone, password, role } = req.body;
+    //console.log(req.body);
     const hashPassword = bcryptjs.hashSync(password, 10);
-    console.log(email, name, password, role);
+    //console.log(email, username, password, role);
     const [newUser, created] = await User.findOrCreate({
       where: { email },
-      defaults: { name, password: hashPassword, role },
+      defaults: { 
+        name: username,
+        fullname: fullname,
+        firstname: getFirstname(fullname),
+        surname: getSurname(fullname),
+        phone: phone,
+        password: hashPassword, 
+        role: role,
+      },
     });
     if (created) {
       return res.status(201).json(newUser);

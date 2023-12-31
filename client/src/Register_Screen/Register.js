@@ -89,7 +89,9 @@ function Register() {
     try{
       const res = await register({
         email: email,
-        name: fullName,
+        username: username,
+        fullname: fullName,
+        phone: phone,
         password: password,
         role: "user",
       })

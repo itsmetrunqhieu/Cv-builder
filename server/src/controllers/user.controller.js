@@ -8,7 +8,7 @@ const test = (req, res) => {
 
 const updateUser = async (req, res, next) => {
   try {
-    const id = req.params.id;
+    const id = req.query.id;
     const { role, fullname, firstname, surname, phone, jobTitle, employer, citymunicipality, country } = req.body;
     console.log (req.body);
     const finduser = await User.findByPk(id);

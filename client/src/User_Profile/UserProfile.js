@@ -26,6 +26,7 @@ const UserProfile = () => {
     };
 
     useEffect(() => {
+        console.log("user profile local storage");
         console.log(JSON.stringify(localStorage.getItem('user')));
         const user = JSON.parse(localStorage.getItem('user'));
         setUserData({

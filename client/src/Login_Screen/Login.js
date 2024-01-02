@@ -36,9 +36,11 @@ function Login() {
         password: password,
       })
       console.log(res);
-      const userData = res.data;
+      const userData = res.data.validUser;
+      const jwtToken = res.data.cookie;
       localStorage.setItem('user', JSON.stringify(userData));
-      //this.props.userLoginSuccess(res.data);
+      localStorage.setItem('token', jwtToken);
+
       navigate("/user-profile");
     }catch(err){
       alert(err.response.data.message);

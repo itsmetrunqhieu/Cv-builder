@@ -8,6 +8,6 @@ router.post("/testpost", async (req, res) => {
   console.log(req.body);
   res.send(req.body);
 });
-router.patch("/patch/:id", updateUser);
+router.patch("/patch", updateUser);
 
 module.exports = router;

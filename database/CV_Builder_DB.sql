@@ -24,3 +24,13 @@ CREATE TABLE CV_tmplts (
 	html_dir nvarchar(255) NOT NULL,
 	preview_dir nvarchar(255),
 );
+select * from Users
+select * from CVs
+select * from CV_tmplts
+
+DROP TABLE CVs
+DROP TABLE Users
+DROP TABLE CV_tmplts
+
+ALTER TABLE CVs
+DROP COLUMN CVTmpltId;

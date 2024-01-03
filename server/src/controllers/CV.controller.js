@@ -1,4 +1,5 @@
 const PDFDocument = require("pdfkit");
+const { CV } = require("../models");
 const fs = require("fs");
 
 const downloadPDF = async (req, res, next) => {
@@ -37,7 +38,15 @@ const downloadPDF = async (req, res, next) => {
 
 const saveUserCV = (req, res) => {
   try {
-    const newCV = req.params.fileName;
+    const userId = req.body.id;
+    const filePath = req.file.path;
+
+    CV.create({
+      html_dir: filePath,
+      UserId: userId,
+    }).then((cv) => {
+      res.status(200).send("File uploaded and path saved to successfully");
+    });
   } catch (error) {
     next(error);
   }

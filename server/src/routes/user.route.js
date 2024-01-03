@@ -1,13 +1,13 @@
 const express = require(`express`);
-const {test, updateUser} = require("../controllers/user.controller");
+const { test, updateUser } = require("../controllers/user.controller");
 
 const router = express.Router();
 
 router.get("/test", test);
-router.post("/testpost", async (req, res) =>{
-    console.log(req.body);
-    res.send(req.body);
+router.post("/testpost", async (req, res) => {
+  console.log(req.body);
+  res.send(req.body);
 });
-router.patch("/patch/:id",updateUser);
+router.patch("/patch/:id", updateUser);
 
 module.exports = router;

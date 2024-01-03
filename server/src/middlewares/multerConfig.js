@@ -2,7 +2,7 @@ const multer = require("multer");
 const { file } = require("pdfkit");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    let destination = "defaults/";
+    let destination = "Data/";
     if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
       destination = "Data/images/";
     } else if (file.mimetype === "text/html") {

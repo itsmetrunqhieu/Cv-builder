@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       preview_dir: {
         type: DataTypes.STRING,
-      }
+      },
     },
     {
       sequelize,

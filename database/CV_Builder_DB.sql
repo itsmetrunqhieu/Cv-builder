@@ -24,13 +24,13 @@ CREATE TABLE CV_tmplts (
 	html_dir nvarchar(255) NOT NULL,
 	preview_dir nvarchar(255),
 );
-select * from Users
+select * from CV_builder.dbo.Users
 select * from CVs
 select * from CV_tmplts
 
-DROP TABLE CVs
-DROP TABLE Users
-DROP TABLE CV_tmplts
+DROP TABLE CV_builder.dbo.CVs
+DROP TABLE CV_builder.dbo.Users
+DROP TABLE CV_builder.dbo.CV_tmplts
 
 ALTER TABLE CVs
 DROP COLUMN CVTmpltId;

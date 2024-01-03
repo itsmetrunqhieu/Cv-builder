@@ -23,6 +23,9 @@ module.exports = (sequelize, DataTypes) => {
       html_dir: {
         type: DataTypes.STRING,
       },
+      preview_dir: {
+        type: DataTypes.STRING,
+      }
     },
     {
       sequelize,

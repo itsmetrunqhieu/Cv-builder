@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         autoIncrement: true,
       },
-      xml_dir: {
+      html_dir: {
         type: DataTypes.STRING,
       },
       pdf_dir: {

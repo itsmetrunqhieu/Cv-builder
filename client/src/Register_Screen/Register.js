@@ -3,7 +3,7 @@ import '../Store/actions/index.js'
 //import '../Login_Screen/Login.css';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import { register} from '../Services/AuthService';
+import { login, register} from '../Services/AuthService';
 
 function Register() {
 
@@ -85,15 +85,26 @@ function Register() {
     }
     // Sử dụng các biến username, password, fullName, email, phone ở đây,
     // có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
-    console.log("handleSubmit");
+    console.log("Submit regiser");
     try{
       const res = await register({
         email: email,
-        name: fullName,
+        username: username,
+        fullname: fullName,
+        phone: phone,
         password: password,
         role: "user",
       })
-      console.log(res);
+      // console.log(res);
+      const login = await login({
+        email: email,
+        password: password,
+      })
+      const userData = login.data.validUser;
+      const jwtToken = login.data.cookie;
+      localStorage.setItem('user', JSON.stringify(userData));
+      localStorage.setItem('token', jwtToken);
+      
       navigate("/user-profile");
     }catch(err){
       console.log(err);

@@ -20,13 +20,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         autoIncrement: true,
       },
+      html_dir: {
+        type: DataTypes.STRING,
+      },
       preview_dir: {
         type: DataTypes.STRING,
-        allowNull: false,
-      },
-      xml_smp: {
-        type: DataTypes.STRING,
-      },
+      }
     },
     {
       sequelize,

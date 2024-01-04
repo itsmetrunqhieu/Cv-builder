@@ -26,7 +26,7 @@ CREATE TABLE CV_tmplts (
 );
 select * from CV_builder.dbo.Users
 select * from CVs
-select * from CV_tmplts
+select * from CV_builder.dbo.CV_tmplts
 
 DROP TABLE CV_builder.dbo.CVs
 DROP TABLE CV_builder.dbo.Users

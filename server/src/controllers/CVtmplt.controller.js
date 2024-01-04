@@ -5,10 +5,10 @@ const errorHandler = require("../utils/error");
 
 const insertTmplt = async (req, res, next) => {
   try {
-    if (req.file) {
-      const filePath = req.file.path;
+    if (req.body.fileName) {
+      const fileName = req.body.fileName;
       const [newCVtmplt, created] = await CV_tmplt.findOrCreate({
-        where: { html_dir: filePath },
+        where: { html_dir: fileName },
       });
       if (created) {
         return res.status(201).json(newCVtmplt);
@@ -56,35 +56,37 @@ const getTmplt = async (req, res, next) => {
     if (!fileRecord) {
       return res.status(404).send("File not found");
     }
-    // Read the file from the file system, make a copy, and send it
-    const originalFilePath = path.join(
-      __dirname,
-      "../../",
-      `${fileRecord.html_dir}`
-    ); // Adjust based on how you store the path
-    const tempFilePath = path.join(
-      __dirname,
-      "../../",
-      `copy-${path.basename(fileRecord.html_dir)}`
-    ); // Create a temporary path to store the copy
-    console.log(originalFilePath, typeof originalFilePath);
-    console.log(tempFilePath, typeof tempFilePath);
-    fs.copyFile(originalFilePath, tempFilePath, (error) => {
-      if (error) {
-        errorHandler(500, "Could not process the file");
-      }
-      res.sendFile(tempFilePath, (downloadErr) => {
-        if (downloadErr) {
-          console.error(downloadErr);
-        }
 
-        fs.unlink(tempFilePath, (error) => {
-          if (error) {
-            console.error(error);
-          }
-        });
-      });
-    });
+    res.send(fileRecord);
+    // // Read the file from the file system, make a copy, and send it
+    // const originalFilePath = path.join(
+    //   __dirname,
+    //   "../../",
+    //   `${fileRecord.html_dir}`
+    // ); // Adjust based on how you store the path
+    // const tempFilePath = path.join(
+    //   __dirname,
+    //   "../../",
+    //   `copy-${path.basename(fileRecord.html_dir)}`
+    // ); // Create a temporary path to store the copy
+    // console.log(originalFilePath, typeof originalFilePath);
+    // console.log(tempFilePath, typeof tempFilePath);
+    // fs.copyFile(originalFilePath, tempFilePath, (error) => {
+    //   if (error) {
+    //     errorHandler(500, "Could not process the file");
+    //   }
+    //   res.sendFile(tempFilePath, (downloadErr) => {
+    //     if (downloadErr) {
+    //       console.error(downloadErr);
+    //     }
+
+    //     fs.unlink(tempFilePath, (error) => {
+    //       if (error) {
+    //         console.error(error);
+    //       }
+    //     });
+    //   });
+    // });
   } catch (error) {
     next(error);
   }
@@ -95,6 +97,7 @@ const submitInfor = async (req, res, next) => {
     const findUser = await User.findByPk(req.user.id);
     if (!findUser) return res.status(404).json({ msg: "User not found" });
     const imageFilePath = path.join(
+      "file:",
       __dirname,
       "../../",
       findUser.profileImg_dir
@@ -117,7 +120,7 @@ const updateTmpltPreview = async (req, res, next) => {
     const Path = path.join("CV_tmpltpreviewDTB/", req.file.filename);
     const previewPath = path.join(__dirname, "../../", Path);
     //get template id
-    const id = req.query.id;
+    const id = req.body.id;
     console.log("Update CV preview ID: " + id);
     //find template with id
     const findtmplt = await CV_tmplt.findByPk(id);

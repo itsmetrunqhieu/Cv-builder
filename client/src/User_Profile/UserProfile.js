@@ -26,7 +26,23 @@ const UserProfile = () => {
     };
 
     useEffect(() => {
+        console.log("user profile local storage");
         console.log(JSON.stringify(localStorage.getItem('user')));
+        const user = JSON.parse(localStorage.getItem('user'));
+        setUserData({
+            username: user.name || 'defaultUsername',
+            password: 'defaultPassword',
+            fullName: user.fullname || 'defaultFullName',
+            firstName: user.firstname || 'defaultFirstName',
+            surName: user.surname || 'defaultSurName',
+            phone: user.phone || 'defaultPhone',
+            email: user.email || 'defaultEmail@example.com',
+            jobTitle: user.jobTitle || 'defaultJobTitle',
+            employer: user.employer || 'defaultEmployer',
+            cityMunicipality: user.cityMunicipality || 'defaultCityMunicipality',
+            country: user.country || 'defaultCountry',
+        });
+
     }, []);
 
     const [firstname, setFirstname] = useState('');
@@ -41,7 +57,7 @@ const UserProfile = () => {
     const handleFirstnameChange = (event) => {
         setFirstname(event.target.value);
     };
-    
+
     const handleSurnameChange = (event) => {
         setSurname(event.target.value);
     };
@@ -86,15 +102,15 @@ const UserProfile = () => {
     const [isPasswordVisible3, setIsPasswordVisible3] = useState(false);
 
     const togglePasswordVisibility1 = () => {
-    setIsPasswordVisible1(!isPasswordVisible1);
+        setIsPasswordVisible1(!isPasswordVisible1);
     };
 
     const togglePasswordVisibility2 = () => {
-    setIsPasswordVisible2(!isPasswordVisible2);
+        setIsPasswordVisible2(!isPasswordVisible2);
     };
 
     const togglePasswordVisibility3 = () => {
-    setIsPasswordVisible3(!isPasswordVisible3);
+        setIsPasswordVisible3(!isPasswordVisible3);
     };
 
     const imgStyle = {
@@ -148,7 +164,7 @@ const UserProfile = () => {
                 />
                 <Link to="">
                     <div className="create-cv-options-button create-cv-button user-profile-change-cover-button">
-                        <img 
+                        <img
                             src='/Image/User_Profile/Camera_light.svg'
                             className='create-cv-options-icon'
                             alt='icon'
@@ -160,13 +176,13 @@ const UserProfile = () => {
 
             <div className='user-profile-left-field'>
                 <div className='user-profile-avata-field'>
-                    <img 
+                    <img
                         src='/Image/User_Profile/User_fill.svg'
                         className='user-profile-avata'
                         alt='icon'
                     />
                     <Link to="">
-                        <img 
+                        <img
                             src='/Image/User_Profile/Camera_fill.svg'
                             className='user-profile-avata-field-icon'
                             alt='icon'
@@ -189,8 +205,8 @@ const UserProfile = () => {
                         {isPasswordVisible1 ? userData.password : userData.password.replace(/./g, '*')}
                     </p>
                     <img
-                        src={isPasswordVisible1 ? "/Image/Login_Screen/View_light.svg" 
-                                            : "/Image/Login_Screen/View_hide_light.svg"}
+                        src={isPasswordVisible1 ? "/Image/Login_Screen/View_light.svg"
+                            : "/Image/Login_Screen/View_hide_light.svg"}
                         className="user-profile-left-field-username-field-icon"
                         alt="icon"
                         onClick={togglePasswordVisibility1}
@@ -207,20 +223,20 @@ const UserProfile = () => {
             <div className='user-profile-right-field'>
                 <div className='user-profile-right-field-option-header'>
                     {[1, 2, 3].map(step => (
-                    <div
-                        key={step}
-                        className='user-profile-right-field-option'
-                    >
-                        <p 
-                            className='user-profile-left-field-text user-profile-right-field-option-header-text'
-                            onClick={() => handleUserProfileOptionClick(step)}
+                        <div
+                            key={step}
+                            className='user-profile-right-field-option'
                         >
-                            {userProfileOptionNames[step - 1]}
-                        </p>
-                        {currentUserProfileOption === step &&
-                            <div className='user-profile-right-field-option-active-signal'></div>
-                        }
-                    </div>
+                            <p
+                                className='user-profile-left-field-text user-profile-right-field-option-header-text'
+                                onClick={() => handleUserProfileOptionClick(step)}
+                            >
+                                {userProfileOptionNames[step - 1]}
+                            </p>
+                            {currentUserProfileOption === step &&
+                                <div className='user-profile-right-field-option-active-signal'></div>
+                            }
+                        </div>
                     ))}
                 </div>
                 <div className='user-profile-right-field-content'>
@@ -389,8 +405,8 @@ const UserProfile = () => {
                                     >
                                     </input>
                                     <img
-                                        src={isPasswordVisible2 ? "/Image/Login_Screen/View_light.svg" 
-                                                            : "/Image/Login_Screen/View_hide_light.svg"}
+                                        src={isPasswordVisible2 ? "/Image/Login_Screen/View_light.svg"
+                                            : "/Image/Login_Screen/View_hide_light.svg"}
                                         className="user-profile-right-field-reset-password-icon1"
                                         alt="icon"
                                         onClick={togglePasswordVisibility2}
@@ -407,8 +423,8 @@ const UserProfile = () => {
                                     >
                                     </input>
                                     <img
-                                        src={isPasswordVisible3 ? "/Image/Login_Screen/View_light.svg" 
-                                                            : "/Image/Login_Screen/View_hide_light.svg"}
+                                        src={isPasswordVisible3 ? "/Image/Login_Screen/View_light.svg"
+                                            : "/Image/Login_Screen/View_hide_light.svg"}
                                         className="user-profile-right-field-reset-password-icon2"
                                         alt="icon"
                                         onClick={togglePasswordVisibility3}
@@ -439,7 +455,7 @@ const UserProfile = () => {
                                         checked={isEnglishChecked}
                                         onChange={handleEnglishCheck}
                                     />
-                                    <img 
+                                    <img
                                         src='/Image/User_Profile/Flag_of_the_United_States.svg'
                                         className='user-profile-flag-icon'
                                         alt='icon'
@@ -453,7 +469,7 @@ const UserProfile = () => {
                                         checked={isVietnameseChecked}
                                         onChange={handleVietnameseCheck}
                                     />
-                                    <img 
+                                    <img
                                         src='/Image/User_Profile/Flag_of_Vietnam.svg'
                                         className='user-profile-flag-icon'
                                         alt='icon'

@@ -114,8 +114,6 @@ const submitInfor = async (req, res, next) => {
 const updateTmpltPreview = async (req, res, next) => {
   try {
     if (!req.file) return res.status(404).json({ msg: "File not found" });
-    //get file path from multer
-    const filePath = path.join(__dirname, "../../", req.file.path);
     //get template id
     const id = req.query.id;
     console.log("Update CV preview ID: " + id);
@@ -124,6 +122,8 @@ const updateTmpltPreview = async (req, res, next) => {
     if (!findtmplt) return res.status(404).json({ msg: "Template not found" });
     //check if template already have preview
     if (findtmplt.preview_dir) {
+      if (findtmplt.preview_dir == req.file.path)
+      return res.status(409).json({msg: "Preview Image Overwrited"});
       //delete old preview
       const originalFilePath = path.join(
         __dirname,
@@ -135,7 +135,7 @@ const updateTmpltPreview = async (req, res, next) => {
       });
     }
     //update preview directory in database
-    findtmplt.preview_dir = filePath;
+    findtmplt.preview_dir = req.file.path;
     await findtmplt.save();
     console.log("Update Preview successfully");
     return res.status(200).json({ msg: "Template preview updated" });

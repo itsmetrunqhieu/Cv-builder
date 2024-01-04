@@ -1,4 +1,6 @@
 const PDFDocument = require("pdfkit");
+const puppeteer = require("puppeteer");
+const { CV } = require("../models");
 const fs = require("fs");
 
 const downloadPDF = async (req, res, next) => {
@@ -35,9 +37,33 @@ const downloadPDF = async (req, res, next) => {
   }
 };
 
-const saveUserCV = (req, res) => {
+const saveUserCV = async (req, res) => {
   try {
-    const newCV = req.params.fileName;
+    const htmlfile = req.file;
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    const fileContent = htmlfile.buffer.toString("utf-8");
+    console.log(fileContent);
+    await page.setContent(fileContent);
+
+    const screenshot = await page.screenshot({
+      path: path.join(
+        __dirname,
+        "../../Data/images",
+        `${htmlfile.originalname}.png`
+      ),
+    });
+    const { UserId, CVtmplateId } = req.body.id;
+    const preview_dir = screenshot.path;
+    const html_dir = htmlfile.path;
+
+    CV.create({
+      html_dir: html_dir,
+      CVtmplateId: CVtmplateId,
+      UserId: UserId,
+    }).then((cv) => {
+      res.status(200).send("File uploaded and path saved to successfully");
+    });
   } catch (error) {
     next(error);
   }

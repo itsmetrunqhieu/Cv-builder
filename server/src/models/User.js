@@ -34,6 +34,33 @@ module.exports = (sequelize, DataTypes) => {
       role: {
         type: DataTypes.STRING,
       },
+      fullname: {
+        type: DataTypes.STRING,
+      },
+      firstname: {
+        type: DataTypes.STRING,
+      },
+      surname: {
+        type: DataTypes.STRING,
+      },
+      phone: {
+        type: DataTypes.STRING(20),
+      },
+      jobTitle: {
+        type: DataTypes.STRING,
+      },
+      employer: {
+        type: DataTypes.STRING,
+      },
+      citymunicipality: {
+        type: DataTypes.STRING,
+      },
+      country: {
+        type: DataTypes.STRING,
+      },
+      profileImg_dir: {
+        type: DataTypes.STRING,
+      },
     },
     {
       sequelize,

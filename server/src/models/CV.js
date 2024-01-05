@@ -8,8 +8,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      CV.belongsTo(models.User);
-      CV.belongsTo(models.CV_tmplt);
+      CV.belongsTo(models.User, { foreignKey: "UserId" });
+      CV.belongsTo(models.CV_tmplt, {
+        foreignKey: "CVtmplateId",
+      });
       models.User.hasMany(CV);
       models.CV_tmplt.hasMany(CV);
     }

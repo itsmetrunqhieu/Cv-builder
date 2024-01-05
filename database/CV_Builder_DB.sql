@@ -25,7 +25,7 @@ CREATE TABLE CV_tmplts (
 	preview_dir nvarchar(255),
 );
 select * from CV_builder.dbo.Users
-select * from CVs
+select * from CV_builder.dbo.CVs
 select * from CV_builder.dbo.CV_tmplts
 
 DROP TABLE CV_builder.dbo.CVs

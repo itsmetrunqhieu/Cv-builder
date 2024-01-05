@@ -6,6 +6,7 @@ require("dotenv").config();
 const { engine } = require("express-handlebars");
 const cookieParser = require("cookie-parser");
 const { errorHandler } = require("./utils/error.js");
+const path = require("path");
 // const config = require("./config/config");
 
 //export router
@@ -22,6 +23,7 @@ const app = express(); // create your express app
 //app.use(morgan('combined')) // log requests source if needed
 app.use(bodyParser.json()); // parse json requests
 app.use(cors()); // enable cors
+app.use("/.", express.static(path.join(__dirname, "server")));
 app.use(express.json());
 app.use(cookieParser());
 

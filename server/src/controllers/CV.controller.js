@@ -53,7 +53,8 @@ const saveUserCV = async (req, res) => {
         `${htmlfile.originalname}.png`
       ),
     });
-    const { UserId, CVtmplateId } = req.body.id;
+    const UserId = req.user.id;
+    const CVtmplateId = req.body.CVtmplateId;
     const preview_dir = screenshot.path;
     const html_dir = htmlfile.path;
 

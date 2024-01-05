@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/download", verifyToken, CV_tmpltDTB.single("file"), downloadPDF);
 router.post(
-  "/saveUserCV/:fileName",
+  "/saveUserCV/",
   verifyToken,
   CV_tmpltDTB.single("file"),
   saveUserCV

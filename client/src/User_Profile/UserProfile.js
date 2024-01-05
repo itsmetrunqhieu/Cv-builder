@@ -25,10 +25,19 @@ const UserProfile = () => {
         // Sử dụng username và password ở đây, có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
     };
 
+    const handleLogOut = () => {
+        localStorage.removeItem('user');
+        document.cookie.replace('access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;');
+        window.location.reload();
+    }
+
     useEffect(() => {
-        console.log("user profile local storage");
-        console.log(JSON.stringify(localStorage.getItem('user')));
+        // console.log("user profile local storage");
+        // console.log(JSON.stringify(localStorage.getItem('user')));
         const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) {
+            window.location.href = "/login";
+        }
         setUserData({
             username: user.name || 'defaultUsername',
             password: 'defaultPassword',
@@ -213,11 +222,11 @@ const UserProfile = () => {
                         style={imgStyle}
                     />
                 </div>
-                <Link to="/">
+                <div>
                     <div className='user-profile-left-field-button'>
-                        <p className='user-profile-left-field-text user-profile-left-field-button-text'>Log out</p>
+                        <p className='user-profile-left-field-text user-profile-left-field-button-text' onClick={handleLogOut}>Log out</p>
                     </div>
-                </Link>
+                </div>
             </div>
 
             <div className='user-profile-right-field'>

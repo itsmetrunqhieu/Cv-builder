@@ -96,14 +96,14 @@ function Register() {
         role: "user",
       })
       // console.log(res);
-      const login = await login({
+      const sigin = await login({
         email: email,
         password: password,
       })
-      const userData = login.data.validUser;
-      const jwtToken = login.data.cookie;
+      const userData = sigin.data.validUser;
+      const jwtToken = sigin.data.cookie;
       localStorage.setItem('user', JSON.stringify(userData));
-      localStorage.setItem('token', jwtToken);
+      document.cookie = `access_token=${jwtToken}`;
       
       navigate("/user-profile");
     }catch(err){

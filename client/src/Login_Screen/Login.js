@@ -1,6 +1,6 @@
 import './Login.css';
 import { connect } from 'react-redux';
-import React, { useEffect, useState } from 'react';
+import React, { useDebugValue, useEffect, useState } from 'react';
 //import { push } from "connected-react-router";
 import * as actions from "../Store/actions";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,6 +12,14 @@ function Login() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if(user){
+      navigate("/user-profile");
+    }
+
+  })
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -39,7 +47,7 @@ function Login() {
       const userData = res.data.validUser;
       const jwtToken = res.data.cookie;
       localStorage.setItem('user', JSON.stringify(userData));
-      localStorage.setItem('token', jwtToken);
+      document.cookie = `access_token=${jwtToken}`;
 
       navigate("/user-profile");
     }catch(err){

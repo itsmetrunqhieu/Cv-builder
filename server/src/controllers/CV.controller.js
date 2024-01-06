@@ -63,8 +63,8 @@ const saveUserCV = async (req, res, next) => {
     CV.create({
       html_dir: html_dir,
       preview_dir: preview_dir,
-      CVtmpltId: validCVtmplt.id,
       UserId: UserId,
+      CVTmpltId: validCVtmplt.id,
     }).then((cv) => {
       res.status(200).send("File uploaded and path saved to successfully");
     });

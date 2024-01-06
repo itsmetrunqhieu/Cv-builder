@@ -9,35 +9,25 @@ const downloadPDF = async (req, res, next) => {
   try {
     const htmlContent = req.body.html; // Assuming the client sends the HTML content in the request body
 
-    // Create a PDF document using pdfkit
-    const doc = new PDFDocument();
-    const pdfBuffer = [];
+    // Launch a headless browser
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
 
-    // Pipe the PDF content to an array
-    doc.on("data", (chunk) => {
-      pdfBuffer.push(chunk);
-    });
+    // Set the HTML content of the page
+    await page.setContent(htmlContent);
 
-    doc.on("end", () => {
-      // Convert the array of chunks into a single Buffer
-      const pdfData = Buffer.concat(pdfBuffer);
+    // Generate a PDF from the rendered page
+    const pdfBuffer = await page.pdf();
 
-      // Set response headers for download
-      res.setHeader("Content-Type", "application/pdf");
-      res.setHeader(
-        "Content-Disposition",
-        "attachment; filename=downloaded.pdf"
-      );
+    // Close the browser
+    await browser.close();
 
-      // Send the PDF data to the client for download
-      res.end(pdfData);
-    });
+    // Set response headers for download
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", "attachment; filename=downloaded.pdf");
 
-    // Pipe the HTML content to the PDF document
-    doc.text(htmlContent);
-
-    // End the document to trigger the 'end' event
-    doc.end();
+    // Send the PDF data to the client for download
+    res.end(pdfBuffer);
   } catch (error) {
     console.error("Error converting HTML to PDF:", error);
     res.status(500).send("Internal Server Error");

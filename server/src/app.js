@@ -23,7 +23,7 @@ const app = express(); // create your express app
 //app.use(morgan('combined')) // log requests source if needed
 app.use(bodyParser.json()); // parse json requests
 app.use(cors()); // enable cors
-app.use("/.", express.static(path.join(__dirname, "server")));
+app.use(express.static(path.join(__dirname, "Data")));
 app.use(express.json());
 app.use(cookieParser());
 

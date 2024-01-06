@@ -15,15 +15,14 @@ const insertTmplt = async (req, res, next) => {
         defaults: {
           html_dir: fileName,
           preview_dir: preview,
-        }
+        },
       });
       if (created) {
         return res.status(201).json(newCVtmplt);
       } else return res.status(400).json({ msg: "Template already existed" });
     } else {
       res.status(404), json({ message: "File not found" });
-    };
-    
+    }
   } catch (err) {
     console.log(err);
     next(err);
@@ -36,15 +35,16 @@ const deleteTmplt = async (req, res, next) => {
     const deltmplt = await CV_tmplt.findByPk(tmpltId);
     if (!deltmplt) return res.status(404).json({ msg: "Template not found" });
     console.log("Deleting From Database Template ID: " + tmpltId);
-    if (deltmplt.preview_dir){
-    const originalFilePath = path.join(
-      __dirname,
-      "../../",
-      `${deltmplt.preview_dir}`
-    );
-    fs.unlink(originalFilePath, async (err) => {
-      if (err) console.error(err);
-    })};
+    if (deltmplt.preview_dir) {
+      const originalFilePath = path.join(
+        __dirname,
+        "../../",
+        `${deltmplt.preview_dir}`
+      );
+      fs.unlink(originalFilePath, async (err) => {
+        if (err) console.error(err);
+      });
+    }
     deltmplt.destroy();
     console.log("Template Deleted From Database");
     return res.status(200).json({ msg: "Template Deleted From Database" });
@@ -109,7 +109,13 @@ const submitInfor = async (req, res, next) => {
 
     const data = { ...textData, profileImg_dir: imageFilePath };
     console.log(data);
-    res.render(`${data.fileName}`, data);
+    res.render(`${data.fileName}`, data, (error, html) => {
+      if (error) {
+        next(error);
+      } else {
+        res.send(html);
+      }
+    });
   } catch (error) {
     next(error);
   }
@@ -127,7 +133,7 @@ const updateTmpltPreview = async (req, res, next) => {
     //check if template already have preview
     if (findtmplt.preview_dir) {
       if (findtmplt.preview_dir == req.file.path)
-      return res.status(409).json({msg: "Preview Image Overwrited"});
+        return res.status(409).json({ msg: "Preview Image Overwrited" });
       //delete old preview
       const originalFilePath = path.join(
         __dirname,

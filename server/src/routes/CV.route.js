@@ -1,5 +1,5 @@
 const express = require(`express`);
-const { downloadPDF, saveUserCV } = require("../controllers/CV.controller");
+const { downloadPDF, saveUserCV, getUserCVList } = require("../controllers/CV.controller");
 const { verifyToken } = require("../utils/verifyToken");
 const { CV_tmpltDTB } = require("../middlewares/multerConfig");
 const router = express.Router();
@@ -11,5 +11,6 @@ router.post(
   CV_tmpltDTB.single("file"),
   saveUserCV
 );
+router.get("/getUserCVList", verifyToken, getUserCVList);
 
 module.exports = router;

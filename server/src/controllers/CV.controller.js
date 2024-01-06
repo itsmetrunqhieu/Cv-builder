@@ -73,7 +73,30 @@ const saveUserCV = async (req, res, next) => {
   }
 };
 
+const getUserCVList = async (req, res, next) =>{
+  try {
+    const CVList = await CV.findAll({
+      where: {UserId: req.user.id},
+      attributes: ["id", "preview_dir", "CVTmpltId"],
+    });
+    var List = [];
+    CVList.forEach((CV) => {
+      base64preview = fs.readFileSync(
+        CV.preview_dir,
+        "base64"
+      );
+      List.push(new Object({ ID: CV.id, CVTmpltId: CV.CVTmpltId, Base64: base64preview}));
+    });
+    //convert list to json and send.
+    const listjson = JSON.stringify(List);
+    return res.status(200).send(listjson);   
+  } catch (error) {
+    next(error)
+  }
+}
+
 module.exports = {
   downloadPDF,
   saveUserCV,
+  getUserCVList
 };

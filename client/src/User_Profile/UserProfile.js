@@ -5,6 +5,8 @@ import './UserProfile.css';
 import Switch from './Switch';
 import { useEffect } from 'react';
 
+import { getUser ,updateUser } from '../Services/UserService';
+
 const UserProfile = () => {
     // Đây là nơi bạn có thể lấy dữ liệu từ API hoặc nơi khác để hiển thị thông tin người dùng
     const [userData, setUserData] = React.useState({
@@ -23,6 +25,21 @@ const UserProfile = () => {
 
     const handleSubmit = () => {
         // Sử dụng username và password ở đây, có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
+        const req = {
+            firstname: firstname,
+            surname: surname,
+            phone: phone,
+            email: email,
+            jobTitle: jobTitle,
+            employer: employer,
+            citymunicipality: city,
+            country: country,
+        };
+
+        updateUser(req);
+
+        window.location.reload();
+
     };
 
     const handleLogOut = () => {
@@ -34,9 +51,15 @@ const UserProfile = () => {
     useEffect(() => {
         // console.log("user profile local storage");
         // console.log(JSON.stringify(localStorage.getItem('user')));
+        
         const user = JSON.parse(localStorage.getItem('user'));
-        if (!user) {
+        if (!user && user === '') {
             window.location.href = "/login";
+        }
+
+        const getuser = getUser();
+        if( getuser !== null && user !== getuser){
+            localStorage.setItem('user', JSON.stringify(getuser));
         }
         setUserData({
             username: user.name || 'defaultUsername',

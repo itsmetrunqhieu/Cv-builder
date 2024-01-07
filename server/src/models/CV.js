@@ -8,9 +8,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      CV.belongsTo(models.User, { foreignKey: "UserId" });
+      CV.belongsTo(models.User, { targetKey: "id" });
       CV.belongsTo(models.CV_tmplt, {
-        foreignKey: "CVtmplateId",
+        targetKey: "id",
       });
       models.User.hasMany(CV);
       models.CV_tmplt.hasMany(CV);
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       html_dir: {
         type: DataTypes.STRING,
       },
-      pdf_dir: {
+      preview_dir: {
         type: DataTypes.STRING,
       },
     },

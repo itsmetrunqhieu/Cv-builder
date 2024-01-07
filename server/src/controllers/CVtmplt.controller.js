@@ -7,8 +7,15 @@ const insertTmplt = async (req, res, next) => {
   try {
     if (req.body.fileName) {
       const fileName = req.body.fileName;
+      var preview;
+      if (req.file) preview = req.file.path;
+      else preview = null;
       const [newCVtmplt, created] = await CV_tmplt.findOrCreate({
         where: { html_dir: fileName },
+        defaults: {
+          html_dir: fileName,
+          preview_dir: preview,
+        },
       });
       if (created) {
         return res.status(201).json(newCVtmplt);
@@ -25,19 +32,20 @@ const insertTmplt = async (req, res, next) => {
 const deleteTmplt = async (req, res, next) => {
   try {
     const tmpltId = req.params.id;
-
     const deltmplt = await CV_tmplt.findByPk(tmpltId);
     if (!deltmplt) return res.status(404).json({ msg: "Template not found" });
     console.log("Deleting From Database Template ID: " + tmpltId);
-    const originalFilePath = path.join(
-      __dirname,
-      "../../",
-      `${deltmplt.html_dir}`
-    );
-    fs.unlink(originalFilePath, async (err) => {
-      if (err) console.error(err);
-      await deltmplt.destroy();
-    });
+    if (deltmplt.preview_dir) {
+      const originalFilePath = path.join(
+        __dirname,
+        "../../",
+        `${deltmplt.preview_dir}`
+      );
+      fs.unlink(originalFilePath, async (err) => {
+        if (err) console.error(err);
+      });
+    }
+    deltmplt.destroy();
     console.log("Template Deleted From Database");
     return res.status(200).json({ msg: "Template Deleted From Database" });
   } catch (error) {
@@ -96,6 +104,7 @@ const submitInfor = async (req, res, next) => {
   try {
     const findUser = await User.findByPk(req.user.id);
     if (!findUser) return res.status(404).json({ msg: "User not found" });
+
     const imageFilePath = null;
     const userPic = findUser.profileImg_dir;
     if(userPic){
@@ -109,8 +118,15 @@ const submitInfor = async (req, res, next) => {
     
     const textData = req.body;
     const data = { ...textData, profileImg_dir: imageFilePath};
+
     console.log(data);
-    res.render(`${data.fileName}`, data);
+    res.render(`${data.fileName}`, data, (error, html) => {
+      if (error) {
+        next(error);
+      } else {
+        res.send(html);
+      }
+    });
   } catch (error) {
     next(error);
   }
@@ -119,8 +135,6 @@ const submitInfor = async (req, res, next) => {
 const updateTmpltPreview = async (req, res, next) => {
   try {
     if (!req.file) return res.status(404).json({ msg: "File not found" });
-    //get file path from multer
-    const filePath = path.join(__dirname, "../../", req.file.path);
     //get template id
     const id = req.query.id;
     console.log("Update CV preview ID: " + id);
@@ -129,6 +143,8 @@ const updateTmpltPreview = async (req, res, next) => {
     if (!findtmplt) return res.status(404).json({ msg: "Template not found" });
     //check if template already have preview
     if (findtmplt.preview_dir) {
+      if (findtmplt.preview_dir == req.file.path)
+        return res.status(409).json({ msg: "Preview Image Overwrited" });
       //delete old preview
       const originalFilePath = path.join(
         __dirname,
@@ -140,7 +156,7 @@ const updateTmpltPreview = async (req, res, next) => {
       });
     }
     //update preview directory in database
-    findtmplt.preview_dir = filePath;
+    findtmplt.preview_dir = req.file.path;
     await findtmplt.save();
     console.log("Update Preview successfully");
     return res.status(200).json({ msg: "Template preview updated" });

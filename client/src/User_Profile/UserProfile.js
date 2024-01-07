@@ -165,7 +165,6 @@ const UserProfile = () => {
 
     const handleUserProfileOptionClick = (step) => {
         setCurrentUserProfileOption(step);
-        handleSubmit();
     };
 
     const [isNotificationsChecked, setIsNotificationsChecked] = useState(false);

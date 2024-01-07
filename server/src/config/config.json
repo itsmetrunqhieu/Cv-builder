@@ -3,7 +3,7 @@
     "username": "sa",
     "password": "123456",
     "database": "CV_builder",
-    "host": "LAPTOP-FDE31I62",
+    "host": "DUYTRAN-LAPTOP",
     "dialect": "mssql",
     "logging": false
   },

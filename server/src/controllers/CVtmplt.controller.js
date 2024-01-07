@@ -102,25 +102,26 @@ const getTmplt = async (req, res, next) => {
 
 const submitInfor = async (req, res, next) => {
   try {
-    const findUser = await User.findByPk(req.user.id);
-    if (!findUser) return res.status(404).json({ msg: "User not found" });
+    // console.log(req.user.id);
+    // const findUser = await User.findByPk(req.user.id);
+    // if (!findUser) return res.status(404).json({ msg: "User not found" });
 
-    const imageFilePath = null;
-    const userPic = findUser.profileImg_dir;
-    if(userPic){
-      imageFilePath = path.join(
-        "file:",
-        __dirname,
-        "../../",
-        userPic
-      );
-    }
+    // const imageFilePath = null;
+    // const userPic = findUser.profileImg_dir;
+    // if(userPic){
+    //   imageFilePath = path.join(
+    //     "file:",
+    //     __dirname,
+    //     "../../",
+    //     userPic
+    //   );
+    // }
     
     const textData = req.body;
-    const data = { ...textData, profileImg_dir: imageFilePath};
+    console.log(textData);
+    const data = { ...textData};
 
-    console.log(data);
-    res.render(`${data.fileName}`, data, (error, html) => {
+    res.render(`${data.filename}`, data, (error, html) => {
       if (error) {
         next(error);
       } else {

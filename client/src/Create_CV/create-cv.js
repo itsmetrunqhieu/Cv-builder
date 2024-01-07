@@ -40,6 +40,7 @@ function CreateCV() {
         localStorage.setItem('CV', JSON.stringify(Cv));
     }, []);
     const [template, setTemplate] = useState('CV1');
+    const [preview, setPreview] = useState('');
 
 
     // Step 1: Personal Information
@@ -229,10 +230,33 @@ function CreateCV() {
         localStorage.setItem('CV', JSON.stringify(Cv));
     };
 
-    const getPreview = () => {
-        req = {
-            filename: CVName,
-            phoneNumber: phone,
+    const getPreview = async () => {
+        const currentCV = JSON.parse(localStorage.getItem('CV'));
+        const req = {
+            filename: currentCV.CVName,
+            phoneNumber: currentCV.phone,
+            email: currentCV.email,
+            address: currentCV.city + ", " + currentCV.country,
+            skill: currentCV.skillDescription,
+            name: currentCV.firstname + " " + currentCV.surname,
+            role: currentCV.profession,
+            backgroundSummary: currentCV.summaryDescription,
+            workHistory: {
+                title: currentCV.jobTitle + " | " + currentCV.employer + " | " + currentCV.jobCity + ", " + currentCV.jobCountry + " | " + currentCV.startDate + " - " + currentCV.endDate,
+                description: currentCV.jobDescription,
+            },
+            education: {
+                title: currentCV.degree + ": " + currentCV.fieldOfStudy + " | " + currentCV.graduationStartDate + " - " + currentCV.graduationEndDate,
+                address: currentCV.schoolName + " - " + currentCV.schoolLocation,
+            },
+        }
+        console.log(req);
+        try{
+            const res = await sendCV(req);
+            console.log(res);
+            setPreview(res.data);
+        } catch (err) {
+            console.log(err);
         }
     };
 
@@ -263,6 +287,9 @@ function CreateCV() {
         hiddenElements.forEach((el) => observer.observe(el));
 
         handleSubmit();
+        if(currentStep === 6) {
+            getPreview();
+        }
 
         return () => {
             hiddenElements.forEach((el) => observer.unobserve(el));
@@ -344,6 +371,7 @@ function CreateCV() {
             setCurrentEditCVOption(0);
         }
     };   
+
 
     // console.log('current ',currentEditCVOption);
 
@@ -746,8 +774,8 @@ function CreateCV() {
                                     onChange={handleCVNameChange}
                                 />
                             </div>
-                            <div className='finish-cv-area'>
-                                {/* Chèn cv sau khi xử lí vào đây */}
+                            <div className='finish-cv-area' >
+                                <div dangerouslySetInnerHTML={{__html: preview}} />
                             </div>
                             <Link to="">
                                 <div className="create-cv-options-button create-cv-button create-cv-download-cv-button">

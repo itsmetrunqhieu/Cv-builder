@@ -1,5 +1,4 @@
 const multer = require("multer");
-const { file } = require("pdfkit");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     let destination = "Data/";
@@ -17,7 +16,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const fileFilter = (res, file, cb) => {
+const fileFilter = (req, file, cb) => {
   if (
     file.mimetype === "image/jpeg" ||
     file.mimetype === "image/png" ||
@@ -30,4 +29,4 @@ const fileFilter = (res, file, cb) => {
   }
 };
 const CV_tmpltDTB = multer({ storage: storage, fileFilter: fileFilter });
-module.exports = CV_tmpltDTB;
+module.exports = { CV_tmpltDTB };

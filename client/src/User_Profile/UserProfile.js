@@ -23,7 +23,7 @@ const UserProfile = () => {
         country: 'defaultCountry',
     });
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         // Sử dụng username và password ở đây, có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
         const req = {
             firstname: firstname,
@@ -36,7 +36,13 @@ const UserProfile = () => {
             country: country,
         };
 
-        updateUser(req);
+        await updateUser(req);
+
+        const user = (await getUserData()).data;
+
+        // console.log(user);
+
+        localStorage.setItem('user', JSON.stringify(user));
 
         window.location.reload();
 
@@ -48,19 +54,19 @@ const UserProfile = () => {
         window.location.reload();
     }
 
+    const getUserData = async () => {
+        return await getUser();
+    }
+
     useEffect(() => {
         // console.log("user profile local storage");
         // console.log(JSON.stringify(localStorage.getItem('user')));
         
         const user = JSON.parse(localStorage.getItem('user'));
-        if (!user && user === '') {
+        if (!user || user === '') {
             window.location.href = "/login";
         }
 
-        const getuser = getUser();
-        if( getuser !== null && user !== getuser){
-            localStorage.setItem('user', JSON.stringify(getuser));
-        }
         setUserData({
             username: user.name || 'defaultUsername',
             password: 'defaultPassword',
@@ -71,7 +77,7 @@ const UserProfile = () => {
             email: user.email || 'defaultEmail@example.com',
             jobTitle: user.jobTitle || 'defaultJobTitle',
             employer: user.employer || 'defaultEmployer',
-            cityMunicipality: user.cityMunicipality || 'defaultCityMunicipality',
+            cityMunicipality: user.citymunicipality || 'defaultCityMunicipality',
             country: user.country || 'defaultCountry',
         });
 

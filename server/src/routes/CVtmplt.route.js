@@ -1,5 +1,5 @@
 const express = require("express");
-const CV_tmpltDTB = require("../middlewares/multerConfig");
+const { CV_tmpltDTB } = require("../middlewares/multerConfig");
 const {
   getTmplt,
   insertTmplt,
@@ -8,6 +8,7 @@ const {
   getTmpltList,
   updateTmpltPreview,
 } = require("../controllers/CVtmplt.controller");
+const { verifyToken } = require("../utils/verifyToken");
 
 const router = express.Router();
 

@@ -58,6 +58,9 @@ module.exports = (sequelize, DataTypes) => {
       country: {
         type: DataTypes.STRING,
       },
+      profileImg_dir: {
+        type: DataTypes.STRING,
+      },
     },
     {
       sequelize,

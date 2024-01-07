@@ -5,8 +5,44 @@ import '../Home_Screen/Home.css'
 import React, { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import Editor from './editor-step';
+import { sendCV } from '../Services/CVService';
 
-function CreateCV() {   
+function CreateCV() {
+    useEffect(() => {
+        const Cv = {
+            firstname: firstname,
+            surname: surname,
+            profession: profession,
+            city: city,
+            country: country,
+            postalCode: postalCode,
+            phone: phone,
+            email: email,
+            jobTitle: jobTitle,
+            employer: employer,
+            jobCity: jobCity,
+            jobCountry: jobCountry,
+            startDate: startDate,
+            endDate: endDate,
+            currentlyWorkHere: currentlyWorkHere,
+            jobDescription: jobDescription,
+            schoolName: schoolName,
+            schoolLocation: schoolLocation,
+            degree: degree,
+            fieldOfStudy: fieldOfStudy,
+            graduationStartDate: graduationStartDate,
+            graduationEndDate: graduationEndDate,
+            currentlyAttendHere: currentlyAttendHere,
+            skillDescription: skillDescription,
+            summaryDescription: summaryDescription,
+            CVName: CVName
+        }
+        localStorage.setItem('CV', JSON.stringify(Cv));
+    }, []);
+    const [template, setTemplate] = useState('CV1');
+    const [preview, setPreview] = useState('');
+
+
     // Step 1: Personal Information
     const [firstname, setFirstname] = useState('');
     const [surname, setSurname] = useState('');
@@ -162,7 +198,68 @@ function CreateCV() {
 
     const handleSubmit = () => {
         // Sử dụng username và password ở đây, có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
+        // update localStorage
+        const Cv = {
+            firstname: firstname,
+            surname: surname,
+            profession: profession,
+            city: city,
+            country: country,
+            postalCode: postalCode,
+            phone: phone,
+            email: email,
+            jobTitle: jobTitle,
+            employer: employer,
+            jobCity: jobCity,
+            jobCountry: jobCountry,
+            startDate: startDate,
+            endDate: endDate,
+            currentlyWorkHere: currentlyWorkHere,
+            jobDescription: jobDescription,
+            schoolName: schoolName,
+            schoolLocation: schoolLocation,
+            degree: degree,
+            fieldOfStudy: fieldOfStudy,
+            graduationStartDate: graduationStartDate,
+            graduationEndDate: graduationEndDate,
+            currentlyAttendHere: currentlyAttendHere,
+            skillDescription: skillDescription,
+            summaryDescription: summaryDescription,
+            CVName: template
+        }
+        localStorage.setItem('CV', JSON.stringify(Cv));
     };
+
+    const getPreview = async () => {
+        const currentCV = JSON.parse(localStorage.getItem('CV'));
+        const req = {
+            filename: currentCV.CVName,
+            phoneNumber: currentCV.phone,
+            email: currentCV.email,
+            address: currentCV.city + ", " + currentCV.country,
+            skill: currentCV.skillDescription,
+            name: currentCV.firstname + " " + currentCV.surname,
+            role: currentCV.profession,
+            backgroundSummary: currentCV.summaryDescription,
+            workHistory: {
+                title: currentCV.jobTitle + " | " + currentCV.employer + " | " + currentCV.jobCity + ", " + currentCV.jobCountry + " | " + currentCV.startDate + " - " + currentCV.endDate,
+                description: currentCV.jobDescription,
+            },
+            education: {
+                title: currentCV.degree + ": " + currentCV.fieldOfStudy + " | " + currentCV.graduationStartDate + " - " + currentCV.graduationEndDate,
+                address: currentCV.schoolName + " - " + currentCV.schoolLocation,
+            },
+        }
+        // console.log(req);
+        try{
+            const res = await sendCV(req);
+            // console.log(res);
+            setPreview(res.data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
 
     const [currentStep, setCurrentStep] = useState(1);
     const [previousStep, setPreviousStep] = useState(1);
@@ -189,6 +286,11 @@ function CreateCV() {
 
         const hiddenElements = document.querySelectorAll('.hidden-right');
         hiddenElements.forEach((el) => observer.observe(el));
+
+        handleSubmit();
+        if(currentStep === 6) {
+            getPreview();
+        }
 
         return () => {
             hiddenElements.forEach((el) => observer.unobserve(el));
@@ -248,6 +350,7 @@ function CreateCV() {
     const handleBackClick = () => {
         setPreviousStep(currentStep);
         setCurrentStep(currentStep - 1);
+        handleSubmit();
     };
 
     // console.log('previous ',previousStep);
@@ -269,6 +372,7 @@ function CreateCV() {
             setCurrentEditCVOption(0);
         }
     };   
+
 
     // console.log('current ',currentEditCVOption);
 
@@ -355,7 +459,7 @@ function CreateCV() {
                                 <input
                                     type="text"
                                     className="create-cv-form-input"
-                                    placeholder="e.g. 700000"
+                                    placeholder="e.g. 70000"
                                     value={postalCode}
                                     onChange={handlePostalCodeChange}
                                 />
@@ -671,9 +775,8 @@ function CreateCV() {
                                     onChange={handleCVNameChange}
                                 />
                             </div>
-                            <div className='finish-cv-area'>
-                                {/* Chèn cv sau khi xử lí vào đây */}
-                            </div>
+                            <div className='finish-cv-area' dangerouslySetInnerHTML={{__html: preview}} />
+                                
                             <Link to="">
                                 <div className="create-cv-options-button create-cv-button create-cv-download-cv-button">
                                     <img 

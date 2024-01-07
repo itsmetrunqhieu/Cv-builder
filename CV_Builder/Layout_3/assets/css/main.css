@@ -1,0 +1,188 @@
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 1000px;
+    margin: 50px;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    box-shadow: 0 35px 55px rgba(0,0,0,0.1);
+}
+
+.container .resume_left {
+    position: relative;
+    background: #003147;
+    padding: 40px;
+}
+
+.profileText {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.profileText .resume_img {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profileText .resume_img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profileText .resume_namerole .name {
+    color: #fff;
+    font-size: 2em;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1.4em;
+}
+
+.profileText .resume_namerole .role {
+    color: #fff;
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: 300;
+}
+
+.resume_contact {
+    padding-top: 40px;
+}
+
+.resume_contact .resume_title {
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.resume_contact .resume_info {
+    position: relative;
+}
+
+.resume_contact .resume_info .resume_phone {
+    position: relative;
+    font-size: 1.2em;
+    list-style: none;
+    margin: 10px 0;
+    cursor: pointer;
+}
+.resume_contact .resume_info .resume_email {
+    position: relative;
+    list-style: none;
+    font-size: 1.2em;
+    margin: 10px 0;
+    cursor: pointer;
+}
+.resume_contact .resume_info .resume_address {
+    position: relative;
+    list-style: none;
+    font-size: 1.2em;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.resume_contact .resume_info .icon {
+    display: inline-block;
+    width: 30px;
+    font-size: 20px;
+    color: #03a9f4;
+}
+
+.resume_contact .resume_info .resume_subtitle {
+    color: #fff;
+    display: inline-block;
+    font-size: 1.3em;
+    font-weight: 400;
+    padding-bottom: 10px;
+}
+
+.resume_contact .resume_info .resume_subinfo {
+    color: #fff;
+    padding-bottom: 10px;
+    font-weight: 300;
+}
+
+.resume_contact .resume_info .resume_subinfo ul {
+    position: relative;
+}
+
+.resume_contact .resume_info .resume_subinfo ul li {
+    padding: 5px;
+    font-size: 1.2em;
+}
+
+.container .resume_right {
+    position: relative;
+    background: #fff;
+    padding: 40px;
+}
+
+.resume_right .resume_title {
+    color: #003147;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2em;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.resume_right .resume_data {
+    color: #333;
+    font-size: 1.2em;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.resume_right .resume_work_history .resume_data p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.resume_right .resume_work_history .resume_data ul {
+    position: relative;
+}
+
+.resume_right .resume_work_history .resume_data ul li {
+    padding: 5px;
+    margin-left: 20px;
+}

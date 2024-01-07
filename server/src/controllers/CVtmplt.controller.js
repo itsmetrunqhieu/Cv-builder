@@ -104,10 +104,21 @@ const submitInfor = async (req, res, next) => {
   try {
     const findUser = await User.findByPk(req.user.id);
     if (!findUser) return res.status(404).json({ msg: "User not found" });
-    const imageFilePath = path.join("../", findUser.profileImg_dir);
-    const textData = req.body;
 
-    const data = { ...textData, profileImg_dir: imageFilePath };
+    const imageFilePath = null;
+    const userPic = findUser.profileImg_dir;
+    if(userPic){
+      imageFilePath = path.join(
+        "file:",
+        __dirname,
+        "../../",
+        userPic
+      );
+    }
+    
+    const textData = req.body;
+    const data = { ...textData, profileImg_dir: imageFilePath};
+
     console.log(data);
     res.render(`${data.fileName}`, data, (error, html) => {
       if (error) {

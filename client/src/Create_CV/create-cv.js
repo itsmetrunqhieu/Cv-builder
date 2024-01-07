@@ -6,7 +6,38 @@ import React, { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import Editor from './editor-step';
 
-function CreateCV() {   
+function CreateCV() {
+    useEffect(() => {
+        const Cv = {
+            firstname: firstname,
+            surname: surname,
+            profession: profession,
+            city: city,
+            country: country,
+            postalCode: postalCode,
+            phone: phone,
+            email: email,
+            jobTitle: jobTitle,
+            employer: employer,
+            jobCity: jobCity,
+            jobCountry: jobCountry,
+            startDate: startDate,
+            endDate: endDate,
+            currentlyWorkHere: currentlyWorkHere,
+            jobDescription: jobDescription,
+            schoolName: schoolName,
+            schoolLocation: schoolLocation,
+            degree: degree,
+            fieldOfStudy: fieldOfStudy,
+            graduationStartDate: graduationStartDate,
+            graduationEndDate: graduationEndDate,
+            currentlyAttendHere: currentlyAttendHere,
+            skillDescription: skillDescription,
+            summaryDescription: summaryDescription,
+            CVName: CVName
+        }
+        localStorage.setItem('CV', JSON.stringify(Cv));
+    }, []);
     // Step 1: Personal Information
     const [firstname, setFirstname] = useState('');
     const [surname, setSurname] = useState('');
@@ -162,6 +193,36 @@ function CreateCV() {
 
     const handleSubmit = () => {
         // Sử dụng username và password ở đây, có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
+        // update localStorage
+        const Cv = {
+            firstname: firstname,
+            surname: surname,
+            profession: profession,
+            city: city,
+            country: country,
+            postalCode: postalCode,
+            phone: phone,
+            email: email,
+            jobTitle: jobTitle,
+            employer: employer,
+            jobCity: jobCity,
+            jobCountry: jobCountry,
+            startDate: startDate,
+            endDate: endDate,
+            currentlyWorkHere: currentlyWorkHere,
+            jobDescription: jobDescription,
+            schoolName: schoolName,
+            schoolLocation: schoolLocation,
+            degree: degree,
+            fieldOfStudy: fieldOfStudy,
+            graduationStartDate: graduationStartDate,
+            graduationEndDate: graduationEndDate,
+            currentlyAttendHere: currentlyAttendHere,
+            skillDescription: skillDescription,
+            summaryDescription: summaryDescription,
+            CVName: CVName
+        }
+        localStorage.setItem('CV', JSON.stringify(Cv));
     };
 
     const [currentStep, setCurrentStep] = useState(1);
@@ -189,6 +250,8 @@ function CreateCV() {
 
         const hiddenElements = document.querySelectorAll('.hidden-right');
         hiddenElements.forEach((el) => observer.observe(el));
+
+        handleSubmit();
 
         return () => {
             hiddenElements.forEach((el) => observer.unobserve(el));
@@ -355,7 +418,7 @@ function CreateCV() {
                                 <input
                                     type="text"
                                     className="create-cv-form-input"
-                                    placeholder="e.g. 700000"
+                                    placeholder="e.g. 70000"
                                     value={postalCode}
                                     onChange={handlePostalCodeChange}
                                 />

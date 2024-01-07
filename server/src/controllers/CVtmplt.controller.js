@@ -121,6 +121,12 @@ const submitInfor = async (req, res, next) => {
     console.log(textData);
     const data = { ...textData};
 
+    // delete <p> tag from backgroundSummary
+    if (data.backgroundSummary) {
+      data.backgroundSummary = data.backgroundSummary.replace(/<p>/g, "");
+      data.backgroundSummary = data.backgroundSummary.replace(/<\/p>/g, "");
+    }
+
     res.render(`${data.filename}`, data, (error, html) => {
       if (error) {
         next(error);

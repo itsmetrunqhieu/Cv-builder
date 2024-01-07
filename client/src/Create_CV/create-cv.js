@@ -250,15 +250,16 @@ function CreateCV() {
                 address: currentCV.schoolName + " - " + currentCV.schoolLocation,
             },
         }
-        console.log(req);
+        // console.log(req);
         try{
             const res = await sendCV(req);
-            console.log(res);
+            // console.log(res);
             setPreview(res.data);
         } catch (err) {
             console.log(err);
         }
     };
+
 
     const [currentStep, setCurrentStep] = useState(1);
     const [previousStep, setPreviousStep] = useState(1);
@@ -774,9 +775,8 @@ function CreateCV() {
                                     onChange={handleCVNameChange}
                                 />
                             </div>
-                            <div className='finish-cv-area' >
-                                <div dangerouslySetInnerHTML={{__html: preview}} />
-                            </div>
+                            <div className='finish-cv-area' dangerouslySetInnerHTML={{__html: preview}} />
+                                
                             <Link to="">
                                 <div className="create-cv-options-button create-cv-button create-cv-download-cv-button">
                                     <img 

@@ -5,6 +5,7 @@ import '../Home_Screen/Home.css'
 import React, { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import Editor from './editor-step';
+import { sendCV } from '../Services/CVService';
 
 function CreateCV() {
     useEffect(() => {
@@ -38,6 +39,9 @@ function CreateCV() {
         }
         localStorage.setItem('CV', JSON.stringify(Cv));
     }, []);
+    const [template, setTemplate] = useState('CV1');
+
+
     // Step 1: Personal Information
     const [firstname, setFirstname] = useState('');
     const [surname, setSurname] = useState('');
@@ -220,9 +224,16 @@ function CreateCV() {
             currentlyAttendHere: currentlyAttendHere,
             skillDescription: skillDescription,
             summaryDescription: summaryDescription,
-            CVName: CVName
+            CVName: template
         }
         localStorage.setItem('CV', JSON.stringify(Cv));
+    };
+
+    const getPreview = () => {
+        req = {
+            filename: CVName,
+            phoneNumber: phone,
+        }
     };
 
     const [currentStep, setCurrentStep] = useState(1);
@@ -311,6 +322,7 @@ function CreateCV() {
     const handleBackClick = () => {
         setPreviousStep(currentStep);
         setCurrentStep(currentStep - 1);
+        handleSubmit();
     };
 
     // console.log('previous ',previousStep);

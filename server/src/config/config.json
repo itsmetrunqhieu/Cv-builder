@@ -3,7 +3,10 @@
     "username": "sa",
     "password": "123456",
     "database": "CV_builder",
+
+
     "host": "LAPTOP-9PG59IPR",
+
     "dialect": "mssql",
     "logging": false
   },

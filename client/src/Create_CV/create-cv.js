@@ -263,8 +263,8 @@ function CreateCV() {
     const handleDownload = async () => {
         const currentHTML = htmlContentExtractor(preview);
         const currentCSS = styleContentExtractor(preview);
-        console.log(currentHTML);
-        console.log(currentCSS);
+        // console.log(currentHTML);
+        // console.log(currentCSS);
         const req = {
             html: currentHTML,
             style: currentCSS

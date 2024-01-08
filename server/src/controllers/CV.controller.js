@@ -9,8 +9,8 @@ const downloadPDF = async (req, res, next) => {
   try {
     const htmlContent = req.body.html; // Assuming the client sends the HTML content in the request body
     const styleContent = req.body.style; // Assuming the client sends the CSS content in the request body
-    console.log(htmlContent);
-    console.log(styleContent);
+    // console.log(htmlContent);
+    // console.log(styleContent);
     // Launch a headless browser
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

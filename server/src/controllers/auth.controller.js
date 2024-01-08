@@ -17,7 +17,7 @@ function getFirstname(fullname) {
 const signup = async (req, res, next) => {
   try {
     const { email, username, fullname, phone, password, role } = req.body;
-    //console.log(req.body);
+    // console.log(req.body);
     const hashPassword = bcryptjs.hashSync(password, 10);
     //console.log(email, username, password, role);
     const [newUser, created] = await User.findOrCreate({
@@ -44,7 +44,7 @@ const signup = async (req, res, next) => {
 
 const signin = async (req, res, next) => {
   const { email, password } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const validUser = await User.findOne({ where: { email } });
     if (!validUser) return next(errorHandler(404, "User not found!"));

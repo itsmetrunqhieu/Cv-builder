@@ -12,7 +12,7 @@ function Login() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const [errmessgage, setErrmessgage] = useState('');
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     if(user && user!= {}){
@@ -38,6 +38,7 @@ function Login() {
   };
 
   const handleSubmit = async () => {
+    setErrmessgage('');
     try{
       const res = await login({
         email: username,
@@ -51,8 +52,12 @@ function Login() {
 
       navigate("/user-profile");
     }catch(err){
-      alert(err.response.data.message);
-      console.log("errorvlra");
+      if(err.response){
+        setErrmessgage(err.response.data.message);
+      //  alert(err.response.data.message);
+      }else{alert(err.message);} 
+      console.log(err);
+      
     }
     
   };
@@ -151,6 +156,9 @@ function Login() {
                 <Link to="">
                   <p className='forgot-password-text'>Forgot password?</p>
                 </Link>
+                <div style={{color: 'red' }}>
+                  {errmessgage}
+                </div>
                 <button className="login-button" onClick={handleSubmit}>Login</button>
                 <p className="dont-account-text">
                   Don’t have an account? <Link to="/register" className='dont-account-sign-up-text'>Sign up</Link>

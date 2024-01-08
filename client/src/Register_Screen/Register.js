@@ -22,6 +22,7 @@ function Register() {
   const [isFemaleChecked, setIsFemaleChecked] = useState(false);
   const [isPreferNotToSayChecked, setIsPreferNotToSayChecked] = useState(false);
 
+  const [errmessgage, setErrmessgage] = useState('');
 
   const togglePasswordVisibility = () => {  
     setIsPasswordVisible(!isPasswordVisible);
@@ -79,8 +80,9 @@ function Register() {
   
 
   const handleSubmit = async () => {
+    setErrmessgage('');
     if (password !== confirmPassword) {
-      alert("Password and Confirm Password do not match.");
+      setErrmessgage("Password and Confirm Password do not match.");
       return; // Ngăn việc tiếp tục xử lý nếu không khớp
     }
     // Sử dụng các biến username, password, fullName, email, phone ở đây,
@@ -107,6 +109,11 @@ function Register() {
       
       navigate("/user-profile");
     }catch(err){
+      if(err.response){
+        setErrmessgage(err.response.data.msg);
+        // alert(err.response.data.msg);
+        }else{alert(err.message);}
+        
       console.log(err);
     }
   };
@@ -149,6 +156,7 @@ function Register() {
               <button className="Sign-up-button">Sign in</button>
             </Link>
         </div>
+        
         <div className="Register-main">
             <p className="Registration-text hidden-bottom">Registration</p>
             <div className="fullname-regis-form-field hidden-bottom">
@@ -198,7 +206,7 @@ function Register() {
                   alt='icon'
               />
             </div>
-
+           
             <div className="phone-regis-form-field hidden-bottom">
               <input
                 type="text"
@@ -214,7 +222,7 @@ function Register() {
                   alt='icon'
               />
             </div>
-
+            
             <div className="password-regis-form-field hidden-bottom">
               <input
                 type={isPasswordVisible ? 'text' : 'password'}
@@ -286,11 +294,14 @@ function Register() {
               />
               <label className='prefer-text'>Prefer not to say</label>
             </div>
-
+            <div className="error-mesage" style={{color: 'red' }}>
+                  {errmessgage}
+            </div>
             <button className="login-button register-button hidden-bottom" onClick={handleSubmit}>Register</button>
             <p className="dont-account-text have-account-text hidden-bottom">
               Already have an account? <Link to="/login" className='dont-account-sign-up-text'>Sign in</Link>
             </p>
+            
         </div>
     </div>
   );

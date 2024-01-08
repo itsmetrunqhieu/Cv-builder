@@ -109,7 +109,11 @@
 
     color: #FFFFFF;
 }
-
+.error-mesage{
+    position: absolute;
+    left: 30px;
+    top: 390px;
+}
 .male-box {
     position: absolute;
     width: 15px;
@@ -175,7 +179,7 @@
 
 .prefer-text {
     position: absolute;
-    width: 139px;
+    width: 300px;
     height: 21px;
     left: 450px;
     top: 40px;

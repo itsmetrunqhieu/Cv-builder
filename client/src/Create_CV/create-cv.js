@@ -775,7 +775,11 @@ function CreateCV() {
                                     onChange={handleCVNameChange}
                                 />
                             </div>
-                            <div className='finish-cv-area' dangerouslySetInnerHTML={{__html: preview}} />
+                            <div className='finish-cv-area'>
+                                <div dangerouslySetInnerHTML={{__html: preview}}>
+
+                                </div>
+                            </div>
                                 
                             <Link to="">
                                 <div className="create-cv-options-button create-cv-button create-cv-download-cv-button">

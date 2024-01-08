@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './UserProfile.css';
+import '../Login_Screen/Login.css'
+import '../Home_Screen/Home.css';
 import Switch from './Switch';
 import { useEffect } from 'react';
 
@@ -23,6 +25,7 @@ const UserProfile = () => {
         country: 'defaultCountry',
     });
 
+    //backend
     const handleSubmit = async () => {
         // Sử dụng username và password ở đây, có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
         const req = {
@@ -151,12 +154,65 @@ const UserProfile = () => {
         setIsPasswordVisible3(!isPasswordVisible3);
     };
 
-    const imgStyle = {
-        cursor: 'pointer',
-    };
-
     const [currentUserProfileOption, setCurrentUserProfileOption] = useState(1);
+    const [previousUserProfileOption, setPreviousUserProfileOption] = useState(0);
 
+    useEffect(() => {
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                console.log(entry);
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        };
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0,
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        const hiddenElements = document.querySelectorAll('.hidden-right');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        return () => {
+            hiddenElements.forEach((el) => observer.unobserve(el));
+        };
+    }, [currentUserProfileOption]);
+
+    useEffect(() => {
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                console.log(entry);
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        };
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0,
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        return () => {
+            hiddenElements.forEach((el) => observer.unobserve(el));
+        };
+    }, [currentUserProfileOption]);
+    
     const userProfileOptionNames = [
         "Basic Information",
         "CV Storage",
@@ -164,7 +220,10 @@ const UserProfile = () => {
     ];
 
     const handleUserProfileOptionClick = (step) => {
-        setCurrentUserProfileOption(step);
+        if (currentUserProfileOption !== step) {
+            setPreviousUserProfileOption(currentUserProfileOption);
+            setCurrentUserProfileOption(step);
+        }
     };
 
     const [isNotificationsChecked, setIsNotificationsChecked] = useState(false);
@@ -247,7 +306,6 @@ const UserProfile = () => {
                         className="user-profile-left-field-username-field-icon"
                         alt="icon"
                         onClick={togglePasswordVisibility1}
-                        style={imgStyle}
                     />
                 </div>
                 <div>
@@ -278,7 +336,7 @@ const UserProfile = () => {
                 </div>
                 <div className='user-profile-right-field-content'>
                     {currentUserProfileOption === 1 &&
-                        <div>
+                        <div className={`${previousUserProfileOption < currentUserProfileOption ? 'hidden-right' : 'hidden'}`}>
                             <div className="user-profile-right-field-firstname-form-field">
                                 <p className='create-cv-form-text'>First Name:</p>
                                 <input
@@ -365,71 +423,61 @@ const UserProfile = () => {
                         </div>
                     }
                     {currentUserProfileOption === 2 &&
-                        <div className='cv-storage-field'>
+                        <div className={`cv-storage-field ${previousUserProfileOption < currentUserProfileOption ? 'hidden-right' : 'hidden'}`}>
                             <img
                                 src='/Image/User_Profile/cv1.png'
                                 className='user-profile-cv-storange-pic'
                                 alt='cv'
-                                style={imgStyle}
                             />
                             <img
                                 src='/Image/User_Profile/cv2.png'
                                 className='user-profile-cv-storange-pic'
                                 alt='cv'
-                                style={imgStyle}
                             />
                             <img
                                 src='/Image/User_Profile/cv7.png'
                                 className='user-profile-cv-storange-pic'
                                 alt='cv'
-                                style={imgStyle}
                             />
                             <img
                                 src='/Image/User_Profile/cv8.png'
                                 className='user-profile-cv-storange-pic'
                                 alt='cv'
-                                style={imgStyle}
                             />
                             <img
                                 src='/Image/User_Profile/cv9.png'
                                 className='user-profile-cv-storange-pic'
                                 alt='cv'
-                                style={imgStyle}
                             />
                             <img
                                 src='/Image/User_Profile/cv5.png'
                                 className='user-profile-cv-storange-pic'
                                 alt='cv'
-                                style={imgStyle}
                             />
                             <img
                                 src='/Image/User_Profile/cv6.png'
                                 className='user-profile-cv-storange-pic'
                                 alt='cv'
-                                style={imgStyle}
                             />
                             <img
                                 src='/Image/User_Profile/cv10.png'
                                 className='user-profile-cv-storange-pic'
                                 alt='cv'
-                                style={imgStyle}
                             />
                             <img
                                 src='/Image/User_Profile/cv3.png'
                                 className='user-profile-cv-storange-pic'
                                 alt='cv'
-                                style={imgStyle}
                             />
                             <img
                                 src='/Image/User_Profile/cv4.png'
                                 className='user-profile-cv-storange-pic'
                                 alt='cv'
-                                style={imgStyle}
                             />
                         </div>
                     }
                     {currentUserProfileOption === 3 &&
-                        <div>
+                        <div className={`${previousUserProfileOption < currentUserProfileOption ? 'hidden-right' : 'hidden'}`}>
                             <div className="user-profile-right-field-reset-password-form-field">
                                 <p className='create-cv-form-text'>Reset Password</p>
                                 <div className="user-profile-right-field-current-password-form-field">
@@ -447,7 +495,6 @@ const UserProfile = () => {
                                         className="user-profile-right-field-reset-password-icon1"
                                         alt="icon"
                                         onClick={togglePasswordVisibility2}
-                                        style={imgStyle}
                                     />
                                 </div>
                                 <div className="user-profile-right-field-current-password-form-field">
@@ -465,7 +512,6 @@ const UserProfile = () => {
                                         className="user-profile-right-field-reset-password-icon2"
                                         alt="icon"
                                         onClick={togglePasswordVisibility3}
-                                        style={imgStyle}
                                     />
                                 </div>
                             </div>

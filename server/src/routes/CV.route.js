@@ -5,6 +5,7 @@ const { CV_tmpltDTB } = require("../middlewares/multerConfig");
 const router = express.Router();
 
 router.post("/download", verifyToken, CV_tmpltDTB.single("file"), downloadPDF);
+
 router.post(
   "/saveUserCV/",
   verifyToken,

@@ -5,7 +5,7 @@ import '../Home_Screen/Home.css'
 import React, { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import Editor from './editor-step';
-import { sendCV } from '../Services/CVService';
+import { donwnload, sendCV } from '../Services/CVService';
 
 function CreateCV() {
     useEffect(() => {
@@ -225,7 +225,7 @@ function CreateCV() {
             currentlyAttendHere: currentlyAttendHere,
             skillDescription: skillDescription,
             summaryDescription: summaryDescription,
-            CVName: template
+            CVName: CVName
         }
         localStorage.setItem('CV', JSON.stringify(Cv));
     };
@@ -233,7 +233,7 @@ function CreateCV() {
     const getPreview = async () => {
         const currentCV = JSON.parse(localStorage.getItem('CV'));
         const req = {
-            filename: currentCV.CVName,
+            filename: currentCV.CVName || 'CV1_optimize',
             phoneNumber: currentCV.phone,
             email: currentCV.email,
             address: currentCV.city + ", " + currentCV.country,
@@ -260,6 +260,55 @@ function CreateCV() {
         }
     };
 
+    const handleDownload = async () => {
+        const currentHTML = htmlContentExtractor(preview);
+        const currentCSS = styleContentExtractor(preview);
+        // console.log(currentHTML);
+        // console.log(currentCSS);
+        const req = {
+            html: currentHTML,
+            style: currentCSS
+        }
+        try{
+            await donwnload(req).then((response) => {
+                console.log(response);
+                const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
+                let link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'yourCV.pdf');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const htmlContentExtractor = (htmlContent) => {
+        // only include from <body> to <style> tag
+        const regex = /<body>(.*)<style>/gms;
+        const match = regex.exec(htmlContent);
+        if (match) {
+            // remove <body> tag
+            const bodyContent = match[1];
+            return bodyContent;
+        }
+        return '';
+    };
+
+    const styleContentExtractor = (htmlContent) => {
+        // only include <style> tag
+        const regex = /<style>(.*)<\/style>/gms;
+        const match = regex.exec(htmlContent);
+        if (match) {
+            // remove <style> tag
+            const styleContent = match[1];
+            // make it one line, remove all tabs and new lines
+            return styleContent;
+        }
+        return '';
+    };
 
     const [currentStep, setCurrentStep] = useState(1);
     const [previousStep, setPreviousStep] = useState(1);
@@ -781,8 +830,7 @@ function CreateCV() {
                                 </div>
                             </div>
                                 
-                            <Link to="">
-                                <div className="create-cv-options-button create-cv-button create-cv-download-cv-button">
+                                <div className="create-cv-options-button create-cv-button create-cv-download-cv-button" onClick={handleDownload}>
                                     <img 
                                         src='/Image/Create_CV/Arhive_load_light.svg'
                                         className='create-cv-options-icon'
@@ -790,7 +838,7 @@ function CreateCV() {
                                     />
                                     <p className='create-cv-options-button-text'>Download as pdf</p>
                                 </div>
-                            </Link>
+
                             <Link to="">
                                 <div className="create-cv-options-button create-cv-button create-cv-save-cv-button">
                                     <img 

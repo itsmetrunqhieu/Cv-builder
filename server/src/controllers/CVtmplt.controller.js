@@ -118,14 +118,27 @@ const submitInfor = async (req, res, next) => {
     // }
     
     const textData = req.body;
-    console.log(textData);
     const data = { ...textData};
 
     // delete <p> tag from backgroundSummary
-    if (data.backgroundSummary) {
-      data.backgroundSummary = data.backgroundSummary.replace(/<p>/g, "");
-      data.backgroundSummary = data.backgroundSummary.replace(/<\/p>/g, "");
-    }
+    // if (data.backgroundSummary) {
+    //   data.backgroundSummary = data.backgroundSummary.replace(/<p>/g, "");
+    //   data.backgroundSummary = data.backgroundSummary.replace(/<\/p>/g, "");
+    // }
+
+    // // delete <p> tag from job description
+    // if (data.workHistory.description) {
+    //   data.workHistory.description = data.workHistory.description.replace(
+    //     /<p>/g,
+    //     ""
+    //   );
+    //   data.workHistory.description = data.workHistory.description.replace(
+    //     /<\/p>/g,
+    //     ""
+    //   );
+    // }
+
+    console.log(data);
 
     res.render(`${data.filename}`, data, (error, html) => {
       if (error) {

@@ -5,6 +5,8 @@ import './UserProfile.css';
 import Switch from './Switch';
 import { useEffect } from 'react';
 
+import { getUser ,updateUser } from '../Services/UserService';
+
 const UserProfile = () => {
     // Đây là nơi bạn có thể lấy dữ liệu từ API hoặc nơi khác để hiển thị thông tin người dùng
     const [userData, setUserData] = React.useState({
@@ -21,8 +23,29 @@ const UserProfile = () => {
         country: 'defaultCountry',
     });
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         // Sử dụng username và password ở đây, có thể gửi đến server hoặc xử lý dữ liệu theo cách khác
+        const req = {
+            firstname: firstname,
+            surname: surname,
+            phone: phone,
+            email: email,
+            jobTitle: jobTitle,
+            employer: employer,
+            citymunicipality: city,
+            country: country,
+        };
+
+        await updateUser(req);
+
+        const user = (await getUserData()).data;
+
+        // console.log(user);
+
+        localStorage.setItem('user', JSON.stringify(user));
+
+        window.location.reload();
+
     };
 
     const handleLogOut = () => {
@@ -31,13 +54,19 @@ const UserProfile = () => {
         window.location.reload();
     }
 
+    const getUserData = async () => {
+        return await getUser();
+    }
+
     useEffect(() => {
         // console.log("user profile local storage");
         // console.log(JSON.stringify(localStorage.getItem('user')));
+        
         const user = JSON.parse(localStorage.getItem('user'));
-        if (!user) {
+        if (!user || user === '') {
             window.location.href = "/login";
         }
+
         setUserData({
             username: user.name || 'defaultUsername',
             password: 'defaultPassword',
@@ -48,7 +77,7 @@ const UserProfile = () => {
             email: user.email || 'defaultEmail@example.com',
             jobTitle: user.jobTitle || 'defaultJobTitle',
             employer: user.employer || 'defaultEmployer',
-            cityMunicipality: user.cityMunicipality || 'defaultCityMunicipality',
+            cityMunicipality: user.citymunicipality || 'defaultCityMunicipality',
             country: user.country || 'defaultCountry',
         });
 
@@ -136,7 +165,6 @@ const UserProfile = () => {
 
     const handleUserProfileOptionClick = (step) => {
         setCurrentUserProfileOption(step);
-        handleSubmit();
     };
 
     const [isNotificationsChecked, setIsNotificationsChecked] = useState(false);

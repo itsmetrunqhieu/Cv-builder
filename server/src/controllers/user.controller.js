@@ -7,6 +7,18 @@ const test = (req, res) => {
   });
 };
 
+const getUser = async (req, res, next) => {
+  try {
+    var id = req.user.id;
+    const finduser = await User.findByPk(id);
+    if (!finduser) return res.status(404).json({ msg: "User not found" });
+    return res.status(200).json(finduser);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+};
+
 const updateUser = async (req, res, next) => {
   try {
     var id = req.user.id;
@@ -34,6 +46,7 @@ const updateUser = async (req, res, next) => {
       firstname: firstname || finduser.firstname,
       surname: surname || finduser.surname,
       phone: phone || finduser.phone,
+      email: email || finduser.email,
       jobTitle: jobTitle || finduser.jobTitle,
       employer: employer || finduser.employer,
       citymunicipality: citymunicipality || finduser.citymunicipality,
@@ -50,6 +63,6 @@ const updateUser = async (req, res, next) => {
   }
 };
 
-module.exports = { test, updateUser };
+module.exports = { test, updateUser, getUser };
 //fsmegasale15
 //sieutuyet20

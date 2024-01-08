@@ -15,7 +15,7 @@ function Login() {
   const [errmessgage, setErrmessgage] = useState('');
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    if(user){
+    if(user && user!= {}){
       navigate("/user-profile");
     }
 

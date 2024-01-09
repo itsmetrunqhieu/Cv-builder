@@ -132,6 +132,7 @@ li a:hover {
 
 .search-active {
     transform: translateX(-200px);
+    transition: all 300ms;
 }
 
 .search-bar {
@@ -142,6 +143,7 @@ li a:hover {
     display: flex;
     align-items: center;
     position: absolute;
+    transition: all 300ms ease-in-out;
   }
 
 .search-input {
